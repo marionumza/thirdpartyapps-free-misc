@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	 <record id="crm.crm_case_tree_view_leads" model="ir.ui.view">
+    		<field name="priority">14</field>
+	</record> 
+	<record id="crm.crm_lead_view_form" model="ir.ui.view">
+    		<field name="priority">14</field>
+	</record>
+	
+    <record id="view_calendar_event_inherit" model="ir.ui.view">
+            <field name="name">view.calendar.event.inherit</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/*" position="before">
+                	<header>
+                		<button name="print_mom" string="Print" type="object" class="oe_highlight"/>
+                		<button name="email_mom" string="Send Email" type="object" class="oe_highlight"/>
+                	</header>
+                </xpath>
+                <xpath expr="//sheet/button[@name='action_open_calendar_event']" position="after">
+                    <div name="button_box" class="oe_button_box">
+                		<button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="lead">
+                			 <field name="lead_count" widget="statinfo"/>
+                	 </button>
+                	</div>
+                </xpath>
+                 <xpath expr="//field[@name='start_datetime']" position="after">
+                	<field name="meeting_organizer" />
+                
+                </xpath>
+                <xpath expr="//field[@name='description']" position="after">
+	                <group>
+	                	<field name="action_items" />
+	                	<field name="conclusion" />
+	                </group>
+                </xpath>
+           </field>
+    </record>
+    <record id="view_crm_lead_inherit" model="ir.ui.view">
+            <field name="name">view.crm.lead.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+	            <xpath expr="//field[@name='partner_id']" position="after">
+	                	<field name="calendar_event_id"  invisible="1"/>
+	            </xpath>
+            </field>
+     </record>
+</odoo>

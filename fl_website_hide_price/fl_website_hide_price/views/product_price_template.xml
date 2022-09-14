@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Template for Hide Price in Product Detail Page-->
+    <template id="product_price_custom_hide_price" inherit_id="website_sale.product_price">
+        <xpath expr="//div[hasclass('product_price')]" position="attributes">
+            <attribute name="t-if">not user_id.partner_id.name == 'Public user'</attribute>
+        </xpath>
+    </template>
+
+    <!--Template for Add to Cart in Product Detail Page-->
+    <template id="product_custom_hide_addtocart" inherit_id="website_sale.product">
+        <xpath expr="//div[hasclass('js_product')]" position="attributes">
+            <attribute name="t-if">not user_id.partner_id.name == 'Public user'</attribute>
+        </xpath>
+    </template>
+
+    <!--Template for Hide Price, Add to Cart, Wishlist, Compare in Shop Page-->
+    <template id="products_item_custom_hide_price" inherit_id="website_sale.products_item">
+        <xpath expr="//div[hasclass('product_price')]" position="attributes">
+            <attribute name="t-if">not user_id.partner_id.name == 'Public user'</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('o_wsale_product_btn')]" position="attributes">
+            <attribute name="t-if">not user_id.partner_id.name == 'Public user'</attribute>
+        </xpath>
+    </template>
+</odoo>
