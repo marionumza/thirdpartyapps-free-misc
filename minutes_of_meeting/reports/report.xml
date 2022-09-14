@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	 <report
+            id="report_pint_mom"
+            model="calendar.event"
+            string="Minutes Of Meeting"
+            report_type="qweb-pdf"
+            name="minutes_of_meeting.report_mom"
+            file="minutes_of_meeting.report_mom"/>
+</odoo>

@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+    <!-- Inherit Form View to Modify it -->
+    <odoo>
+      <data>
+        <record id="prevent_create_new_product_from_sales_order_lines" model="ir.ui.view">
+          <field name="name">sale.order.form</field>
+          <field name="model">sale.order</field>
+          <field name="inherit_id" ref="sale.view_order_form"/>
+          <field name="arch" type="xml">
+            <tree>
+              <field
+                      name="product_id"
+                      attrs="{
+                                            'readonly': [('product_updatable', '=', False)],
+                                            'required': [('display_type', '=', False)],
+                                        }"
+                      options="{'no_open': True, 'no_create': True, 'no_create_edit': True}"
+                      force_save="1"
+                      context="{
+                                            'partner_id': parent.partner_id,
+                                            'quantity': product_uom_qty,
+                                            'pricelist': parent.pricelist_id,
+                                            'uom':product_uom,
+                                            'company_id': parent.company_id,
+                                            'default_lst_price': price_unit,
+                                            'default_description_sale': name
+                                        }"
+                      domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                      widget="product_configurator"
+              />
+            </tree>
+          </field>
+        </record>
+      </data>
+    </odoo>
+  </data>
+</odoo>

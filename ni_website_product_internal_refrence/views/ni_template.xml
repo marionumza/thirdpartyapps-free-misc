@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_frontend" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/ni_website_product_internal_refrence/static/src/js/ni_variant_mixin.js"></script>
+            </xpath>
+        </template>
+
+        <template id="product" inherit_id="website_sale.product">
+            <xpath expr="//h1[@t-field='product.name']" position="after">
+                <b>Internal Refrence : </b><span id="ni_default_code"/>
+                    <br/>
+                <b>Description : </b><span id="ni_product_description"/>
+            </xpath>
+        </template>
+
+        <record id="ni_product_normal_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.normal.form.view</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales']/group[@name='description']" position="before">
+                    <group string="Variant Description">
+                        <field name="ni_product_description" nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="ni_product_variant_easy_edit_view_inherit" model="ir.ui.view">
+            <field name="name">product.variant.easy.edit.view</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='weight']" position="after">
+                    <group string="Variant Description">
+                        <field name="ni_product_description" nolabel="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+</data>
+</odoo>

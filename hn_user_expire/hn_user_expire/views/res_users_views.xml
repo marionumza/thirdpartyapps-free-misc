@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <!-- Users -->
+        <record model="ir.ui.view" id="view_users_form_expiration_date">
+            <field name="name">user.expiration.date</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='access_rights']/group[1]" position="after">
+                    <group string="Access Expiration">
+                        <group>
+                            <field name="expiration_date" />
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_users_tree_expiration_date">
+            <field name="name">user.expiration.date.tree</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree"/>
+            <field name="arch" type="xml">
+                <field name="login_date" position="after">
+                    <field name="expiration_date"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
