@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_internel_reference" inherit_id="website_sale.product" name="product Reference">
+        <xpath expr="//div[@id='product_details']/h1" position="after">
+            <span t-if="product.default_code">
+                <b>Internal Reference: <span t-field="product.default_code"/></b>
+            </span>
+        </xpath>
+    </template>
+
+    <template id="products_item_reference" inherit_id="website_sale.products_item" name="Product">
+        <xpath expr="//*[hasclass('product_price')]" position="before">
+            <span t-if="product.default_code">
+                [<span t-field="product.default_code"/>]
+            </span>
+        </xpath>
+    </template>
+</odoo>

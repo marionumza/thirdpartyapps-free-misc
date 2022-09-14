@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_task_user,access_sale_task,model_sale_task,sales_team.group_sale_salesman,1,0,0,0
+access_sale_task_manager,access_sale_task,model_sale_task,sales_team.group_sale_manager,1,1,1,1
+access_sale_task_history_user,access_sale_task_history,model_sale_task_history,sales_team.group_sale_salesman,1,1,0,0
+access_sale_task_history_manager,access_sale_task_history,model_sale_task_history,sales_team.group_sale_manager,1,1,1,1
+
+
+
+
+
+

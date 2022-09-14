@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <!--Extended the functionality of the Crm Lead view to add the Sale Order  -->
+     <record id="inherit_crm_lead_view_form" model="ir.ui.view">
+         <field name="name">crm.lead.oppor.inherited.crm</field>
+         <field name="model">crm.lead</field>
+         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+         <field name="arch" type="xml">
+	     <notebook>
+                 <page name="salesorder" string="Sales Order">
+                     <br/>
+                     <field name="order_ids" readonly="True"> 
+                         <tree string="Sales Orders" decoration-bf="message_needaction==True" decoration-success="state in ['sale','done']" decoration-muted="state=='cancel'">
+                             <field name="message_needaction" invisible="1"/>
+                             <field name="name" string="Order Number"/>
+                             <field name="date_order"/>
+                             <field name="partner_id"/>
+                             <field name="user_id"/>
+                             <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                             <field name="currency_id" invisible="1"/>
+                             <field name="invoice_status"/>
+                             <field name="state" invisible="1"/>
+                         </tree>
+                     </field>
+                 </page>
+	     </notebook>
+	     <xpath expr="//field[@name='team_id']" position="after">
+             <field name="actual_sales"/>
+             <field name="actual_sales_pr"/>                 
+         </xpath>
+         </field>
+     </record> 
+
+</odoo>
+
+   
