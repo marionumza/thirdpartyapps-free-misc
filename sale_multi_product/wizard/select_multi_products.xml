@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_multi_products_wizard" model="ir.ui.view">
+            <field name="name">Sale Multiple Products Wizard</field>
+            <field name="model">sale.multi.products</field>
+            <field name="arch" type="xml">
+                <form string="Multi Products Selection" version="7">
+                    <group>
+                        <field name="do_replace"/>
+                    </group>
+                    <field name="product_ids"/>
+                    <footer>
+                        <button name="sale_multi_products" string="Apply" type="object"
+                                class="oe_highlight"/>
+                        <button string="_Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

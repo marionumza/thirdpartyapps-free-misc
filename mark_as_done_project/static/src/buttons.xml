@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <template id="my_contacts_template" xml:space="preserve">
+          <t t-extend="ImportView.import_button">
+            <t t-jquery="button" t-operation="after">
+                <t t-if="widget">
+                    <t t-if="widget.modelName == 'project.task'">
+                            <button type="button" class="btn btn-success my-contacts-button">
+                                Customer
+                            </button>
+                        <button type="button" class="btn btn-success my-overview-button">
+                            Project Overview
+                        </button>
+                    </t>
+                </t>
+            </t>
+          </t>
+    </template>

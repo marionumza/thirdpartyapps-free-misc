@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_location_condition_tree" model="ir.ui.view">
+            <field name="name">location.condition.tree</field>
+            <field name="model">location.condition</field>
+            <field name="arch" type="xml">
+                <tree string="Location Condition"> 
+                    <field name="name"/> 
+                    <field name="sequence"/>                                                                                    
+                </tree>	
+            </field>
+        </record>        
+
+        <record id="view_location_condition_form" model="ir.ui.view">
+            <field name="name">location.condition.form</field>
+            <field name="model">location.condition</field>
+            <field name="arch" type="xml">
+                <form string="Location Condition">
+		    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>                                                                                    
+                        </group>
+		    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="location_condition_action" model="ir.actions.act_window">
+           <field name="name">Location Condition</field>
+            <field name="res_model">location.condition</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_location_condition_tree"/>
+        </record>
+
+        <menuitem id="menu_location_conditions"
+                  name="Location Conditions" 
+                  parent="stock.menu_warehouse_config"
+                  sequence="3"
+                  groups="stock.group_stock_multi_locations"
+                  action="abs_location_condition.location_condition_action"/>
+</odoo>

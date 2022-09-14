@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>  
+    <template id="report_mom">   	
+        <t t-call="web.html_container">  
+        <t t-foreach="docs" t-as="doc">    	 
+            <t t-call="web.external_layout">
+            <br></br>
+            	<h6><strong><p style="text-align:center;">MINUTES OF MEETING</p></strong></h6>
+            <br></br>
+                 <div class="page"> 
+                   <div class="oe_structure"/>
+                   <div class="row">
+                        <table class="table table-bordered" style="border:solid 1px; border-collapse: collapse;">                      
+                            <thead>
+                                <tr>
+                                    <th style="text-align:left;"><strong>Meeting Date </strong></th>
+                                    <th style="text-align:left;"><strong>Meeting Location </strong></th>
+                                    <th style="text-align:left;"><strong>Meeting Organizer</strong></th>
+                                    <th style="text-align:left;"><strong>Meeting Subject </strong></th>
+                                </tr>
+                            </thead>
+                            <tbody class="calender_tbody">
+		                              	 <t t-foreach="docs" t-as="l">
+		                              	 <tr>
+	                              	 		 <td>
+	                              	 		 	<t t-if="l.allday">
+		                              	 		 	<span t-field="l.start_date"/>
+		                              	 		</t>
+		                              	 		
+		                              	 		<t t-if="not l.allday">
+		                              	 		 	<span t-field="l.start_datetime"/>
+		                              	 		</t>
+		                              	 		
+	                              	 		 </td>
+	                              	 		 <td>
+	                              	 		 	<span t-field="l.location"/>
+	                              	 		 </td>
+	                              	 		 <td>
+	                              	 		 	<span t-field="l.meeting_organizer"/>
+	                              	 		 </td>
+	                              	 		 <td>
+	                              	 		 	<span t-field="l.name"/>
+	                              	 		 </td>
+	                              	 		
+                              	 		</tr> 
+                              			</t>
+                              </tbody>
+                        </table>                 
+                    </div>
+                    <table class="table table-bordered" style="border:solid 1px; border-collapse: collapse;">
+                    	<thead>
+                                <tr>
+                                    <th style="text-align:center;"><strong>Meeting Attendees </strong></th>
+                                </tr>
+                            </thead>
+                           	<tbody class="calender_tbody">
+                              	 <t t-foreach="docs" t-as="o">
+                              	 	<tr>
+                              	 		 <td>
+                              	 		 	<span t-field="o.partner_ids"/>
+                              	 		 </td>
+                              	 	</tr>
+                              	</t>
+                             </tbody>
+                  	</table>
+                          <table class="table table-bordered" style="border:solid 1px; border-collapse: collapse;">
+                           <thead>
+                                <tr>
+                                    <th style="text-align:left;"><strong>Agenda </strong></th>
+                                </tr>
+                            </thead>
+                           	<tbody class="calender_tbody">
+                              	 <t t-foreach="docs" t-as="p">
+                              	 	<tr>
+                              	 		 <td>
+                              	 		 	<span t-field="p.description"/>
+                              	 		 </td>
+                              	 	</tr>
+                              	</t>
+                             </tbody>
+                           </table>
+                           <table class="table table-bordered" style="border:solid 1px; border-collapse: collapse;">
+                           	<thead>
+                                <tr>
+                                    <th style="text-align:left;"><strong>Action Item </strong></th>
+                                </tr>
+                            </thead>
+                           	<tbody class="calender_tbody">
+                              	 <t t-foreach="docs" t-as="k">
+                              	 	<tr>
+                              	 		 <td>
+                              	 		 	<span t-field="k.action_items"/>
+                              	 		 </td>
+                              	 	</tr>
+                              	</t>
+                             </tbody>
+                            </table>
+                           <table class="table table-bordered" style="border:solid 1px; border-collapse: collapse;">	
+                           		<thead>
+                                <tr>
+                                    <th style="text-align:left;"><strong>Conclusion </strong></th>
+                                </tr>
+                            </thead>
+                           
+                           	<tbody class="calender_tbody">
+                              	 <t t-foreach="docs" t-as="t">
+                              	 	<tr>
+                              	 		 <td>
+                              	 		 	<span t-field="t.conclusion"/>
+                              	 		 </td>
+                              	 	</tr>
+                              	</t>
+                             </tbody>
+                           </table>
+              		 </div> 
+            	</t>
+          	 </t>
+       	</t>
+    </template>
+</odoo>

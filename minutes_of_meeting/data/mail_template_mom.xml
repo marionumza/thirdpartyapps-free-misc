@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="email_template_mom" model="mail.template">
+            <field name="name">MOM: Send by email</field>
+            <field name="model_id" ref="minutes_of_meeting.model_calendar_event"/>
+            <field name="email_from">${(object.user_id.email_formatted or user.email_formatted) | safe}</field>
+            <field name="email_to">${(object.partner_ids)}</field>
+            <field name="subject">Minutes of meeting for Executive Business Review</field>
+            <field name="body_html" type="html">
+				<div style="margin: 0px; padding: 0px;">
+				    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+				        Dear All,
+				        <br /><br />
+				        Here is the attachment of Minutes Of Meeting for <strong>Executive Business Review</strong>
+				        <br /><br />
+				        This is a system generated E-mail. Please do not reply.
+				        <br /><br />
+				        <br></br>
+				        Thank You.
+				    </p>
+				</div>
+            </field>
+             <field name="report_template" ref="report_pint_mom"/>
+            <field name="report_name">Minutes Of Meeting</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+</odoo>

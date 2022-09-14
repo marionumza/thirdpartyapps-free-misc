@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+
+        <template id="assets_backend" name="ribbon" inherit_id="web.assets_backend">
+
+           <xpath expr="." position="inside">
+               <link rel="stylesheet" href="/mark_as_done_project/static/src/ribbon.css"/>
+                <script type="text/javascript" src="/mark_as_done_project/static/src/button.js"></script>
+           </xpath>
+
+   </template>
+
+    </data>
+</odoo>

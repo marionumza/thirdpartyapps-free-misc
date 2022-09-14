@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+    <!-- Inherit Form View to Modify it -->
+    <odoo>
+      <data>
+        <record id="prevent_create_new_product_from_purchase_order_lines" model="ir.ui.view">
+          <field name="name">purchase.order.form</field>
+          <field name="model">purchase.order</field>
+          <field name="inherit_id" ref="purchase.purchase_order_form"/>
+          <field name="arch" type="xml">
+            <tree>
+              <field
+                      name="product_id"
+                      options="{'no_open': True, 'no_create': True, 'no_create_edit': True}"
+                      attrs="{
+                                            'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))],
+                                            'required': [('display_type', '=', False)],
+                                        }"
+                      context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}"
+                      force_save="1"
+                      domain="[('purchase_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+            </tree>
+          </field>
+        </record>
+      </data>
+    </odoo>
+  </data>
+</odoo>

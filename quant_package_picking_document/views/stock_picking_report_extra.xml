@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_stock_picking_quant_package" inherit_id="stock.report_delivery_document">
+        
+		<xpath expr="//table[@name='stock_move_line_table']" position="after">
+            <table class="table table-sm mt48" name="stock_move_line_table_colis" t-if="o.move_line_ids and o.move_line_ids.result_package_id and o.state=='done'">
+			   <thead>
+					<tr>
+						<td><strong>Package</strong></td>
+						<td><strong>Dimension</strong></td>
+						<td><strong>Poids Net</strong></td>
+						<td><strong>Poids Brut</strong></td>
+					</tr>
+			  	</thead>
+			  		<tbody>
+					<t t-set="i" t-value="0"/>
+					<t t-set="poidsBrut" t-value="0"/>
+					<t t-set="poidsNet" t-value="0"/>
+					<t t-foreach="o.move_line_ids.result_package_id" t-as="move_line">
+						<tr>
+							<td><strong t-esc="move_line_index + 1"/><strong> (</strong><strong t-esc="move_line.name"/><strong>)</strong></td>
+							<td><span t-field="move_line.dimension"/></td>
+							<td>
+								<t t-if="move_line.shipping_weight != 0">
+									<span t-field="move_line.shipping_weight"/> <span t-field="move_line.weight_uom_name"/>
+									<t t-set="poidsNet" t-value="poidsNet + move_line.shipping_weight"/>
+								</t>
+								<t t-else="">
+									<span t-field="move_line.weight"/> <span t-field="move_line.weight_uom_name"/>
+									<t t-set="poidsNet" t-value="poidsNet + move_line.weight"/>
+								</t>
+							</td>
+							<td><span t-field="move_line.gross_weight"/> <span t-field="move_line.weight_uom_name"/></td>
+							<t t-set="i" t-value="i+1"/>
+							<t t-set="poidsBrut" t-value="poidsBrut + move_line.gross_weight"/>
+						</tr>
+					</t>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td><strong>Total</strong></td>
+						<td><strong><span t-esc="i"/> Package(s)</strong></td>
+						<td><strong><span t-esc="poidsNet" t-options='{"widget": "float", "precision": 2}'/>  <span t-field="o.move_line_ids.result_package_id[0].weight_uom_name"/></strong></td>
+						<td><strong><span t-esc="poidsBrut" t-options='{"widget": "float", "precision": 2}'/> <span t-field="o.move_line_ids.result_package_id[0].weight_uom_name"/></strong></td>
+					</tr>
+				</tfoot>
+			</table>
+        </xpath>
+		
+    </template>
+
+</odoo>

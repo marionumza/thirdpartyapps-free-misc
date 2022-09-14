@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!-- QWeb Reports with number of products and quantities -->
+        <report 
+            id="account_invoices_product_quantities"
+            model="account.move"
+            string="Invoices with products and Quantity"
+            report_type="qweb-pdf"
+            name="account.report_invoice"
+            file="account.report_invoice"
+            attachment_use="True"
+            attachment="(object.state in ('open','paid')) and ('INV2'+(object.number or '').replace('/','')+'.pdf')"
+        />
+    </data>
+
+</odoo>
+

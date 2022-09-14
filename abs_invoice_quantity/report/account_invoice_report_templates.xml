@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_abs_invoice_total_quantity" inherit_id="account.report_invoice_document">
+        <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="after">
+            <p t-if="o.total_product" groups='abs_invoice_quantity.group_show_product_and_quantity_in_invoice'>
+                <strong >Total Products:</strong>
+                <span t-field="o.total_product"/>
+            </p>
+            <p t-if="o.total_quantity" groups='abs_invoice_quantity.group_show_product_and_quantity_in_invoice'>
+                <strong >Total Quantity:</strong>
+                <span t-field="o.total_quantity"/>
+            </p>
+        </xpath>
+    </template>
+
+</odoo>

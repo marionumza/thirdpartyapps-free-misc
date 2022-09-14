@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_sale_multi_ept" model="ir.ui.view">
+        <field name="name">sale.order.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="open_multi_product_selection_wizard" type="object"
+                        attrs="{'invisible':[('state', '!=', 'draft')]}"
+                        string="Sale Multi Products"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

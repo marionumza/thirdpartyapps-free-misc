@@ -1,0 +1,1 @@
+from . import sale_multi_products
