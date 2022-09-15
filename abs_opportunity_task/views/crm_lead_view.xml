@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- action-->
+    <record id="action_create_task" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="project.view_task_search_form"/> 
+    </record>
+
+    <record id="inherited_crmlead_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref = "crm.crm_lead_view_form"/>	
+        <field name="arch" type="xml">
+            <!--Create Task Button-->            
+            <xpath expr ="//field[@name='stage_id']" position="before">  
+                <button string="Create Task" name="%(action_create_task)d" type="action" context="{'search_default_partner_id': partner_id, 'default_partner_id': partner_id,'search_default_my_tasks': 1}"  class="oe_highlight" />
+            </xpath>
+            <!--Tasks oe_button-->            
+            <xpath expr ="//div[@name='button_box']" position="inside">  
+                <button class="oe_stat_button" name="%(project.action_view_task)d" type="action" context="{ 'search_default_partner_id': partner_id,'default_partner_id': partner_id}"  icon="fa-tasks">
+                    <field string="Tasks" name="task_count"  widget="statinfo"/>
+                </button>	
+            </xpath>
+        </field>	
+    </record>
+
+</odoo>
