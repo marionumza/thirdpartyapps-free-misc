@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="remito_preimpreso.list">
+      <field name="name">remito_preimpreso list</field>
+      <field name="model">remito_preimpreso.remito_preimpreso</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="remito_preimpreso.action_window">
+      <field name="name">remito_preimpreso window</field>
+      <field name="res_model">remito_preimpreso.remito_preimpreso</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="remito_preimpreso.action_server">
+      <field name="name">remito_preimpreso server</field>
+      <field name="model_id" ref="model_remito_preimpreso_remito_preimpreso"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="remito_preimpreso" id="remito_preimpreso.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="remito_preimpreso.menu_1" parent="remito_preimpreso.menu_root"/>
+    <menuitem name="Menu 2" id="remito_preimpreso.menu_2" parent="remito_preimpreso.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="remito_preimpreso.menu_1_list" parent="remito_preimpreso.menu_1"
+              action="remito_preimpreso.action_window"/>
+    <menuitem name="Server to list" id="remito_preimpreso" parent="remito_preimpreso.menu_2"
+              action="remito_preimpreso.action_server"/>
+-->
+  </data>
+</odoo>
