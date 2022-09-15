@@ -1,1 +1,0 @@
-from . import minutes_of_meeting
