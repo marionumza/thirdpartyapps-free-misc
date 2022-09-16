@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 SYSNEO CONSULTING S.A.C
+    Part of SysNeo. See LICENSE file for full copyright and licensing details. -->
+
+<odoo>
+    <record model="ir.ui.view" id="crm_form_view_leads_oppor">
+        <field name="name">Add Second Currency field</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//h2[1]" position="inside">
+                <div class="col" attrs="{'invisible': [('type', '=', 'lead')]}">
+                    <field name="currency_id" invisible="0" class="ml-3 oe_edit_only" placeholder="Currency"/>
+                    <field name="planned_revenue_second" widget="monetary" class="oe_inline ml-3" options="{'currency_field': 'currency_id'}"/>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
