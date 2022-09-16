@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record model="ir.ui.view" id="mark_res_partner_form">
+		<field name="name">mark.res.partner.form</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"></field>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="after">
+				<button name="mark_customer" string="Marcar como cliente"
+					type="object"
+					groups="base.group_no_one" />
+				<button name="mark_supplier" string="Marcar como proveedor"
+					type="object"
+					groups="base.group_no_one" />
+			</xpath>
+		</field>
+	</record>
+
+</odoo>
