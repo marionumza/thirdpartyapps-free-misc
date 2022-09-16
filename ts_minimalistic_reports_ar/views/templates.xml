@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+      <template id="custom_header_extended" inherit_id="l10n_ar.custom_header">
+        <div name="center-upper" class="col-2 text-center" t-att-style="'color: %s;' % o.company_id.primary_color" position="replace">
+          <div name="center-upper" class="col-2 text-center" t-att-style="'color: %s;' % o.company_id.primary_color">
+            <span style="display: inline-block; text-align: center; line-height: 8px;">
+              <h2 style="line-height: 25px;">
+                <strong><span t-esc="not pre_printed_report and document_letter or '&#160;'"/></strong>
+              </h2>
+              <span style="font-size: x-small;" t-esc="not pre_printed_report and document_legend or '&#160;'"/>
+            </span>
+          </div>
+        </div>
+      </template>
+    </data>
+</odoo>
