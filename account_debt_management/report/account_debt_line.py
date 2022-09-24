@@ -39,14 +39,14 @@ class AccountDebtLine(models.Model):
         string='Nro Documento',
     )
     type = fields.Selection(selection=[
-            ('entry', 'Journal Entry'),
-            ('out_invoice', 'Customer Invoice'),
-            ('out_refund', 'Customer Credit Note'),
-            ('in_invoice', 'Vendor Bill'),
-            ('in_refund', 'Vendor Credit Note'),
-            ('out_receipt', 'Sales Receipt'),
-            ('in_receipt', 'Purchase Receipt'),
-        ], string='Type')
+        ('entry', 'Journal Entry'),
+        ('out_invoice', 'Customer Invoice'),
+        ('out_refund', 'Customer Credit Note'),
+        ('in_invoice', 'Vendor Bill'),
+        ('in_refund', 'Vendor Credit Note'),
+        ('out_receipt', 'Sales Receipt'),
+        ('in_receipt', 'Purchase Receipt'),
+    ], string='Type')
     date = fields.Date(
         readonly=True
     )
