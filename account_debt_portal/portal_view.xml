@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home_menu_debt" name="Portal layout : debt menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'debt'" t-attf-class="breadcrumb-item #{'active ' if not debt_lines else ''}">
+                <a t-if="debt_lines" >Cuenta Corriente</a>
+                <t t-else="">Cuenta Corriente</t>
+            </li>
+            <!-- li t-if="debt_lines" class="breadcrumb-item active">
+                <span t-field="debt_lines.document_number"/>
+                <t t-esc="debt_lines.document_number"/>
+            </li -->
+        </xpath>
+    </template>
+
+
+
+
+     <template id="portal_my_home_cta_cte" name="Portal My Home : Cuenta Corriente" inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="debt_line_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Cuenta Corriente</t>
+                <t t-set="url" t-value="'/my/debt_lines'"/>
+                <t t-set="count" t-value="debt_line_count"/>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_my_debt_lines" name="Mis Deudas">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Mis Deudas</t>
+            </t>
+            <t t-if="not debt_lines">
+                <p>No hay deudas su cuenta.</p>
+            </t>
+            <t t-if="debt_lines" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Fecha</th>
+                        <th>Nro Documento</th>
+                        <th>Fecha Vto</th>
+                        <th class="text-right">Monto</th>
+                        <th class="text-right">Saldo</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <t t-foreach="debt_lines" t-as="debt_line">
+                    <tr>
+                        <td><span t-esc="debt_line.date.strftime('%d/%m/%Y')"/></td>
+                        <!-- td><a t-att-href="debt_line.get_portal_url()"><t t-esc="debt_line.document_number"/></a></td -->
+                        <td><span t-esc="debt_line.document_number"></span></td>
+                        <td><span t-esc="debt_line.date_maturity.strftime('%d/%m/%Y')"/></td>
+                        <td class="text-right"><span t-field="debt_line.amount"/></td>
+                        <td class="text-right"><span t-field="debt_line.amount_residual"/></td>
+                        <td><span t-esc="debt_line.type"/></td>
+                    </tr>
+                </t>
+            </t>
+        </t>
+</template>
+
+</odoo>
