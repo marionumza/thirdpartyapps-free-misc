@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="point_of_sale.template" xml:space="preserve">
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-receipt-contact')]" position="replace">
+            <div class="pos-receipt-contact">
+                <t t-if="receipt.company.contact_address">
+                    <div><t t-esc="receipt.company.contact_address" /></div>
+                </t>
+                <t t-if="receipt.company.street">
+                    <div><t t-esc="receipt.company.street" /></div>
+                </t>
+                <t t-if="receipt.company.street2">
+                   <div> <t t-esc="receipt.company.street2"/></div>
+                </t>
+                <t t-if="receipt.company.city">
+                    <div><t t-esc="receipt.company.city" /></div>
+                </t>
+                <t t-if="receipt.company.phone">
+                    <div>Tel:<t t-esc="receipt.company.phone" /></div>
+                </t>
+                <t t-if="receipt.company.vat">
+                    <div><t t-esc="receipt.company.vat_label"/>:<t t-esc="receipt.company.vat" /></div>
+                </t>
+                <t t-if="receipt.company.email">
+                    <div><t t-esc="receipt.company.email" /></div>
+                </t>
+                <t t-if="receipt.company.website">
+                    <div><t t-esc="receipt.company.website" /></div>
+                </t>
+                <t t-if="receipt.header_html">
+                    <t t-raw="receipt.header_html" />
+                </t>
+                <t t-if="!receipt.header_html and receipt.header">
+                    <div style="white-space:pre-line"><t t-esc="receipt.header" /></div>
+                </t>
+                <t t-if="receipt.cashier">
+                    <div class="cashier">
+                        <div>--------------------------------</div>
+                        <div>Served by <t t-esc="receipt.cashier" /></div>
+                    </div>
+                </t>
+
+            </div>
+            <div>
+                <t t-if="receipt.client">
+                    <br/>
+                    <t t-esc="receipt.client.name"/>
+                    <t t-if="receipt.client.street">
+                        <br />
+                        <t  t-esc="receipt.client.street"/>
+                    </t>
+                    <t t-if="receipt.client.street2">
+                        <br />
+                        <t  t-esc="receipt.client.street2"/>
+                    </t>
+                    <t t-if="receipt.client.city">
+                        <br/>
+                        <t  t-esc="receipt.client.city"/>
+                    </t>
+                    <t t-if="receipt.client.phone">
+                        <br/>
+                        Phone : <t t-esc="receipt.client.phone"/>
+                    </t>
+                </t>
+            </div>
+        </xpath>
+
+    </t>
+</templates>

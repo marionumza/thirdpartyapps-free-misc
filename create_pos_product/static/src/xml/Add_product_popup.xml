@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="Add_product_popup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup drag-handle">
+                    <main class="body">
+
+                        <div>
+                            <span class="label">
+                            <p>Product Name</p>
+                                </span>
+                            <span class="input-field">
+                                    <input type="text" placeholder="e.g. Cheese Burger" name="product_name"
+                                           t-ref="input-amount-ref"
+                                           t-model="state.inputName"/>
+                            </span>
+                        </div>
+
+                        <div>
+                            <span class="label">
+                            <p>Product Price</p>
+                                </span>
+                            <br/>
+                            <br/>
+                            <div class="input-field" style="">
+                                    <input type="text" placeholder="0.00" name="cost" t-ref="input-amount-ref"
+                                           t-model="state.inputAmount"/>
+                                </div>
+                        </div>
+                        <div>
+                            <span class="label">
+                            <p>Unit of Measure</p>
+                                </span>
+                            <br/>
+                            <br/>
+                            <div class="input-field" style="">
+                                    <select class="input-field" style="width: 380px; height: 40px;"
+                                            t-model="state.unitMeasure"
+                                            t-ref="input-amount-ref"
+                                            required="">
+									<t t-foreach="env.pos.units" t-as="item" t-key="item.name">
+										<option t-att-value="item.id" t-esc="item.name"/>
+									</t>
+								</select>
+                                </div>
+                        </div>
+
+                        <div>
+                            <span class="label">
+                            <p>Type</p>
+                                </span>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="input-field">
+                                    <select class="input-field"
+                                            style="width: 380px; height: 40px;"
+                                            t-model="state.inputType" t-ref="input-amount-ref">
+                                        <option>consumable</option>
+                                        <option>storable</option>
+                                        <option>service</option>
+                                    </select>
+                                </div>
+                        </div>
+
+                        <div>
+                            <span class="label">
+                            <p>Category</p>
+                                </span>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="input-field">
+                                    <select class="input-field"
+                                            style="width: 380px; height: 40px;"
+                                            t-model="state.inputCategory">
+                                        <t t-foreach="env.pos.product_categories" t-as="item" t-key="item.name">
+										<option t-att-value="item.id" t-esc="item.name"/>
+									</t>
+                                    </select>
+                                </div>
+                        </div>
+                        <div>
+                            <div>
+                                <br/>
+                                <span class="label">
+                                    Barcode
+                                </span>
+
+                                <br/>
+                                <br/>
+                                <div class="input-field">
+                                <input type="text" name="barcode" t-ref="input-amount-ref" t-model="state.barcode"/>
+                            </div>
+                        </div>
+                        </div>
+
+                    </main>
+                    <footer class="footer">
+                        <div class="button confirm" t-on-click="confirm">
+                            Add
+                        </div>
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText"/>
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+</templates>

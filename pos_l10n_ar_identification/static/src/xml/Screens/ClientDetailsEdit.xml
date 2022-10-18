@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <t t-name="ClientDetailsEditIdent" t-inherit="point_of_sale.ClientDetailsEdit" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('client-details-box')]" position="replace">
+            <div class="client-details-box clearfix">
+                <div class="client-details-left">
+                    <div class="client-detail">
+                        <span class="label">Resp. AFIP</span>
+                        <select class="detail l10n_ar_afip_responsibility_type_id needsclick" name="l10n_ar_afip_responsibility_type_id" t-on-change="captureChange">
+                            <option value='0'>None</option>
+                            <t t-foreach="env.pos.responsability_type" t-as="responsability_type" t-key="responsability_type.id">
+                                <option t-att-value="responsability_type.id" t-att-selected="props.partner.l10n_ar_afip_responsibility_type_id ? ((responsability_type.id === props.partner.l10n_ar_afip_responsibility_type_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc="responsability_type.display_name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+
+                    <div class="client-detail">
+                        <span class="label">Tipo Doc.</span>
+                        <select class="detail l10n_latam_identification_type_id needsclick" name="l10n_latam_identification_type_id" t-on-change="captureChange">
+                            <option value='0'>None</option>
+                            <t t-foreach="env.pos.identification_type" t-as="identification_type" t-key="identification_type.id">
+                                <option t-att-value="identification_type.id" t-att-selected="props.partner.l10n_latam_identification_type_id ? ((identification_type.id === props.partner.l10n_latam_identification_type_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc="identification_type.display_name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Número</span>
+                        <input class="detail identification_number" name="vat"
+                                                        t-on-change="captureChange" t-att-value="props.partner.vat || ''"
+                                                        placeholder="Número de Identificación" />
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Street</span>
+                        <input class="detail client-address-street" name="street"
+                                   t-on-change="captureChange" t-att-value="props.partner.street || ''"
+                                   placeholder="Street" />
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">City</span>
+                        <input class="detail client-address-city" name="city"
+                                   t-on-change="captureChange" t-att-value="props.partner.city || ''"
+                                   placeholder="City" />
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Postcode</span>
+                        <input class="detail client-address-zip" name="zip"
+                                   t-on-change="captureChange" t-att-value="props.partner.zip || ''"
+                                   placeholder="ZIP" />
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">State</span>
+                        <select class="detail client-address-states needsclick" name="state_id"
+                                    t-on-change="captureChange">
+                            <option value="">None</option>
+                            <t t-foreach="env.pos.states" t-as="state" t-key="state.id">
+                                <option t-if="props.partner.country_id[0] == state.country_id[0]"
+                                            t-att-value="state.id"
+                                            t-att-selected="props.partner.state_id ? ((state.id === props.partner.state_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc="state.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Country</span>
+                        <select class="detail client-address-country needsclick" name="country_id"
+                                    t-on-change="captureChange">
+                            <option value="">None</option>
+                            <t t-foreach="env.pos.countries" t-as="country" t-key="country.id">
+                                <option t-att-value="country.id"
+                                            t-att-selected="props.partner.country_id ? ((country.id === props.partner.country_id[0]) ? true : undefined) : undefined">
+                                    <t t-esc="country.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="client-details-right">
+                    <div class="client-detail">
+                        <span class="label">Language</span>
+                        <select class="detail client-lang needsclick" name="lang"
+                                    t-on-change="captureChange">
+                            <t t-foreach="env.pos.langs" t-as="lang" t-key="lang.id">
+                                <option t-att-value="lang.code"
+                                            t-att-selected="props.partner.lang ? ((lang.code === props.partner.lang) ? true : undefined) : lang.code === env.pos.user.lang? true : undefined">
+                                    <t t-esc="lang.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Email</span>
+                        <input class="detail client-email" name="email" type="email"
+                                   t-on-change="captureChange"
+                                   t-att-value="props.partner.email || ''" />
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Phone</span>
+                        <input class="detail client-phone" name="phone" type="tel"
+                                   t-on-change="captureChange"
+                                   t-att-value="props.partner.phone || ''" />
+                    </div>
+                    <div class="client-detail">
+                        <span class="label">Barcode</span>
+                        <input class="detail barcode" name="barcode" t-on-change="captureChange"
+                                   t-att-value="props.partner.barcode || ''" />
+                    </div>
+                    <div t-if="env.pos.pricelists.length gt 1" class="client-detail">
+                        <span class="label">Pricelist</span>
+                        <select class="detail needsclick" name="property_product_pricelist"
+                                    t-on-change="captureChange">
+                            <t t-foreach="env.pos.pricelists" t-as="pricelist"
+                                   t-key="pricelist.id">
+                                <option t-att-value="pricelist.id"
+                                            t-att-selected="props.partner.property_product_pricelist ? (pricelist.id === props.partner.property_product_pricelist[0] ? true : false) : false">
+                                    <t t-esc="pricelist.display_name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

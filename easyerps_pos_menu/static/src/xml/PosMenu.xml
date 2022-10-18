@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PosMenu" owl="1">
+        <div class="ticket-button height" t-att-class="{ highlight: props.isPosMenuShown }" t-on-click="onClick">
+            <div class="with-badge" t-att-badge="count">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <div>Menu</div>
+        </div>
+    </t>
+</templates>

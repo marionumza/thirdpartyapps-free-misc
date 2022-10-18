@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="SalesSelectionPopup" owl="1">
+        <div role="dialog" class="modal-dialog">
+            <Draggable>
+                <div class="popup popup-selection">
+                    <header class="title drag-handle">
+                        <t t-esc="props.title" />
+                    </header>
+                    <div class="selection scrollable-y">
+                        <t t-foreach="props.list" t-as="item" t-key="item.id">
+                            <button class="selection-item" style="height: 35px;margin: 15px;font-size: 15px;" t-att-class="{ selected: item.isSelected }" t-on-click="selectItem(item.id)">
+                                <t t-if="item['icon']">
+                                    <i style="padding-right: 5px;" t-att-class="item.icon"/>
+                                </t>
+                                <t t-esc="item.label" />
+                            </button>
+                        </t>
+                    </div>
+                    <footer class="footer">
+                        <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText" />
+                        </div>
+                    </footer>
+                </div>
+            </Draggable>
+        </div>
+    </t>
+
+</templates>

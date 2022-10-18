@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+   
+    <t t-name="ClientLineL10n_ar_afip" t-inherit="point_of_sale.ClientLine" t-inherit-mode="extension" owl="1">
+      
+
+    
+        <xpath expr="//tr//td" position="replace">
+
+             <td>
+                <t t-esc="props.partner.name" />
+                <span t-if="highlight">
+                    <br/><button class="edit-client-button" t-on-click.stop="trigger('click-edit')">EDIT</button>
+                </span>
+            </td>
+          
+            <td t-if="!env.isMobile">
+                <t t-esc='props.partner.l10n_ar_afip_responsibility_type_id[1] or ""' />
+                <span t-if="highlight"><br/></span>
+            </td>
+            <td t-if="!env.isMobile" style="width: 130px;">
+                <t t-esc='props.partner.l10n_latam_identification_type_id[1] or ""' />
+            </td>
+            <td t-if="!env.isMobile">
+                <t t-if="props.partner.vat"><t t-esc='props.partner.vat' /></t>
+            </td>
+            
+
+
+    </xpath>
+
+    <xpath expr="//td[7]" position="replace">
+
+    </xpath>
+    <xpath expr="//td[5]" position="replace">
+
+    </xpath>
+    <xpath expr="//td[6]" position="replace">
+
+    </xpath>
+
+    <!-- si quisiera ocultar el teléfono debería agregar esta línea (se debe dejar la misma línea que sale anteriormente unas líneas arriba)
+    <xpath expr="//td[5]" position="replace">
+
+    </xpath>-->
+
+    
+
+    </t>
+
+</templates>
+
+
+

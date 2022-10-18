@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="CustomListScreen" owl="1">
+        <div class="clientlist-screen screen">
+                    <div class="screen-content">
+                        <div class="top-content">
+                            <div class="button back" t-on-click="back">
+                                <i class="fa fa-angle-double-left"/>
+                                <t t-if="!env.isMobile"> Discard</t>
+                            </div>
+                            <div class="button back" t-on-click="reload">
+                                <i class="fa fa-angle-double-left"/>
+                                <t t-if="!env.isMobile"> Refresh</t>
+                            </div>
+                            <div t-if="!state.detailIsShown" class="searchbox-client top-content-center">
+                                <input t-ref="search-word-input" placeholder="Search Products...." size="1"
+                                       t-on-keyup="updateSearch"/>
+                            </div>
+                            <div t-if="!state.detailIsShown &amp;&amp; !state.selectedClient"
+                                 class="button new-customer" role="img" aria-label="Add a product"
+                                 t-on-click="button_click"
+                                 title="Add a Product">
+                        <i class="fa fa-plus"/>
+                                <t t-if="!env.isMobile"> Add Product</t>
+                    </div>
+                        </div>
+                        <section class="full-content">
+                            <div class="client-window">
+                                <section class="subwindow list">
+                                    <div class="subwindow-container">
+                                        <div class="subwindow-container-fix scrollable-y">
+                                            <table id="list" class="client-list">
+                                                <thead>
+                                                    <tr style="background-color: #99b3e6; color: white;">
+                                                        <th>Name</th>
+                                                        <th>Category</th>
+                                                        <th>List Price</th>
+                                                        <th class="client-line-email">Barcode</th>
+                                                        <th class="client-line-last-column-placeholder oe_invisible"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="table-body" class="client-list-contents">
+                                                    <t t-foreach="productsToDisplay" t-as="product" t-key="product.id">
+                                                        <td>
+                                                            <tr>
+                                                                <t t-if="product.default_code">
+                                                                    [
+                                                                    <t t-esc="product.default_code"/>
+                                                                    ]
+                                                                    <t t-esc="product.display_name"/>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <t t-esc="product.display_name"/>
+                                                                </t>
+                                                            </tr>
+                                                        </td>
+                                                        <td>
+                                                            <tr>
+                                                                <t t-if="!bool">
+                                                                    <t t-esc="product.categ_id[1]"/>
+                                                                </t>
+
+                                                            </tr>
+                                                        </td>
+                                                        <td>
+                                                            <tr>
+                                                                <t t-esc="product.lst_price"/>
+                                                            </tr>
+                                                        </td>
+                                                        <td>
+                                                            <tr>
+                                                                <t t-if="product.barcode">
+                                                                    <t t-esc="product.barcode"/>
+                                                                </t>
+                                                            </tr>
+                                                        </td>
+                                                        <tr>
+                                                        </tr>
+                                                        <!--                                                        <ProductItem product="product"/>-->
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+    </t>
+
+</templates>

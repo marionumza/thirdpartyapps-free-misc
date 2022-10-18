@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Chrome" t-inherit="point_of_sale.Chrome" t-inherit-mode="extension" owl="1">
+<!--        <xpath expr="//div[hasclass('pos-branding')]" position="replace">-->
+<!--            <div class="pos-branding" t-if= "!env.isMobile">-->
+<!--                <img class="pos-logo" t-on-click="trigger('toggle-debug-widget')" src="/point_of_sale/static/src/img/logo.png" alt="Logo" />-->
+<!--                <div class="dropdown">-->
+<!--                    <PosMenu isPosMenuShown="isPosMenuShown" />-->
+<!--                    <div class="dropdown-content" t-if="isPosMenuShown">-->
+<!--                        <ul t-if="isPosMenuShown" class="options" >-->
+<!--                            <li >-->
+<!--                                <CashMoveButton t-if="showCashMoveButton()" />-->
+<!--                            </li>-->
+<!--                            <li >-->
+<!--                                <TicketButton isTicketScreenShown="isTicketScreenShown" />-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </xpath>-->
+        <xpath expr="//CashMoveButton" position="replace">
+
+        </xpath>
+
+        <xpath expr="//TicketButton" position="replace">
+                <div class="dropdown">
+                    <PosMenu isPosMenuShown="isPosMenuShown" />
+                    <div class="dropdown-content" t-if="isPosMenuShown">
+                        <ul t-if="isPosMenuShown" class="options" >
+                            <li >
+                                <CashMoveButton t-if="showCashMoveButton()" />
+                            </li>
+                            <li >
+                                <TicketButton isTicketScreenShown="isTicketScreenShown" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        </xpath>
+        <xpath expr="//CashMoveButton[@t-if='showCashMoveButton() and env.isMobile and !state.mobileSearchBarIsShown']" position="replace">
+
+        </xpath>
+        <xpath expr="//TicketButton[@t-if='env.isMobile and !state.mobileSearchBarIsShown']" position="replace">
+                <div class="dropdown" t-if='env.isMobile and !state.mobileSearchBarIsShown'>
+                    <PosMenu isPosMenuShown="isPosMenuShown" />
+                    <div class="dropdown-content" t-if="isPosMenuShown" style="position: fixed;">
+                        <ul t-if="isPosMenuShown" class="options" >
+                            <li >
+                                <CashMoveButton t-if="showCashMoveButton() and env.isMobile and !state.mobileSearchBarIsShown" />
+                            </li>
+                            <li >
+                                <TicketButton isTicketScreenShown="isTicketScreenShown" t-if="env.isMobile and !state.mobileSearchBarIsShown"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        </xpath>
+    </t>
+</templates>
