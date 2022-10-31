@@ -15,7 +15,7 @@ class AccountDebtLine(models.Model):
             'user_id',
         ],
         'account.move': [
-            'l10n_latam_document_type_id', 'document_number',
+            'l10n_latam_document_type_id',
         ],
         'account.move.line': [
             'account_id', 'debit', 'credit', 'date_maturity', 'partner_id',
