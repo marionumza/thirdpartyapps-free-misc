@@ -1,0 +1,97 @@
+<odoo>
+    <record id="action_shift_report" model="ir.actions.report">
+        <field name="name">Employee Shift Report</field>
+        <field name="model">employee.shift.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hospital_cleaning_shifts.report_employee_shifts_history</field>
+        <field name="report_file">hospital_cleaning_shifts.report_employee_shifts_history</field>
+        <field name="print_report_name">'Reserved List - %s' % (object.name)</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_employee_shifts_history">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <h2>Employee Shifts</h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>Shifts</td>
+                            <td>:</td>
+                            <td>
+                                <t t-if="form_data.get('shift_id')">
+                                    <t t-esc="form_data['shift_id'][1]"/>
+                                </t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date From</td>
+                            <td>:</td>
+                            <td>
+                                <t t-if="form_data.get('date_from')">
+                                    <t t-esc="form_data['date_from']"/>
+                                </t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date To</td>
+                            <td>:</td>
+                            <td>
+                                <t t-if="form_data.get('date_to')">
+                                    <t t-esc="form_data['date_to']"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered mt32">
+                        <thead>
+                            <tr>
+                                <th name="th_Slno" class="text-center">
+                                    <span>Shift</span>
+                                </th>
+                                <th name="th_Reservation Reference" class="text-center">
+                                    <span>Department</span>
+                                </th>
+                                <th name="th_reserved date" class="text-center">
+                                    <span>Employee</span>
+                                </th>
+                                <th name="th_status" class="text-center">
+                                    <span>Date From</span>
+                                </th>
+                                <th name="th_status" class="text-center">
+                                    <span>Date To</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="employee_shifts" t-as="line">
+                            <tr>
+                                <td>
+                                    <span t-esc="line['name']"/>
+                                </td>
+                                <td>
+                                    <t t-if="line['department_id']">
+                                        <span t-esc="line['department_id'][1]"/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <t t-if="line['inverse_id']">
+                                        <span t-esc="line['inverse_id'][1]"/>
+                                    </t>
+                                </td>
+                                <td>
+                                    <span t-esc="line['date_from']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['date_to']"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="hr_employee_full_name_inherit" model="ir.ui.view">
+            <field name="name">EmployeeFullNameFormat</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@class='oe_title']" position="before">
+
+                        <div class="row mt32">
+                        <div class="col-xs-3">
+                            <group>
+                            <field name="emp_fname" placeholder="First Name here..."/>
+                            <field name="emp_mname" placeholder="Middle Name here..."/>
+                            <field name="emp_lname" placeholder="Last Name here..."/>
+                            </group>
+                        </div>
+                        </div>
+
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="partner_name_inherit" model="ir.ui.view">
+            <field name="name">ResPartnerNameInherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@class='oe_title mb24']" position="before">
+
+                        <div class="row mt32">
+                        <div class="col-xs-3">
+                            <group>
+                            <field name="partner_fname"
+                                   attrs="{'invisible': [('company_type', '!=', 'person')]}"
+                                   placeholder="First Name here..."/>
+                            <field name="partner_mname"
+                                   attrs="{'invisible': [('company_type', '!=', 'person')]}"
+                                   placeholder="Middle Name here..."/>
+                            <field name="partner_lname"
+                                   attrs="{'invisible': [('company_type', '!=', 'person')]}"
+                                   placeholder="Last Name here..."/>
+                            </group>
+                        </div>
+                        </div>
+
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="res_user_full_name_form_inherit" model="ir.ui.view">
+            <field name="name">ResUserFullNameInherit</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+
+               <xpath expr="//div[@class='oe_title']" position="before">
+
+                        <div class="row mt32">
+                        <div class="col-xs-3">
+                            <group>
+                            <field name="user_fname"
+                                   placeholder="First Name here..."/>
+                            <field name="user_mname"
+                                   placeholder="Middle Name here..."/>
+                            <field name="user_lname"
+                                   placeholder="Last Name here..."/>
+                            </group>
+                        </div>
+                        </div>
+
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

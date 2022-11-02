@@ -1,0 +1,11 @@
+<odoo>
+    <record id="action_inspection_report" model="ir.actions.report">
+        <field name="name">Inspection Report</field>
+        <field name="model">inspection.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hospital_cleaning_waste_management.report_inspection</field>
+        <field name="report_file">hospital_cleaning_waste_management.report_inspection</field>
+        <field name="print_report_name">'Reserved List - %s' % (object.name)</field>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

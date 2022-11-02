@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+
+        <record id="group_create_res" model="res.groups">
+            <field name="name">Resources Management (Partners,Products)</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+    </data>
+</odoo>

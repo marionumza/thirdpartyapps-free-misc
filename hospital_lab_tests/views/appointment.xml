@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="test_appointment_form" model="ir.ui.view">
+        <field name="name">test.appointment</field>
+        <field name="model">test.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_start" string="Start Test"
+                            class="oe_highlight" type="object" attrs="{'invisible':
+                            [('state', '!=', 'draft')]}">
+                    </button>
+                    <button name="action_payment" string="Payment"
+                            class="oe_highlight" type="object" attrs="{'invisible':
+                            [('bool', '!=', False)]}">
+                    </button>
+                    <button name="action_end" string="End Test"
+                            class="oe_highlight" type="object" attrs="{'invisible':
+                            [('state', '!=', 'start')]}">
+                    </button>
+                    <button name="action_cancel" string="Cancel Test"
+                            class="oe_highlight" type="object" attrs="{'invisible':
+                            [('state', '=', 'start')]}">
+                    </button>
+
+                    <field name="bool" invisible="1"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" text="paid" bg_color="bg-success"
+                            attrs="{'invisible':[('payment_status','!=','paid')]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="appoint_seq" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <div class="oe_title">
+                        <h2 class="d-flex">
+                            <field name="patient_seq_id" placeholder="Patient's No" required="True"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_name"/>
+                            <field name="gender"/>
+                            <field name="dob"/>
+                            <field name="patient_age"/>
+                            <field name="payment_status" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="doctor_id"/>
+                            <field name="appointment_date"/>
+                            <field name="test_type"/>
+                             <field name="price"/>
+                        </group>
+                    </group>
+<!--                    <notebook>-->
+<!--                        <page name="test" string="Test">-->
+<!--                            <field name="patient_test_ids">-->
+<!--                                <tree editable="bottom">-->
+<!--                                    <field name="test_id"/>-->
+<!--                                    <field name="doctor_id"/>-->
+<!--                                    <field name="appoint_date"/>-->
+<!--                                    &lt;!&ndash;                                    <field name="lab_ids"/>&ndash;&gt;-->
+<!--                                    <field name="currency_id" invisible="1"/>-->
+<!--                                    &lt;!&ndash;                                    <field name="price"/>&ndash;&gt;-->
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="test_appointment_tree" model="ir.ui.view">
+        <field name="name">test.appointment.tree</field>
+        <field name="model">test.appointment</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="appoint_seq"/>
+                <field name="patient_seq_id"/>
+                <field name="patient_name"/>
+                <field name="appointment_date"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="test_appointment_action">
+        <field name="name">Appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">test.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create appointment
+            </p>
+            <p>
+                You can enter patient appointment here.
+            </p>
+        </field>
+    </record>
+    <menuitem name="Register"
+              id="appointment_root"
+              parent="labs_root"
+              sequence="6"/>
+    <menuitem name="Register"
+              id="appointment"
+              parent="appointment_root"
+              action="test_appointment_action"
+              sequence="6"/>
+</odoo>
+

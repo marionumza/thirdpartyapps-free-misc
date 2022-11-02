@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Shifts"
+              id="employee_shifts"/>
+
+    <menuitem name="Shifts"
+              id="employee_shifts_menu"
+              parent="employee_shifts"/>
+
+    <menuitem name="Shifts"
+              id="shift_management"
+              parent="employee_shifts_menu"
+              action="employee_shift_management"
+    />
+
+    <menuitem name="Shifts Types"
+              id="shift_management_types"
+              parent="employee_shifts_menu"
+              action="employee_shift_type_management"
+    />
+
+    <menuitem name="Allocation"
+              id="employee_shift_allocation"
+              sequence="11"
+              parent="employee_shifts"
+    />
+
+    <menuitem name="Shift Allocation"
+              id="employee_shift_allocation_menu"
+              parent="employee_shift_allocation"
+              sequence="3"
+              action="allocation_shift_employee"
+    />
+    <menuitem name="Role"
+              id="employee_role_menu" sequence="2"
+              parent="employee_shift_allocation"
+              action="employee_role"
+    />
+
+
+</odoo>

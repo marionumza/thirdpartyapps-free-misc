@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="employee_shift_management">
+        <field name="name">Shifts</field>
+        <field name="res_model">employee.shift.hr.employee.rel</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
+    <record id="shift_graph" model="ir.ui.view">
+        <field name="name">cleaning.shift.graph</field>
+        <field name="model">employee.shift</field>
+        <field name="arch" type="xml">
+            <graph string=" Each Employee Shift Graph" type="pie" sample="1">
+                <field name="employee_shift_id"/>
+                <field name="hr_employee_id" string="Employee"/>
+            </graph>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="inherit_sale_order_to_add_dealer_minimum_quantity_form_view" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>    
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='product_uom_qty']" position="after">
+                <field name="dealer_minimum_quantity" invisible='True'/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+

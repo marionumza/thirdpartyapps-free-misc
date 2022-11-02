@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="deactivate_expired_employee_user.list">
+      <field name="name">deactivate_expired_employee_user list</field>
+      <field name="model">deactivate_expired_employee_user.deactivate_expired_employee_user</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="deactivate_expired_employee_user.action_window">
+      <field name="name">deactivate_expired_employee_user window</field>
+      <field name="res_model">deactivate_expired_employee_user.deactivate_expired_employee_user</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="deactivate_expired_employee_user.action_server">
+      <field name="name">deactivate_expired_employee_user server</field>
+      <field name="model_id" ref="model_deactivate_expired_employee_user_deactivate_expired_employee_user"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="deactivate_expired_employee_user" id="deactivate_expired_employee_user.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="deactivate_expired_employee_user.menu_1" parent="deactivate_expired_employee_user.menu_root"/>
+    <menuitem name="Menu 2" id="deactivate_expired_employee_user.menu_2" parent="deactivate_expired_employee_user.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="deactivate_expired_employee_user.menu_1_list" parent="deactivate_expired_employee_user.menu_1"
+              action="deactivate_expired_employee_user.action_window"/>
+    <menuitem name="Server to list" id="deactivate_expired_employee_user" parent="deactivate_expired_employee_user.menu_2"
+              action="deactivate_expired_employee_user.action_server"/>
+    -->
+  </data>
+</odoo>

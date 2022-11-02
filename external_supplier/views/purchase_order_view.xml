@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--######################################################################################################-->
+<!--#-->
+<!--# Copyright © B.H.C. sprl - All Rights Reserved, http://www.bhc.be-->
+<!--#-->
+<!--# Unauthorized copying of this file, via any medium is strictly prohibited-->
+<!--# Proprietary and confidential-->
+<!--# This code is subject to the BHC License Agreement-->
+<!--# Please see the License.txt file for more information-->
+<!--# All other rights reserved-->
+<!--#-->
+<!--# Unless required by applicable law or agreed to in writing, software-->
+<!--# distributed under the License is distributed on an "AS IS" BASIS,-->
+<!--# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied,-->
+<!--# including but not limited to the implied warranties-->
+<!--# of merchantability and/or fitness for a particular purpose-->
+<!--######################################################################################################-->
+<odoo>
+    <data>
+        <record id="purchase_order_form_supplier" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <button name="action_rfq_send" position="before">
+                    <field name="vendor_external_supplier" invisible="1"/>
+                    <button class="oe_highlight" name="action_sync_price_and_stock" type="object"
+                            attrs="{'invisible': ['|', ('vendor_external_supplier', '=', False), ('state', '!=', 'draft')]}"
+                            string="Sync price and stock from supplier"/>
+                </button>
+                <field name="partner_ref" position="after">
+                    <field name="send_automatically_to_supplier" attrs="{
+                        'invisible': [('vendor_external_supplier', '=', False)],
+                        'readonly': [('state', 'in', ('purchase', 'done'))]
+                     }"/>
+                </field>
+                <tree position="attributes">
+                    <attribute name="decoration-danger">price_and_stock_state=='price_increased'</attribute>
+                    <attribute name="decoration-success">price_and_stock_state=='price_decreased'</attribute>
+                    <attribute name="decoration-info">price_and_stock_state=='out_of_stock'</attribute>
+                </tree>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
+                    <field name="stock_supplier" readonly="1" optional="show"/>
+                    <field name="price_and_stock_state" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

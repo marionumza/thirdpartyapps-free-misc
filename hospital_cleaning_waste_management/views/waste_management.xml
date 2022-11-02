@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="waste_types_tree">
+        <field name="name">Waste Types</field>
+        <field name="res_model">waste.types</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="waste_types" model="ir.ui.view">
+        <field name="name">waste types tree </field>
+        <field name="model">waste.types</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

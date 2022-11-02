@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+    Copyright (C) Cetmix OÜ
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU LESSER GENERAL PUBLIC LICENSE for more details.
+
+    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<odoo>
+    <!--####################
+        # Partner Category #
+        ####################-->
+    <!--## Tree ##-->
+    <!-- TODO поправить view, не отрабатывает отображение, выдаёт Criticle Error   -->
+    <record id="cx_partner_category_tree" model="ir.ui.view">
+        <field name="name">cx.res.partner.category.tree</field>
+        <field name="model">res.partner.category</field>
+        <field name="inherit_id" ref="base.view_partner_category_list" />
+        <field name="arch" type="xml">
+            <field name="display_name" position="after">
+                <field name="partner_count" />
+            </field>
+        </field>
+    </record>
+    <!--## Kanban ##-->
+    <record model="ir.ui.view" id="cx_partner_category_kanban">
+        <field name="name">cx.res.partner.category.kanban</field>
+        <field name="model">res.partner.category</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_emphasize_colors">
+                <field name="name" />
+                <field name="partner_ids" />
+                <field name="partner_count" />
+                <field name="color" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div
+                            t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click o_has_icon"
+                        >
+                            <div class="o_kanban_main">
+                                <div class="o_kanban_card_content">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_primary">
+                                            <span>
+                                                <t t-esc="record.name.value" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="o_kanban_card_manage_pane dropdown-menu"
+                                    role="menu"
+                                >
+                                    <div
+                                        class="o_kanban_card_manage_section o_kanban_manage_reports"
+                                    >
+                                        <div role="menuitem">
+                                            <a type="edit">Edit</a>
+                                        </div>
+                                        <div role="menuitem">
+                                            <a type="delete">Delete</a>
+                                        </div>
+                                    </div>
+                                    <div
+                                        role="menuitem"
+                                        aria-haspopup="true"
+                                        class="o_no_padding_kanban_colorpicker"
+                                    >
+                                        <ul
+                                            class="oe_kanban_colorpicker"
+                                            data-field="color"
+                                        />
+                                    </div>
+                                </div>
+                                <a
+                                    class="o_kanban_manage_toggle_button o_left"
+                                    href="#"
+                                >
+                                    <i
+                                        class="fa fa-ellipsis-v"
+                                        role="img"
+                                        aria-label="Manage"
+                                        title="Manage"
+                                    />
+                                </a>
+                            </div>
+                            <div class="o_partner_category_kanban_boxes">
+                                <a
+                                    class="o_partner_category_box"
+                                    type="action"
+                                    name="%(contacts.action_contacts)d"
+                                    context="{'search_default_category_id': [active_id],
+                                        'default_category_id': [[6, 0, [active_id]]]}"
+                                >
+                                    <div>
+                                        <span class="o_value">
+                                            <t t-esc="record.partner_count.value" />
+                                        </span>
+                                        <span
+                                            t-if="record.partner_count.value == 1"
+                                            class="o_label"
+                                        > Partner</span>
+                                        <span
+                                            t-else="record.partner_count == 0"
+                                            class="o_label"
+                                        > Partners</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <!--## Form ##-->
+    <record id="cx_partner_category_form" model="ir.ui.view">
+        <field name="name">cx.res.partner.category.form</field>
+        <field name="model">res.partner.category</field>
+        <field name="inherit_id" ref="base.view_partner_category_form" />
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="replace">
+                <form string="Contact Group">
+                    <sheet class="custom_sheet">
+                        <div class="oe_button_box" name="button_box">
+                            <button
+                                class="oe_stat_button"
+                                type="action"
+                                name="%(contacts.action_contacts)d"
+                                context="{'search_default_category_id': [active_id],
+                                'default_category_id': [[6, 0, [active_id]]]}"
+                                icon="fa-tasks"
+                            >
+                                <field
+                                    string="Contacts"
+                                    name="partner_count"
+                                    widget="statinfo"
+                                />
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                            <div name="subscription">
+                                <div>
+                                    <field name="auto_subscribe" />
+                                    <label for="auto_subscribe" />
+                                </div>
+                                <div>
+                                    <field name="auto_unsubscribe" />
+                                    <label for="auto_unsubscribe" />
+                                </div>
+                            </div>
+                        </div>
+                        <field
+                            name="partner_ids"
+                            widget="many2many"
+                            options="{'not_delete': True}"
+                        >
+                            <kanban quick_create="false" create="true" delete="true">
+                                <field name="color" />
+                                <field name="name" />
+                                <field name="title" />
+                                <field name="email" />
+                                <field name="function" />
+                                <field name="phone" />
+                                <field name="mobile" />
+                                <field name="image_1920" />
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <t
+                                            t-set="color"
+                                            t-value="kanban_color(record.color.raw_value)"
+                                        />
+                                        <div
+                                            t-att-class="color + (record.title.raw_value == 1 ? ' oe_kanban_color_alert' : '') + ' oe_kanban_global_click'"
+                                        >
+                                            <a
+                                                t-if="!read_only_mode"
+                                                type="delete"
+                                                class="fa fa-times pull-right"
+                                            />
+                                            <div class="o_kanban_image">
+                                                <img
+                                                    t-if="record.image_1920.raw_value"
+                                                    t-att-src="'data:image/png;base64,'+record.image_1920.raw_value"
+                                                />
+                                                <t t-if="!record.image_1920.raw_value">
+                                                </t>
+                                            </div>
+                                            <div class="oe_kanban_details">
+                                                <field name="name" />
+                                                <div t-if="record.function.raw_value">
+                                                    <field name="function" />
+                                                </div>
+                                                <div t-if="record.email.raw_value">
+                                                    <field
+                                                        name="email"
+                                                        widget="email"
+                                                    />
+                                                </div>
+                                                <div t-if="record.phone.raw_value">
+                                                    <field name="phone" />
+                                                </div>
+                                                <div t-if="record.mobile.raw_value">
+                                                    <field name="mobile" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </sheet>
+                </form>
+            </xpath>
+        </field>
+    </record>
+    <!--## Search ##-->
+    <record id="cx_partner_category_search" model="ir.ui.view">
+        <field name="name">cx.res.partner.category.search</field>
+        <field name="model">res.partner.category</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name" />
+                <field name="partner_ids" />
+                <filter
+                    string="Has Contacts"
+                    name="filter_has_contacts"
+                    domain="[('partner_ids','!=', False)]"
+                />
+                <filter
+                    string="Empty"
+                    name="filter_is_empty"
+                    domain="[('partner_ids','=', False)]"
+                />
+            </search>
+        </field>
+    </record>
+    <!--## Actions ##-->
+    <record id="action_partner_categories" model="ir.actions.act_window">
+        <field name="name">Contact Groups</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner.category</field>
+        <field name="context">{'search_default_filter_has_contacts': 1}</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field
+            name="view_ids"
+            eval="[(5, 0, 0),
+          (0, 0, {'view_mode': 'kanban', 'view_id': ref('cx_partner_category_kanban')}),
+          (0, 0, {'view_mode': 'tree', 'view_id': ref('cx_partner_category_tree')}),
+          (0, 0, {'view_mode': 'form', 'view_id': ref('cx_partner_category_form')})]"
+        />
+    </record>
+    <!--## Menu ##-->
+    <menuitem
+        id="menu_conversations"
+        name="Contact Groups"
+        action="action_partner_categories"
+        parent="contacts.menu_contacts"
+        sequence="2"
+    />
+</odoo>

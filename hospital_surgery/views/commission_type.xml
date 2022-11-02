@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="commission_type_tree" model="ir.ui.view">
+        <field name="name">commission.type.tree</field>
+        <field name="model">commission.type</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="employee_id"/>
+                <field name="commission_date"/>
+                <field name="expiry_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="commission_type_form" model="ir.ui.view">
+        <field name="name">commission.type.form</field>
+        <field name="model">commission.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="submit_button" type="object" string="submit"/>
+                    <h1>
+                        <field name = 'state' widget="statusbar"/>
+                    </h1>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="commission_type_seq"/>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="commission_as" widget="radio" options="{'horizontal': true}"/>
+                        </group>
+                        <group>
+                            <field name="commission_date"/>
+                            <field name="expiry_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="surgery" string="Surgery">
+                            <field name="commission_surgery_ids">
+                                <sheet>
+                                    <group>
+                                        <field name="commission_as" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                </sheet>
+                                <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                                    <field name="surgery_id" />
+                                    <field name="amount"/>
+                                    <field name="commission_percentage"/>
+                                    <field name="comm_amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+       <!--    Action of COMMISSION TYPE menu-->
+    <record model="ir.actions.act_window" id="commission_surgery_type_action">
+        <field name="name">Commission Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">commission.type</field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create commission configuration
+            </p>
+            <p>
+                You can commission configuration.
+            </p>
+        </field>
+    </record>
+</odoo>

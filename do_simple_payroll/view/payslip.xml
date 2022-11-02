@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="do_view_payslip_search" model="ir.ui.view">
+        <field name="name">payslip.search</field>
+        <field name="model">do.payslip</field>
+        <field name="arch" type="xml">
+            <search string="Payslip">
+                <field name="d_employee_id" filter_domain="[('d_employee_id','ilike',self)]" string="Employee"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="do_view_payslip_tree" model="ir.ui.view">
+        <field name="name">payslip.tree</field>
+        <field name="model">do.payslip</field>
+        <field name="arch" type="xml">
+            <tree string="Payslip">
+                <field name="d_employee_id"/>
+                <field name="d_start_date" />
+                <field name="d_end_date" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="do_open_payslip" model="ir.actions.act_window">
+        <field name="name">Payroll</field>
+        <field name="res_model">do.payslip</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="do_simple_payroll.do_view_payslip_tree"/>
+        <field name="search_view_id" ref="do_simple_payroll.do_view_payslip_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                                Click to create a new payslip.
+            </p>
+        </field>
+    </record>
+    <menuitem id="root_payslip" name="Simple Payroll" parent="hr.menu_hr_root"
+              sequence="2"/>
+    <menuitem action="do_simple_payroll.do_open_payslip" id="menu_payslip" name="Payroll" parent="do_simple_payroll.root_payslip" sequence="1"/>
+
+
+    <record model="ir.ui.view" id="do_view_payslip_form">
+        <field name="name">payslip.form</field>
+        <field name="model">do.payslip</field>
+        <field name="arch" type="xml">
+            <form string="Payslip">
+                <header>
+                    <button name="get_salary" type="object" class="oe_stat_button" string="Compute Salary" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="d_employee_id"/>
+                            <field name="d_start_date" />
+                            <field name="d_end_date" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Components">
+                            <field name="d_pay_items" >
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="d_category"/>
+                                    <field name="d_quantity"/>
+                                    <field name="d_amount"/>
+                                    <field name="d_total_amount" readonly='1' force_save='1' />
+                                </tree>
+                            </field>
+                            <group>
+                                <group />                            
+                                <group>
+                                    <field name="d_total_allowance"/>
+                                    <field name="d_total_deduction" />
+                                    <field name="d_take_home_pay" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

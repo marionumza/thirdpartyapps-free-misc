@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="employee_shifts_assign" model="ir.ui.view">
+        <field name="name">Employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='hr_settings']" position="after">
+                <page name="working_shifts" string="Working Shifts"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='working_shifts']" position="inside">
+                    <field name="employee_shift">
+                    <tree editable="bottom">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="shift_id"/>
+                    </tree>
+                    </field>
+            </xpath>
+        </field>
+    </record>
+</odoo>

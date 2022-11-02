@@ -1,0 +1,93 @@
+<odoo>
+    <template id="report_inspection">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <h2>Cleaning Inspection Lists</h2>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>Inspector</td>
+                            <td>:</td>
+                            <td>
+                                <t t-if="form_data.get('inspector')">
+                                    <t t-esc="form_data['inspector'][1]"/>
+                                </t>
+                            </td>
+                        </tr>
+                        <br></br>
+                        <tr>
+                            <td>Date From</td>
+                            <td>:</td>
+                            <td>
+                                <t t-if="form_data.get('date_from')">
+                                    <t t-esc="form_data['date_from']"/>
+                                </t>
+                            </td>
+                        </tr>
+                        <br></br>
+                        <tr>
+                            <td>Date To</td>
+                            <td>:</td>
+                            <td>
+                                <t t-if="form_data.get('date_to')">
+                                    <t t-esc="form_data['date_to']"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <br/>
+                    <table class="table table-sm" >
+                        <thead>
+                            <tr>
+                                <th name="th_Slno" class="text-center">
+                                    <span>Slno</span>
+                                </th>
+
+                                <th name="th_Inspector" class="text-center">
+                                    <span>Inspection Officer</span>
+                                </th>
+                                <th name="th_Team" class="text-center">
+                                    <span>Cleaning Team</span>
+                                </th>
+                                <th name="th_employees" class="text-center">
+                                    <span>Employees</span>
+                                </th>
+                                <th name="th_status" class="text-center">
+                                    <span>Cleaning status</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1"/>
+                                <t t-foreach="cleaning_inspection" t-as="clean">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="i"/>
+                                            <t t-set="i" t-value="i+1"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="clean['inspector']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="clean['team_name']"/>
+                                        </td>
+                                        <div style="page-break-after: always;"/>
+                                        <td>
+                                            <span t-esc="clean['name']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="clean['state']"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

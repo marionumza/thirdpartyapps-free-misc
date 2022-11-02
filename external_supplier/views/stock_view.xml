@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--######################################################################################################-->
+<!--#-->
+<!--# Copyright © B.H.C. sprl - All Rights Reserved, http://www.bhc.be-->
+<!--#-->
+<!--# Unauthorized copying of this file, via any medium is strictly prohibited-->
+<!--# Proprietary and confidential-->
+<!--# This code is subject to the BHC License Agreement-->
+<!--# Please see the License.txt file for more information-->
+<!--# All other rights reserved-->
+<!--#-->
+<!--# Unless required by applicable law or agreed to in writing, software-->
+<!--# distributed under the License is distributed on an "AS IS" BASIS,-->
+<!--# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied,-->
+<!--# including but not limited to the implied warranties-->
+<!--# of merchantability and/or fitness for a particular purpose-->
+<!--######################################################################################################-->
+<odoo>
+    <data>
+        <record id="view_picking_form_inh" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <button name="button_validate" position="before">
+                    <field name="external_supplier_id" invisible="1" />
+                    <button class="oe_highlight" name="action_update_status" string="Update status" type="object"
+                            attrs="{'invisible': ['|', '|', ('origin', '=', False), ('external_supplier_id', '=', False), '|', ('state', '=', 'done'), ('state', '=', 'cancel')]}"/>
+                </button>
+                <xpath expr="//page[3]" position="after">
+                    <page string="Order history">
+                        <field name="history_line">
+                            <tree string="Order history">
+                                <field name="update_date"/>
+                                <field name="description"/>
+                                <field name="expected_date"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

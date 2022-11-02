@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[1]" position="replace">
+            <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+                <div class="row">
+                    <div class="col-5 mb4 left">
+                        <strong><b><t t-esc="company.name"/></b></strong>
+                        <br/>
+                        <t t-esc="company.street"/>
+                        <br/>
+                        <t t-esc="company.street2"/>
+                        <br/>
+                        <t t-esc="company.city"/>
+                        <br/>
+                        <t t-esc="company.state_id.name"/>
+                        <br/>
+                        <t t-esc="company.zip"/>
+                        <br/>
+                        <t t-esc="company.country_id.name"/>
+                        <br/>
+                        <li t-if="company.phone" class="list-inline-item d-inline">Phone:
+                            <span t-field="company.phone"/>
+                        </li>
+                        <br/>
+                        <li t-if="company.vat" class="list-inline-item d-inline">TRN:
+                            <span t-field="company.vat"/>
+                        </li>
+                    </div>
+                    <div class="col-5 mb4 center">
+                    </div>
+                    <div class="col-5 mb4 right">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;"
+                             alt="Logo"/>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid black;"/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div/div[hasclass('text-center')]" position="replace">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4 text-nowrap">
+                    <li t-if="company.website" class="list-inline-item d-inline">Website:
+                        <span t-field="company.website"/>
+                    </li>
+                    <li t-if="company.email" class="list-inline-item d-inline">Email:
+                        <span t-field="company.email"/>
+                    </li>
+                    <li t-if="company.phone" class="list-inline-item d-inline">Phone:
+                        <span t-field="company.phone"/>
+                    </li>
+                </ul>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,305 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* cx_partner_contact_group_pro
+# 	* cx_partner_contact_group
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-16 06:24+0000\n"
+"PO-Revision-Date: 2020-03-16 09:55+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ru\n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: cx_partner_contact_group_pro
+#. openerp-web
+#: code:addons/cx_partner_contact_group_pro/static/src/xml/qweb.xml:9
+#, python-format
+msgid "Add Groups"
+msgstr "Добавить Группы"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.ui.view,arch_db:cx_partner_contact_group_pro.cx_mail_invite_wizard
+msgid "Add groups to notify..."
+msgstr "Уведомить группы..."
+
+#. module: cx_partner_contact_group
+#: model:ir.model.fields,field_description:cx_partner_contact_group.field_res_partner_category_auto_subscribe
+msgid "Auto Subscribe"
+msgstr "Автоподписка"
+
+#. module: cx_partner_contact_group
+#: model:ir.model.fields,field_description:cx_partner_contact_group.field_res_partner_category_auto_unsubscribe
+msgid "Auto Unsubscribe"
+msgstr "Автоотписка"
+
+#. module: cx_partner_contact_group
+#: model:ir.model.fields,help:cx_partner_contact_group.field_res_partner_category_auto_subscribe
+msgid "Auto subscribe newly added partners to all group records when added to group"
+msgstr "Автоматически подписывать вновь добавленных партнёров"
+
+#. module: cx_partner_contact_group
+#: model:ir.model.fields,help:cx_partner_contact_group.field_res_partner_category_auto_unsubscribe
+msgid "Auto unsubscribe partner from all group records if removed from group"
+msgstr "Автоматически отписывать удалённых партнёров"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model,name:cx_partner_contact_group_pro.model_res_partner
+msgid "Contact"
+msgstr "Контакт"
+
+#. module: cx_partner_contact_group
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_form
+msgid "Contact Group"
+msgstr "Группа Контатов"
+
+#. module: cx_partner_contact_group
+#: model:ir.actions.act_window,name:cx_partner_contact_group.action_partner_categories
+#: model:ir.ui.menu,name:cx_partner_contact_group.menu_conversations
+msgid "Contact Groups"
+msgstr "Группы Контактов"
+
+#. module: cx_partner_contact_group
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_form
+msgid "Contacts"
+msgstr "Контакты"
+
+#. module: cx_partner_contact_group
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_kanban
+msgid "Delete"
+msgstr "Удалить"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_follower_group_followers_display_name
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_group_followers_display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model,name:cx_partner_contact_group_pro.model_mail_followers
+msgid "Document Followers"
+msgstr "Подписчики документа"
+
+#. module: cx_partner_contact_group
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_kanban
+msgid "Edit"
+msgstr "Править"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model,name:cx_partner_contact_group_pro.model_mail_thread
+msgid "Email Thread"
+msgstr "Цепочка эл.почты"
+
+#. module: cx_partner_contact_group
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_search
+msgid "Empty"
+msgstr "Никого"
+
+#. module: cx_partner_contact_group_pro
+#: sql_constraint:cx.mail.group.followers:0
+msgid "Error, a group cannot follow twice the same object."
+msgstr "Ошибка, нельзя подписать одну и ту же группу дважды"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_follower_group_followers_message_follower_id
+msgid "Follower"
+msgstr "Подписчик"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_account_analytic_account_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_account_asset_asset_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_account_bank_statement_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_account_invoice_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_account_payment_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_calendar_event_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cetmix_conversation_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_crm_lead_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_crm_team_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mail_channel_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mail_followers_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mail_test_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mail_test_simple_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mail_thread_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mrp_bom_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mrp_production_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mrp_unbuild_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mrp_workorder_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_product_product_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_product_template_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_project_project_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_project_task_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_prt_mail_message_draft_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_purchase_order_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_res_partner_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_res_users_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_sale_order_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_stock_picking_message_follower_group_ids
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_stock_production_lot_message_follower_group_ids
+msgid "Follower Groups"
+msgstr "Подписанные Группы"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_group_followers_follower_ids
+msgid "Followers"
+msgstr "Подписчики"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_group_followers_category_id
+msgid "Group"
+msgstr "Группа"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_follower_group_followers_group_follower_id
+msgid "Group Follower"
+msgstr "Подписчик из Группы"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mail_wizard_invite_category_ids
+msgid "Groups"
+msgstr "Группы"
+
+#. module: cx_partner_contact_group
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_search
+msgid "Has Contacts"
+msgstr "Есть контакты"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_follower_group_followers_id
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_group_followers_id
+msgid "ID"
+msgstr "Номер"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,help:cx_partner_contact_group_pro.field_cx_mail_group_followers_res_id
+msgid "Id of the followed resource"
+msgstr "номер отслеживаемого ресурса"
+
+#. module: cx_partner_contact_group_pro
+#: code:addons/cx_partner_contact_group_pro/models/mail.py:214
+#, python-format
+msgid "Invitation to follow %s: %s"
+msgstr "Приглашение на подписку %s: %s"
+
+#. module: cx_partner_contact_group_pro
+#. openerp-web
+#: code:addons/cx_partner_contact_group_pro/static/src/js/followers.js:43
+#, python-format
+msgid "Invite Group"
+msgstr "Пригласить Группу"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model,name:cx_partner_contact_group_pro.model_mail_wizard_invite
+msgid "Invite wizard"
+msgstr "Мастер приглашений"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_follower_group_followers___last_update
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_group_followers___last_update
+msgid "Last Modified on"
+msgstr "Последнее изменение"
+
+#. module: cx_partner_contact_group
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_search
+msgid "Name"
+msgstr "Название"
+
+#. module: cx_partner_contact_group_pro
+#. openerp-web
+#: code:addons/cx_partner_contact_group_pro/static/src/js/followers.js:165
+#, python-format
+msgid "No groups"
+msgstr "Нет групп"
+
+#. module: cx_partner_contact_group_pro
+#. openerp-web
+#: code:addons/cx_partner_contact_group_pro/static/src/js/followers.js:167
+#, python-format
+msgid "One group"
+msgstr "Одна группа"
+
+#. module: cx_partner_contact_group
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_kanban
+msgid "Partner"
+msgstr "Партнёр"
+
+#. modules: cx_partner_contact_group_pro, cx_partner_contact_group
+#: model:ir.model,name:cx_partner_contact_group.model_res_partner_category
+#: model:ir.model,name:cx_partner_contact_group_pro.model_res_partner_category
+msgid "Partner Tags"
+msgstr "Теги партнёра"
+
+#. module: cx_partner_contact_group
+#: model:ir.model.fields,field_description:cx_partner_contact_group.field_res_partner_category_partner_count
+#: model:ir.ui.view,arch_db:cx_partner_contact_group.cx_partner_category_kanban
+msgid "Partners"
+msgstr "Партнёры"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,help:cx_partner_contact_group_pro.field_mail_wizard_invite_category_ids
+msgid "Partners from this groups will be added as followers to current record"
+msgstr "Контакты из этих групп будут автоматически добавлены в качестве подписчиков"
+
+#. module: cx_partner_contact_group
+#: code:addons/cx_partner_contact_group/models/partner.py:21
+#, python-format
+msgid "Please purchase Pro Version to use this feature"
+msgstr "Пожалуйста приобретите Pro версию для использования данной опции"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_group_followers_res_id
+msgid "Related Document ID"
+msgstr "ID связанного документа"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_cx_mail_group_followers_res_model
+msgid "Related Document Model Name"
+msgstr "Связано название модели документа"
+
+#. module: cx_partner_contact_group_pro
+#. openerp-web
+#: code:addons/cx_partner_contact_group_pro/static/src/xml/qweb.xml:48
+#, python-format
+msgid "Remove this group"
+msgstr "Удалить эту группу"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model.fields,field_description:cx_partner_contact_group_pro.field_mail_followers_by_group
+msgid "Subscribed by Group"
+msgstr "Подписан через группу"
+
+#. module: cx_partner_contact_group_pro
+#. openerp-web
+#: code:addons/cx_partner_contact_group_pro/static/src/js/followers.js:140
+#, python-format
+msgid ""
+"Warning! \n"
+" If you remove a group, All followers subscribed by this group well be unsubscribed.\n"
+" Do you really want to remove this group ?"
+msgstr ""
+"Внимание! \n"
+" Если вы удалите группу, подписчики, добавленные через группу, будут также удалены.\n"
+" Вы уверены?"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model,name:cx_partner_contact_group_pro.model_cx_mail_follower_group_followers
+msgid "cx.mail.follower.group.followers"
+msgstr "cx.mail.follower.group.followers"
+
+#. module: cx_partner_contact_group_pro
+#: model:ir.model,name:cx_partner_contact_group_pro.model_cx_mail_group_followers
+msgid "cx.mail.group.followers"
+msgstr "cx.mail.group.followers"
+
+#. module: cx_partner_contact_group_pro
+#. openerp-web
+#: code:addons/cx_partner_contact_group_pro/static/src/js/followers.js:169
+#, python-format
+msgid "groups"
+msgstr "групп"

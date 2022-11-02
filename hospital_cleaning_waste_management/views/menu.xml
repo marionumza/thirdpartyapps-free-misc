@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="cleaning_dashboard_view_menu" model="ir.actions.client">
+        <field name="name">Shift</field>
+        <field name="tag">shift_dashboard_tag</field>
+    </record>
+
+    <menuitem name="Cleaning And Waste Management"
+              id="cleaning_menu_root"
+    />
+    <menuitem name="Team"
+              id="cleaning_staff"
+              sequence="11"
+              parent="cleaning_menu_root"
+    />
+    <menuitem name="Teams"
+              id="cleaning_staff_management"
+              sequence="1"
+              parent="cleaning_staff"
+              action="cleaning_waste_management"
+    />
+    <menuitem name="Inspection"
+              id="cleaning_inspection_management"
+              sequence="2"
+              parent="cleaning_staff"
+              action="cleaning_inspection_management_menu"
+    />
+
+    <menuitem name="Waste"
+              id="cleaning_waste_type_management"
+              sequence="12"
+              parent="cleaning_menu_root"
+    />
+
+    <menuitem name="Types"
+              id="waste_type_management"
+              sequence="13"
+              parent="cleaning_waste_type_management"
+              action="waste_types_tree"
+    />
+
+    <menuitem name="Transfer"
+              id="waste_transfer_management"
+              sequence="14"
+              parent="cleaning_waste_type_management"
+              action="waste_transfer_menu"
+    />
+
+    <menuitem name="Bins"
+              id="waste_bin_management"
+              sequence="16"
+              parent="cleaning_waste_type_management"
+              action="waste_bins_management"
+    />
+
+    <menuitem name="Dashboard"
+              id="shift_dashboard"
+              sequence="10"
+              parent="cleaning_menu_root"
+              action="cleaning_dashboard_view_menu"
+    />
+
+    <menuitem name="Reporting"
+              id="inspection_report"
+              sequence="13"
+              parent="cleaning_menu_root"
+    />
+
+    <menuitem name="Inspection Report"
+              id="monthly_inspection_report"
+              parent="inspection_report"
+              action="inspection_report_action"
+    />
+
+</odoo>

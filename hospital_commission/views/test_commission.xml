@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="test_commission_form" model="ir.ui.view">
+        <field name="name">test.commission.form</field>
+        <field name="model">test.commission</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" />
+                            <field name="date"/>
+                            <field name="employee_commission"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="test" string="Test">
+                            <field name="test_commission_lines_ids">
+                                <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                                    <field name="test_id" width="30%"/>
+                                    <field name="price" invisible="1"/>
+                                    <field name="count" width="30%"/>
+                                    <field name="sub_total" invisible="1"/>
+                                    <field name="comm_price" invisible="1"/>
+                                    <field name="commission" width="30%"/>
+                                    <field name="emp_commission"/>
+                                </tree>
+                            </field>
+                             <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <field name="currency_id"
+                                           invisible="1"/>
+                                    <label for="amount_total"/>
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator"
+                                       widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                        </page>
+                         <page name="Medicine" string="Medicine">
+                            <field name="commission_medicine_ids">
+                                <tree editable="bottom">
+                                    <field name="product_ids" width="30%"/>
+                                    <field name="count"/>
+                                    <field name="product_price" invisible="1"/>
+                                    <field name="comm_price" invisible="1"/>
+                                    <field name="commission_percentage" width="10%"/>
+                                    <field name="amount" invisible="1"/>
+                                    <field name="employ_commission_price"/>
+                                </tree>
+                            </field>
+                             <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <field name="currency_id"
+                                           invisible="1"/>
+                                    <label for="amount_total_medicine"/>
+                                </div>
+                                <field name="amount_total_medicine" nolabel="1" class="oe_subtotal_footer_separator"
+                                       widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="commission_test_tree" model="ir.ui.view">
+        <field name="name">test.commission.tree</field>
+        <field name="model">test.commission</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="employee_id"/>
+                <field name="test_id"/>
+                <field name="date"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <!--    Action of  menu-->
+    <record model="ir.actions.act_window" id="test_commission_action">
+        <field name="name">Commission</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">test.commission</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create commission configuration
+            </p>
+            <p>
+                You can commission configuration.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Hospital Commission"
+              id="hospital_commission_root"
+              sequence="9"/>
+    <menuitem name="Employee Commission"
+              id="commission_test_root"
+              parent="hospital_commission_root"
+              sequence="7"/>
+    <menuitem name="Employee Commission"
+              id="test"
+              parent="commission_test_root"
+              action="test_commission_action"
+              sequence="1"/>
+</odoo>

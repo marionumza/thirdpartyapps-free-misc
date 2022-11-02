@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="allocation_shift_employee" model="ir.actions.act_window">
+        <field name="name">Employee Shift</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">employee.shift.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="shift_allocation_wizard_form" model="ir.ui.view">
+        <field name="name">Employee Shift Allocation</field>
+        <field name="model">employee.shift.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="employee_id"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="shift_id"/>
+                    <field name="department_id" invisible="1"/>
+                </group>
+                <footer>
+                    <button name="allocate_shift" string="Allocate" type="object" class="oe_highlight"/>
+                    <button name="shift_allocations" string="Print Shift Allocation Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

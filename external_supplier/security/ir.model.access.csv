@@ -1,0 +1,7 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"acces_external_supplier_admin","acces_external_supplier_admin","model_external_supplier","base.group_system",1,1,1,1
+"acces_external_supplier_user_sales","acces_external_supplier_user_sales","model_external_supplier","sales_team.group_sale_salesman",1,0,0,0
+"acces_external_supplier_user_purchase","acces_external_supplier_user_purchase","model_external_supplier","purchase.group_purchase_user",1,0,0,0
+"acces_external_supplier_user_warehouse","acces_external_supplier_user_warehouse","model_external_supplier","stock.group_stock_user",1,0,0,0
+"acces_external_supplier_warehouse_history","ingram_config_user_warehouse_history","model_external_supplier_order_history","stock.group_stock_user",1,1,1,1
+"product.supplierinfo1","product.supplierinfo","product.model_product_supplierinfo","stock.group_stock_user",1,1,0,0

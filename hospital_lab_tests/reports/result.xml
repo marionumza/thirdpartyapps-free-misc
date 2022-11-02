@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>test_seq
+        <template id="test_result">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page">
+                            <div>
+                                <h1 align="center">Test Report</h1>
+                            </div>
+                            <div>
+                                <strong>Patient No:</strong>
+                                <t t-esc="doc.result_seq"/>
+
+                            </div>
+                            <div>
+                                <strong>Patient:</strong>
+                                <t t-esc="doc.patient_name"/>
+
+                            </div>
+                            <div>
+                                <strong>Test:</strong>
+                                <t t-esc="doc.test_id.test_name"/>
+
+                            </div>
+                            <div>
+                                <strong>Test Date:</strong>
+                                <t t-esc="doc.test_date"/>
+                            </div>
+
+                            <strong>Collected Date:</strong>
+                            <t t-esc="doc.date_today"/>
+                            <t t-set="i" t-value="1"/>
+                            <table class="table table-condensed">
+                                 <t t-if="doc.test_type == 'range'">
+                                <thread>
+                                    <tr>
+                                        <th>
+                                            <strong>SL.No</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Normal</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Observed</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Result</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Units</strong>
+                                        </th>
+                                    </tr>
+                                </thread>
+                                 </t>
+                                 <t t-if="doc.test_type == 'objective'">
+                                      <thread>
+                                    <tr>
+                                        <th>
+                                            <strong>SL.No</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Result</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Remarks</strong>
+                                        </th>
+                                        <th>
+                                        </th>
+                                    </tr>
+                                      </thread>
+                                 </t>
+                                <tbody>
+                                    <t t-if="doc.test_type == 'range'">
+                                        <t t-foreach="doc.test_result_ids" t-as="line">
+                                            <tr>
+                                                <td>
+                                                    <span t-esc="i"/>
+                                                    <t t-set="i" t-value="i+1"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line['observation']"/>
+                                                </td>
+
+                                                <td>
+                                                    <t t-esc="line['normal']"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line['result']"/>
+                                                </td>
+                                                <td>
+                                                    <t t-esc="line.units"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-foreach="doc.test_result_second_ids" t-as="line">
+                                            <td>
+                                                <span t-esc="i"/>
+                                                <t t-set="i" t-value="i+1"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="line.select_result"/>
+                                            </td>
+                                            <td>
+                                                <t t-esc="line.remarks"/>
+                                            </td>
+                                        </t>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

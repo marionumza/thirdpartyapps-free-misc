@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_commission_configuration,commission.configuration,model_commission_configuration,base.group_user,1,1,1,1
+access_commission_configurations_lines,commission.configurations.lines,model_commission_configurations_lines,base.group_user,1,1,1,
+access_commission_test_lines,commission.test.lines,model_commission_test_lines,base.group_user,1,1,1,1
+access_test_commission,test.commission,model_test_commission,base.group_user,1,1,1,1
+access_test_commission_lines,test.commission.lines,model_test_commission_lines,base.group_user,1,1,1,1
+access_commission_configurations_lines,commission.configurations.lines,model_commission_configurations_lines,base.group_user,1,1,1,1
+
+
+
+
+
+
+

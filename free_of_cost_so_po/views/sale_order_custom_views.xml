@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_sale_order_line_inherit_foc" model="ir.ui.view">
+        <field name="name">sale.order.line.inherit.foc</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                <field name="foc"/>
+                <field name="foc_reason_id" force_save="1" attrs="{'required': [('foc', '!=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+     <record model="ir.actions.act_window" id="operation_menu">
+        <field name="name">Operation Theaters</field>
+        <field name="res_model">hospital.operation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="operation_tree" model="ir.ui.view">
+        <field name="name">HospitalOperation</field>
+        <field name="model">hospital.operation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="op_room_name"/>
+                <field name="building_id"/>
+                <field name="state" string="State"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="operation_form" model="ir.ui.view">
+        <field name="name">Hospital Operation Form</field>
+        <field name="model">hospital.operation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="op_room_name"/>
+                        <field name="building_id"/>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string="Extra Information">
+                                <field name="text"/>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="hospital_commission_seq" model="ir.sequence">
+            <field name="name">Commission</field>
+            <field name="code">hospital.commission</field>
+            <field name="prefix">HP/CM/</field>
+            <field name="padding">3</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+    </data>
+</odoo>

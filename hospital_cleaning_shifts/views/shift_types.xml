@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="employee_shift_type_management">
+        <field name="name">Shifts Types</field>
+        <field name="res_model">shift.types</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <record id="shift_types_tree" model="ir.ui.view">
+        <field name="name">Shift types tree</field>
+        <field name="model">shift.types</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                <field name="shift_type" string="Shift Types"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,818 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* external_supplier
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-16 14:29+0000\n"
+"PO-Revision-Date: 2022-02-16 14:29+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid ""
+"'%s' header not found in CSV file, please be sure CSV file formatting and "
+"CSV file headers are well configured !"
+msgstr "En-tête '%s' introuvable dans le fichier CSV, assurez-vous que le formatage du fichier CSV et les en-têtes du fichier CSV sont bien configurés !"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Advanced"
+msgstr "Avancé"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__thread_amount
+msgid "Amount of threads to use"
+msgstr "Nombre de Thread à utiliser"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "An error occurred while downloading product file !"
+msgstr "Une erreur s’est produite lors du téléchargement du fichier produit !"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Authentication failed, please check your credentials."
+msgstr "L’authentification a échoué, veuillez vérifier vos identifiants."
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__auto_sync_product
+msgid "Automatically sync products"
+msgstr "Synchronisation automatique des produits"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "CSV File formatting"
+msgstr "Formatage des fichiers CSV"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "CSV File headers"
+msgstr "En-têtes de fichier CSV"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__csv_file_delimiter
+msgid "CSV file delimiter"
+msgstr "Délimiteur de fichier CSV"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__csv_file_encoding
+msgid "CSV file encoding"
+msgstr "Codage de fichier CSV"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__csv_file_quotechar
+msgid "CSV file quotechar"
+msgstr "Fichier CSV quotechar"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Check Number Thread"
+msgstr "Vérifier le nombre de Thread approprié"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Column delimiter"
+msgstr "Délimiteur de colonne"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Connection error. Check the connection information."
+msgstr "Erreur de connexion. Vérifiez les informations de connexion."
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Connection to XML server failed, please check that URL is correct !"
+msgstr "La connexion au serveur XML a échoué, vérifiez que l’URL est correcte !"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid ""
+"Connection to XML server failed, please check that URL starts with "
+"'http(s)://' !"
+msgstr ""
+"La connexion au serveur XML a échoué, veuillez vérifier que l’URL commence par "
+"'http(s)://' !"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__create_uid
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__create_date
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_product_product__last_synchro_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_product_template__last_synchro_supplier
+msgid "Date of last synchronization"
+msgstr "Date de la dernière synchronisation"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__default_category_id
+msgid "Default product category"
+msgstr "Catégorie de produit par défaut"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_stock_picking__delivery_date
+#: model:ir.model.fields,help:external_supplier.field_stock_picking__delivery_date
+msgid "Delivery date"
+msgstr "Date de livraison"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__description
+msgid "Description"
+msgstr ""
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__display_name
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__display_name
+msgid "Display Name"
+msgstr "Nom"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Download product file"
+msgstr "Télécharger le fichier produit"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Downloading products file..."
+msgstr "Télécharger le fichier des produits..."
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "EANUPC Code"
+msgstr "Code EANUPC"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__eanupc_csv_header
+msgid "EANUPC Code column identifier"
+msgstr "Identificateur de la colonne du code EANUPC"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__expected_date
+msgid "Expected Date"
+msgstr "Date souhaitée"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_external_supplier
+#: model:ir.ui.menu,name:external_supplier.external_supplier_menu
+msgid "External Supplier"
+msgstr "Fournisseur externe"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_sale_order_line__external_supplier_id
+#: model:ir.model.fields,field_description:external_supplier.field_stock_picking__external_supplier_id
+msgid "External supplier"
+msgstr "Fournisseur externe"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order__external_supplier_order_date
+msgid "External supplier order date"
+msgstr "Date de commande fournisseur externe"
+
+#. module: external_supplier
+#: model:ir.actions.server,name:external_supplier.ir_cron_external_supplier_sync_products_ir_actions_server
+#: model:ir.cron,cron_name:external_supplier.ir_cron_external_supplier_sync_products
+#: model:ir.cron,name:external_supplier.ir_cron_external_supplier_sync_products
+msgid "External supplier: sync products"
+msgstr "Fournisseur externe : synchroniser les produits"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "FTP Server"
+msgstr "Serveur FTP"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__ftp_server_url
+msgid "FTP server address"
+msgstr "Adresse du serveur FTP"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__ftp_server_path
+msgid "FTP server files path"
+msgstr "Chemin des fichiers du serveur FTP"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__ftp_server_login
+msgid "FTP server login"
+msgstr "Nom d'utilisateur au serveur FTP"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__ftp_server_password
+msgid "FTP server password"
+msgstr "Mot de passe du serveur FTP"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "File encoding"
+msgstr "Encodage du fichier"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid ""
+"Found a product without name, please be sure the right CSV column separator "
+"is selected !"
+msgstr "A trouvé un produit sans nom, assurez-vous que le bon séparateur de colonne CSV est sélectionné !"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "HTTP(s) connection to XML server is properly setup !"
+msgstr "La connexion HTTP(s) au serveur XML est correctement configurée !"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__id
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__id
+msgid "ID"
+msgstr ""
+
+#. module: external_supplier
+#: model:ir.model.fields.selection,name:external_supplier.selection__external_supplier__csv_file_encoding__iso-8859-1
+msgid "ISO-8859-1"
+msgstr ""
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/purchase_order.py:0
+#, python-format
+msgid "Information: Already send order"
+msgstr "Information : Déjà envoyer la commande"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/sale_order.py:0
+#, python-format
+msgid "It is not allowed to confirm an order in the following states: %s"
+msgstr "Il n’est pas permis de confirmer une commande dans les états suivants : %s"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier____last_update
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__write_uid
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__write_date
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: external_supplier
+#: model:ir.model.fields,help:external_supplier.field_purchase_order_line__stock_supplier
+msgid ""
+"Legend of the function price and availability\n"
+"Blue = stock decreases\n"
+"Red = price of the supplier increases\n"
+"Green =price of the supplier decreases"
+msgstr ""
+"Légende de la fonction prix et disponibilité \n"
+"Bleu = stock diminue \n"
+"Rouge = prix du fournisseur augmente \n"
+"Vert = prix du fournisseur diminue"
+
+#. module: external_supplier
+#: model:ir.model.fields,help:external_supplier.field_sale_order_line__stock_supplier
+msgid ""
+"Legend of the function price and avalability\n"
+"Blue = stock decreases\n"
+"Red = price of the supplier increases\n"
+"Green =price of the supplier decreases"
+msgstr ""
+"Légende de la fonction prix et disponibilité \n"
+"Bleu = stock diminue \n"
+"Rouge = prix du fournisseur augmente \n"
+"Vert = prix du fournisseur diminue"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Local directory '%s' does not exist, please provide a valid one !"
+msgstr "Le répertoire local '%s' n’existe pas, veuillez en fournir un valide !"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__local_files_directory_path
+msgid "Local path for downloaded CSV files"
+msgstr "Chemin local pour les fichiers CSV téléchargés"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Local product file '%s' not found, download it first !"
+msgstr "Fichier d'article local '%s' introuvable, téléchargez-le d’abord !"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Login"
+msgstr "Nom d'utilisateur"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_product_product__manufacturer
+#: model:ir.model.fields,field_description:external_supplier.field_product_template__manufacturer
+#: model:ir.model.fields,help:external_supplier.field_product_product__manufacturer
+#: model:ir.model.fields,help:external_supplier.field_product_template__manufacturer
+msgid "Manufacturer"
+msgstr "Fabriquant"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Multithreading"
+msgstr ""
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__name
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: external_supplier
+#: model:ir.model.fields,help:external_supplier.field_external_supplier__name
+msgid "Name associated with the configuration"
+msgstr "Nom associé à la configuration"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/purchase_order.py:0
+#, python-format
+msgid "Order has been sent to external supplier with success."
+msgstr "La commande a été envoyée avec succès à un fournisseur externe.
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.view_picking_form_inh
+msgid "Order history"
+msgstr "Historique des commandes"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_external_supplier_order_history
+msgid "Order history entry from external supplier"
+msgstr "Saisie de l’historique des commandes du fournisseur externe"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order__sent_to_external_supplier
+msgid "Order send"
+msgstr "Commande envoyée"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Order transactions"
+msgstr "Transactions de commande"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Password"
+msgstr "Mot de passe"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Path"
+msgstr "Chemin"
+
+#. module: external_supplier
+#: model:ir.model.fields.selection,name:external_supplier.selection__purchase_order_line__price_and_stock_state__price_decreased
+#: model:ir.model.fields.selection,name:external_supplier.selection__sale_order_line__price_and_stock_state__price_decreased
+msgid "Price has decreased"
+msgstr "Le prix à diminué"
+
+#. module: external_supplier
+#: model:ir.model.fields.selection,name:external_supplier.selection__purchase_order_line__price_and_stock_state__price_increased
+#: model:ir.model.fields.selection,name:external_supplier.selection__sale_order_line__price_and_stock_state__price_increased
+msgid "Price has increased"
+msgstr "Le prix a augmenté"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Prices and stocks have been synchronized with external supplier."
+msgstr "Les prix et les stocks ont été synchronisés avec le fournisseur externe"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_product_product
+msgid "Product"
+msgstr "Article"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_product_category
+msgid "Product Category"
+msgstr "Catégorie d'article"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__product_code_csv_header
+msgid "Product Code column identifier"
+msgstr "Identificateur de la colonne du code de l'article"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__product_cost_csv_header
+msgid "Product Cost column identifier"
+msgstr "Identificateur de la colonne de coût de l'article"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__product_description_csv_header
+msgid "Product Description column identifier"
+msgstr "Identificateur de la colonne Description de l'article"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__product_name_csv_header
+msgid "Product Name column identifier"
+msgstr "Identificateur de la colonne Nom de l'article"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__product_price_csv_header
+msgid "Product Price column identifier"
+msgstr "Identificateur de la colonne Prix article"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_product_template
+msgid "Product Template"
+msgstr "Modèle d'article"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product buy price"
+msgstr "Prix d'achat de l'article"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product category id"
+msgstr "ID catégorie d'article"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__category_id_csv_header
+msgid "Product category id column identifier"
+msgstr "Identificateur de colonne de la catégorie d'article"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product code"
+msgstr "Code article"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product description"
+msgstr "Description de l'article"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__last_product_file_download_date
+msgid "Product file downloaded at"
+msgstr "Fichier articles téléchargé le"
+
+#. module: external_supplier
+#: model:ir.model.fields.selection,name:external_supplier.selection__purchase_order_line__price_and_stock_state__out_of_stock
+#: model:ir.model.fields.selection,name:external_supplier.selection__sale_order_line__price_and_stock_state__out_of_stock
+msgid "Product is out of stock"
+msgstr "L'article est en rupture de stock"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product manufacturer"
+msgstr "Fabricant de l'article"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__manufacturer_csv_header
+msgid "Product manufacturer name column identifier"
+msgstr "Identificateur de colonne du nom du fabricant de l'article"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product name"
+msgstr "Nom de l'article"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product public price"
+msgstr "Prix public des articles"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product synchronization"
+msgstr "Synchronisation des articles"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Product weight"
+msgstr "Poids de l'article"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Products"
+msgstr "Articles"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Products file ('%s') not found on FTP server !"
+msgstr "Fichier d'articles ('%s') introuvable sur le serveur FTP !"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "Products file downloaded"
+msgstr "Fichier des articles téléchargé"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__products_filename
+msgid "Products file name"
+msgstr "Nom du fichier des articles"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__last_sync_date
+msgid "Products synced at"
+msgstr "Articles synchronisés le"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_purchase_order
+msgid "Purchase Order"
+msgstr "Commande fournisseur"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Ligne de commande d'achat"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Purchase Taxes"
+msgstr "Taxes d'achats"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__purchase_taxes
+msgid "Purchases taxes"
+msgstr "Taxes d'achats"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Quote character"
+msgstr "Caractère guillemet"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#: code:addons/external_supplier/models/external_supplier.py:0
+#: code:addons/external_supplier/models/external_supplier.py:0
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid ""
+"Received response is not well formatted, please check logs or contact "
+"administrator"
+msgstr "La réponse reçue n’est pas bien formatée; veuillez vérifier les registres ou communiquer avec votre administrateur"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "SFTP connection failed, please check the server URL address."
+msgstr "Échec de la connexion SFTP, vérifiez l’adresse URL du serveur."
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "SFTP connection is properly setup !"
+msgstr "La connexion SFTP est correctement configurée !"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Sale Taxes"
+msgstr "Taxes de ventes"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_sale_order
+msgid "Sales Order"
+msgstr "Bon de commande"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__sales_taxes
+msgid "Sales taxes"
+msgstr "Taxes de ventes"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order__send_automatically_to_supplier
+msgid "Send to external supplier"
+msgstr "Envoyer au fournisseur externe"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_stock_rule
+msgid "Stock Rule"
+msgstr "Règle de stock minimum"
+
+#. module: external_supplier
+#: model:ir.actions.act_window,name:external_supplier.action_supplier_form_config_bhc
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__supplier_id
+msgid "Supplier"
+msgstr "Fournisseur"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_product_product__supplier
+#: model:ir.model.fields,field_description:external_supplier.field_product_template__supplier
+msgid "Supplier Product"
+msgstr "Produit du fournisseur"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__supplier_type
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order__vendor_supplier_type
+msgid "Supplier Type"
+msgstr "Type de fournisseur"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order_line__stock_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_sale_order_line__stock_supplier
+msgid "Supplier stock"
+msgstr "Stock fournisseur"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Sync automatically"
+msgstr "Synchroniser automatiquement"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.purchase_order_form_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.view_order_form_supplier
+msgid "Sync price and stock from supplier"
+msgstr "Synchroniser le prix et le stock du fournisseur"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__synced_categories_amount
+msgid "Synced Categories Amount"
+msgstr "Nombre de catégories synchronisées"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__synced_category_ids
+msgid "Synced Category"
+msgstr "Catégories synchronisées"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__synced_product_ids
+msgid "Synced Product"
+msgstr "Articles synchronissé"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__synced_products_amount
+msgid "Synced Products Amount"
+msgstr "Nombre des articles synchronisés"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Synchronize all products"
+msgstr "Synchroniser tous les articles"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Synchronize demo products"
+msgstr "Synchroniser les articles de démonstration"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "Test connection"
+msgstr "Test de connexion"
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "The product \"%s\" cannot be supplied by selected supplier."
+msgstr "L'article \"%s\" ne peut pas être fourni par le fournisseur sélectionné."
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/external_supplier.py:0
+#, python-format
+msgid "The product \"%s\" has no vendor reference for selected supplier."
+msgstr "L'article \"%s\" n’a pas de référence fournisseur pour le fournisseur sélectionné."
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/stock.py:0
+#, python-format
+msgid "The supplier of this picking is not linked to an external supplier."
+msgstr "Le fournisseur de ce transfert n’est pas lié à un fournisseur externe."
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/stock.py:0
+#, python-format
+msgid ""
+"There is no matching vendor price to generate the purchase order for product"
+" %s (no vendor defined, minimum quantity not reached, dates not valid, ...)."
+" Go on the product form and complete the list of vendors."
+msgstr "Il n’y a pas de prix vendeur correspondant pour générer le bon de commande pour l'article %s (aucun fournisseur défini, quantité minimale non atteinte, dates non valides, ...). Allez sur le formulaire d'un article et remplissez la liste des fournisseurs."
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/stock.py:0
+#, python-format
+msgid "This picking is not linked to a purchase nor a sale."
+msgstr "Ce transfert n’est lié ni à un achat ni à une vente."
+
+#. module: external_supplier
+#: code:addons/external_supplier/models/purchase_order.py:0
+#, python-format
+msgid "This supplier is not supported !"
+msgstr "Ce fournisseur n’est pas pris en charge !"
+
+#. module: external_supplier
+#: model:ir.model,name:external_supplier.model_stock_picking
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__stock_picking_id
+msgid "Transfer"
+msgstr "Transfert"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "URL"
+msgstr ""
+
+#. module: external_supplier
+#: model:ir.model.fields.selection,name:external_supplier.selection__external_supplier__csv_file_encoding__utf-8
+msgid "UTF-8"
+msgstr ""
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.view_picking_form_inh
+msgid "Update status"
+msgstr "Statut"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier_order_history__update_date
+msgid "Updated date"
+msgstr "Date de mise à jour"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order__vendor_external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order_line__external_supplier_id
+msgid "Vendor External Supplier"
+msgstr "Fournisseur externe"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__weight_csv_header
+msgid "Weight column identifier"
+msgstr "Identificateur de colonne de poids"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "XML Server"
+msgstr "Serveur XML"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__xml_server_url
+msgid "XML server address"
+msgstr "Adresse du serveur XML"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__xml_server_login
+msgid "XML server login"
+msgstr "Nom d'utilisateur du serveur XML"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_external_supplier__xml_server_password
+msgid "XML server password"
+msgstr "Mot de passe du serveur XML"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "categories"
+msgstr "catégories"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_stock_picking__history_line
+msgid "idLabel"
+msgstr "Libellé"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order__order_date
+msgid "order date"
+msgstr "date de commande"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_purchase_order_line__price_and_stock_state
+#: model:ir.model.fields,field_description:external_supplier.field_sale_order_line__price_and_stock_state
+msgid "price and stock state"
+msgstr "état des prix et des stocks"
+
+#. module: external_supplier
+#: model_terms:ir.ui.view,arch_db:external_supplier.supplier_form_view_config
+msgid "products"
+msgstr "Articles"
+
+#. module: external_supplier
+#: model:ir.model.fields,field_description:external_supplier.field_product_category__code_categ_supplier
+msgid "supplier code category"
+msgstr "Catégorie de code fournisseur"

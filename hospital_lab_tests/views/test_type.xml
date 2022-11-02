@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    Action of test menu-->
+    <record model="ir.actions.act_window" id="type_action">
+        <field name="name">Test Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">test.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Test Type
+            </p>
+            <p>
+                You can create test type.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Test Type"
+              id="type"
+              parent="hospital_configuration_root"
+              action="type_action"
+              sequence="9"/>
+</odoo>

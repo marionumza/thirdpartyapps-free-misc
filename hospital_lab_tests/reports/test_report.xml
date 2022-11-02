@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <report id="test_report"
+                model='lab.result'
+                report_type="qweb-pdf"
+                string="Test Result Report"
+                name="lab_tests.test_result"
+                file="lab_tests.test_result"
+        />
+</odoo>

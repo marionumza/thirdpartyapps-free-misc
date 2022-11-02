@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_shift,employee.shift,model_employee_shift,base.group_user,1,1,1,1
+access_employee_role,employee.role,model_employee_role,base.group_user,1,1,1,1
+access_employee_shift_wizard,employee.shift.wizard,model_employee_shift_wizard,base.group_user,1,1,1,1
+access_shift_types,shift.types,model_shift_types,base.group_user,1,1,1,1
+
+
+
+

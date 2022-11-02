@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="Dashboard">
+         <div class="oh_dashboards">
+            <div class="container-fluid my-5 o_hr_dashboard"/>
+
+        </div>
+    </t>
+
+    <t t-name="Managercrm">
+        <section class="dashboard_main_section">
+            <div class="activity_dash_card row">
+                <div class="col-sm-12 col-md-3">
+                    <div class="dashboard-card card-shadow employees" style="margin-left : 100px">
+                        <div class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-user-circle-o text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h2>Employees</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-3">
+                    <div class="dashboard-card card-shadow teams" style="margin-left : 100px">
+                        <div class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-address-book-o text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="opp_this_year"/>
+                                    <div id="opp_this_month"/>
+                                    <div id="opp_this_week"/>
+                                </span>
+                            </h3>
+                            <h2>Teams</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-3">
+                    <div class="dashboard-card card-shadow shifts" style="margin-left : 100px">
+                        <div class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-clock-o text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="exp_rev_this_year"/>
+                                    <div id="exp_rev_this_month"/>
+                                    <div id="exp_rev_this_week"/>
+                                </span>
+                            </h3>
+                            <h2>Shifts</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-3">
+                    <div class="dashboard-card card-shadow revenue_card_waste" style="margin-left : 100px">
+                        <div class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-trash text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="rev_this_year"/>
+                                    <div id="rev_this_month"/>
+                                    <div id="rev_this_week"/>
+                                </span>
+                            </h3>
+                            <h2>Waste Types</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-3">
+                <div class="dashboard-card card-shadow unassigned_leads" style="margin-left : 80px">
+                        <div class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-home  text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <div>
+                                <h3>
+                                    <span>
+                                        <t t-esc="widget.get_count_unassigned"/>
+                                    </span>
+                                </h3>
+                                <h2>Shift Count</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </t>
+
+    <t t-name="Admincrm">
+        <section class="dashboard_main_section" id="main_section_admin">
+            <div class="row mt-8">
+                <div class="col-14 col-sm-16 col-md-5">
+                    <div class="top_sp_revenue_div" style="margin-left : 90px;height:100%;">
+                        <h1>Employee Shifts</h1>
+                        <hr/>
+                        <table class="table table-hover" id="salesperson_revenue_table">
+                            <thead>
+                                <tr>
+                                    <th>Shift</th>
+                                    <th>Employee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="widget.top_sp_revenue" t-as="activity">
+                                    <tr>
+                                        <td><t t-esc="activity[3]"/></td>
+                                        <td><t t-esc="activity[5]"/>
+                                            <t t-esc="activity[2]"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-5 pie_chart">
+                    <div class="leads_month_pie_div half_chart chart-container card-shadow" style="margin-left : 90px;height:100%;">
+                        <h1>Employee Shift Count</h1>
+                        <hr/>
+                        <div class="graph_canvas">
+                            <canvas class="shift_count"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+     </t>
+    </templates>
+
+
+
+
+
+
+
+
+
+

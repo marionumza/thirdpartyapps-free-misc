@@ -1,0 +1,121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* editable_sale_margin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-03 15:37+0000\n"
+"PO-Revision-Date: 2021-11-03 15:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: editable_sale_margin
+#: model_terms:ir.ui.view,arch_db:editable_sale_margin.report_saleorder_document
+msgid "<span>Disc2.%</span>"
+msgstr "<span>Rem2.%</span>"
+
+#. module: editable_sale_margin
+#: model_terms:ir.ui.view,arch_db:editable_sale_margin.report_saleorder_document
+msgid "<span>Disc3.%</span>"
+msgstr "<span>Rem3.%</span>"
+
+#. module: editable_sale_margin
+#: model_terms:ir.ui.view,arch_db:editable_sale_margin.view_action_cancel_payment
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: editable_sale_margin
+#: model_terms:ir.ui.view,arch_db:editable_sale_margin.invoice_form
+msgid "Cancel payment"
+msgstr "Annuler paiement"
+
+#. module: editable_sale_margin
+#: model_terms:ir.ui.view,arch_db:editable_sale_margin.view_action_cancel_payment
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_wizard_confirm_cancel_payment__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_wizard_confirm_cancel_payment__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_sale_order_line__discount2
+msgid "Disc2.%"
+msgstr "Rem2.%"
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_sale_order_line__discount3
+msgid "Disc3.%"
+msgstr "Rem3.%"
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_wizard_confirm_cancel_payment__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: editable_sale_margin
+#: model_terms:ir.ui.view,arch_db:editable_sale_margin.view_action_cancel_payment
+msgid "Do you want to cancel the payment?"
+msgstr "Vous voulez vraiment annuler le paiement?"
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_wizard_confirm_cancel_payment__id
+msgid "ID"
+msgstr ""
+
+#. module: editable_sale_margin
+#: model:ir.model,name:editable_sale_margin.model_account_move
+msgid "Journal Entry"
+msgstr "Pièce comptable"
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_wizard_confirm_cancel_payment____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_wizard_confirm_cancel_payment__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_wizard_confirm_cancel_payment__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_sale_order_line__margin
+msgid "Margin"
+msgstr "Marge"
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_sale_order_line__margin_percent
+msgid "Margin (%)"
+msgstr "Marge (%)"
+
+#. module: editable_sale_margin
+#: model:ir.model.fields,field_description:editable_sale_margin.field_wizard_confirm_cancel_payment__move
+msgid "Move"
+msgstr "Facture"
+
+#. module: editable_sale_margin
+#: model:ir.model,name:editable_sale_margin.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Ligne de bons de commande"
+
+#. module: editable_sale_margin
+#: model:ir.model,name:editable_sale_margin.model_wizard_confirm_cancel_payment
+msgid "Wizard confirm cancel payment"
+msgstr "Wizard Confirmation annulation paiement"

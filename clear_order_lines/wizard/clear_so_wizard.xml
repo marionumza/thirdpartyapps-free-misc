@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+        <record id="clear_order_lines_sales_order" model="ir.ui.view">
+             <field name="name">clear.order.lines.sales.order</field>
+             <field name="model">clear.order.lines.so</field>
+             <field name="arch" type="xml">
+                 <form string="Clear Order Lines">
+                    <group>
+                        <p>
+                            <strong>
+                                Are you sure you want to clear out order lines? This process cannot be undone.
+                            </strong>
+                        </p>
+                    </group>
+
+                     <footer>
+                         <button string="Clear Order Lines" type="object" name="clear_order_lines" />
+                         <button string="Cancel" special="cancel" class="btn btn-secondary" />
+                     </footer>
+                 </form>
+
+
+             </field>
+        </record>
+
+        <record id="clear_order_lines_sales_order_action" model="ir.actions.act_window">
+            <field name="name">Clear Order Lines Sales Order</field>
+            <field name="res_model">clear.order.lines.so</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_order_source,access_sale_order_source,model_sale_order_source,,0,0,0,0
+access_sale_order_source_sales_user,access_sale_order_source_sales_basic,model_sale_order_source,sales_team.group_sale_salesman,1,1,1,0
+access_dbt_transporter,access_dbt_transporter,model_dbt_transporter,base.group_user,1,1,1,0

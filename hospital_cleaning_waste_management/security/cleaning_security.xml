@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.module.category" id="cleaning_waste_management">
+         <field name="name">Request</field>
+         <field name="description">User access level for waste removal module</field>
+         <field name="sequence">20</field>
+    </record>
+
+    <record id="hospital_users" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="cleaning_waste_management"/>
+    </record>
+
+    <record id="hospital_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="cleaning_waste_management"/>
+        <field name="implied_ids" eval="[(4, ref('hospital_users'))]"/>
+    </record>
+</odoo>
+
+

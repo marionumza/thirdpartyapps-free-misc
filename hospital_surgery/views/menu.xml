@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem name="Hospital Surgery"
+              id="surgery_menu_root"
+    />
+
+    <menuitem name="Patients"
+              id="hospital_patients"
+              parent="surgery_menu_root"
+              action="hospital_surgery_patients_menu"
+    />
+
+    <menuitem name="Staffs"
+              id="hospital_surgery_staffs"
+              sequence="11"
+              parent="surgery_menu_root"
+              action="surgery_staffs_menu"
+    />
+
+    <menuitem name="Laboratory"
+              id="hospital_laboratory"
+              sequence="12"
+              parent="surgery_menu_root"
+              action="laboratory_menu"
+    />
+
+    <menuitem name="Operation"
+              id="hospital_operation"
+              sequence="13"
+              parent="surgery_menu_root"
+    />
+
+    <menuitem name="Operation Theaters"
+              id="hospital_operation_theaters"
+              parent="hospital_operation"
+              sequence="1"
+              action="operation_menu"
+    />
+
+    <menuitem name="Surgeries"
+              id="hospital_surgeries"
+              parent="hospital_operation"
+              sequence="2"
+              action="surgery_menu"
+    />
+
+    <menuitem name="Surgery Types"
+              id="hospital_surgery_type"
+              parent="hospital_operation"
+              sequence="3"
+              action="surgery_types_action"
+    />
+
+    <menuitem name="Payments"
+              id="surgery_payment"
+              sequence="14"
+              parent="surgery_menu_root"
+    />
+
+     <menuitem name="Payment"
+              id="hospital_surgery_payment"
+              parent="surgery_payment"
+              action="surgery_payment_action"
+    />
+
+    <menuitem name="Commission"
+              id="surgery_commission"
+              sequence="15"
+              parent="surgery_menu_root"
+    />
+
+    <menuitem name="Commission"
+              id="surgery_commission_type"
+              parent="surgery_commission"
+              sequence="2"
+              action="surgery_commission_action"
+    />
+
+    <menuitem name="Commission Type"
+              id="surgery_commission_calculation"
+              sequence="1"
+              parent="surgery_commission"
+              action="commission_surgery_type_action"
+    />
+
+
+</odoo>

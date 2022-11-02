@@ -1,0 +1,85 @@
+.o_action_manager {
+  direction: ltr;
+  webkit-box-flex: 1;
+  webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  overflow: scroll !important;
+}
+.activity-dashboard-card {
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: center;
+    padding: 1.7rem 1.5rem 1.5rem 1.5rem;
+    margin: 1rem auto;
+    height: 100px;
+}
+.activity-dashboard-card__icon-container {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.teams {
+  background-color: #229db9;
+  border-radius: 10px;
+  font-size: 35px;
+}
+.shifts{
+    background: #88dfdf;
+    border-radius: 10px;
+    font-size: 35px;
+}
+.unassigned_leads {
+  background-color: #D4A017;
+  border-radius: 10px;
+  font-size: 35px;
+}
+.revenue_card_waste{
+    background: #FFC0CB;
+    border-radius: 10px;
+    font-size: 35px;
+}
+
+.employees{
+    background: #f3bdf4;
+    border-radius: 10px;
+    font-size: 35px;
+}
+.overdue_activity {
+  background-color: #a2d2fb;
+  border-radius: 10px;
+  font-size: 35px;
+}
+.top_sp_revenue_div{
+    background: #beeecc;
+    border-radius: 10px;
+    font-size: 35px;
+}
+.pie_chart {
+  background-color: #ecb9b9;;
+  border-radius: 10px;
+  margin-left:200px;
+  font-size: 35px;
+}
+
+.chart-container.card-shadow {
+    height: 100%;
+
+}
+
+.half_chart.chart-container.card-shadow {
+	height: 100%;
+}
+
+.chart-container h2 {
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.dashboard_main_section {
+  margin: 20px;
+}
+
+
+
+
+

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @2019 Abdillah Wahab All Right Reserved -->
+<odoo>
+    <data>
+        <!-- Sale Order -->
+        <record id="view_attendance_inhr" model="ir.ui.view">
+            <field name="name">view.attendance.inhr</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form" />
+            <field name="arch" type="xml">
+              <group position="before">
+                <field name="d_validate" invisible="1" />
+                <div name="button_box" class="oe_button_box" attrs="{'invisible': [('d_validate', '=', 'valid')]}">
+                  <button name="set_validate" id="button_validate" class="oe_stat_button" type="object" >
+                    <span class="o_stat_text">Validate</span>
+                  </button>
+                </div>
+              </group>
+            </field>
+        </record>
+    </data>
+</odoo>

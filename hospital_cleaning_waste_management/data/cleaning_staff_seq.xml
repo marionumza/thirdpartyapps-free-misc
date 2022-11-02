@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_cleaning_staff_seq" model="ir.sequence">
+            <field name="name">Staff Sequence</field>
+            <field name="code">staff.sequence</field>
+            <field name="prefix">TM/</field>
+            <field name="padding">3</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+    </data>
+</odoo>

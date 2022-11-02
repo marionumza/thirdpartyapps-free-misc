@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!--            VIEWS           -->
+        <record id = "seq_join_id" model="ir.sequence">
+
+            <field name="name">JOIN ID</field>
+            <field name="code">hotel_management_module.users</field>
+            <field name="active">TRUE</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">2</field>
+            <field name="padding">3</field>
+            <field name="implementation">standard</field>
+
+        </record>
+        <record model = "ir.ui.view" id = "users_list_view">
+            <field name = "name">user.view</field>
+            <field name = "model">hotel_management_module.users</field>
+             <field name="priority" eval="15"/>
+            <field name = "arch" type = "xml">
+                <form string="User" create="false">
+                    <header>
+                        <button class = "btn btn-primary" type="object" name="payment_collected" string="Payment Collected"/>
+                        <button class = "btn btn-danger" type="object" name="booking_cancelled" string="Cancel Booking" confirm="Confirm Cancel Booking?"/>
+                        <button class="btn btn-primary" type="object" name="move_to_draft" string="Move to Draft" confirm="Move to Draft ? " />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,cancelled,done"/>
+                    </header>
+                      <sheet>
+                          <group>
+                              <group>
+                                     <field name="join_id" invisible="1"/>
+                                     <field name="name" placeholder="Full Name"/>
+                                     <field name="phone" placeholder="Contact Number"/>
+                              </group>
+                              <group>
+                                      <field name="id_proof" widget="image" class="oe_avatar"/>
+                              </group>
+                              <group>
+                                  <field name="nationality" placeholder="Select Country"/>
+                                  <field name="coming_from" placeholder="Coming From"/>
+                           </group>
+
+                        </group>
+
+                          <group>
+                            <group>
+                                <field name="adult_count" placeholder="Number of adults travelling"/>
+                                <field name="children_count" placeholder="Number of Children travelling"/>
+                            </group>
+                          <group>
+
+                                <field name="from_date" placeholder="Booking From"/>
+                                <field name="to_date" placeholder="Departure Date"/>
+                           </group>
+                     </group>
+                          <group>
+                              <button class="btn-primary" type="object" name="test_function" string="Set Room Price"/>
+                          </group>
+                      <notebook>
+                       <page string="Automated Count">
+                           <group>
+                              <field name="total_count"/>
+                              <field name="number_of_rooms"/>
+                              <field name="date_diff"/>
+                            </group>
+                       </page>
+                        <page string="Pricing">
+                            <group>
+                                <group>
+                                    <field name="per_day_price"/>
+                                    <field name="price"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="discount_on_room"/>
+                                    </group>
+                                    <group>
+                                        <button type="object" name="print_pdf" string="Generate Bill" class="btn btn-primary" icon="fa-download"/>
+                                    </group>
+                                </group>
+                            </group>
+                        </page>
+                      </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id = "on_click_form" model = "ir.ui.view">
+            <field name = "name">user_click.view</field>
+            <field name = "model">hotel_management_module.users</field>
+            <field name = "arch" type = "xml">
+                <form string = "clicked_form" name="Enter Price for the Room">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="official_room_price" placeholder="Set Room Price" />
+                                <field name="room_price" placeholder="Enter Room Price for guest"/>
+                            </group>
+                            <group>
+                                <field name = "discount_on_room" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <template id = "report_pdf">
+            <t t-call="web.html_container">
+                <div t-foreach="docs" t-as="o">
+                     <t t-call="web.external_layout">
+                         <div class = "page">
+                             <div class="row">
+                                 <div class="col-xs-3">
+                                        <img src='/web/binary/company_logo' class="float-right" style="max-height: 65px; margin-top:20px;" alt="Logo"/>
+                                 </div>
+                             </div>
+                             <div class="row zero_min_height">
+                                 <div class="col-xs-12">
+                                     <div style="border-bottom: 1px solid black;"/>
+                                 </div>
+                             </div>
+                             &lt;br&gt;&lt;br&gt;
+                     <table class="table table-md o_main_table">
+                        <thead>
+                            <tr>
+                                <th name ="td_name" class = "text-center">Name</th>
+                                <th name ="td_phone" class = "text-center">Contact Number</th>
+                                <th name ="td_total_days" class = "text-center">Stay For</th>
+                                <th name ="td_from_date" class = "text-center">From</th>
+                                <th name ="td_to_date" class = "text-center">To</th>
+                                <th name ="td_total_peoples" class = "text-center">Total Peoples</th>
+                                <th name ="td_total_peoples" class = "text-center">Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td name ="td_name" class = "text-center"><span t-field="o.name" /></td>
+                                <td name ="td_phone" class = "text-center">+91 <span t-field="o.phone" /> </td>
+                                <td name ="td_total_days" class = "text-center"><span t-field="o.date_diff" /> days</td>
+                                <td name ="td_from_date" class = "text-center"><span t-field="o.from_date" /> </td>
+                                <td name ="td_to_date" class = "text-center"><span t-field="o.to_date" /> </td>
+                                <td name ="td_total_peoples" class = "text-center"><span t-field="o.total_count" /> </td>
+                                <td name ="td_total_price" class = "text-center">Rs. <span t-field="o.price" /> </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+
+                         </div>
+                     </t>
+                </div>
+            </t>
+
+        </template>
+
+        <record model="ir.ui.view" id="view_graph">
+            <field name="name">hotel_management_module.users.graph</field>
+            <field name="model">hotel_management_module.users</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                     <graph string="Graph">
+
+
+                         <field name="price" operator="*"/>
+                     </graph>
+            </field>
+        </record>
+
+        <record id="partner_kanban_view" model="ir.ui.view">
+            <field name="name">hotel_management_module.users.kanban</field>
+            <field name="model">hotel_management_module.users</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+<!--Template for kanban view -->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                          <group>
+                            <group>
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('hotel_management_module.users','id_proof',record.id.raw_value)"/>
+                            </div>
+                            <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>
+                                        <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                    </div>
+                             </div>
+                             </group>
+                             <group>
+                                    &amp;bull; <field name="name"/> &lt;br&gt;
+                                    &amp;bull; <field name="phone"/> &lt;br&gt;
+                                    &amp;bull; <field name="status"/>&lt;br&gt;
+                                    <a type="button">
+                                    <button name="stay_completed" type="object" class="btn-primary">
+                                          <span>Quick Edit Details</span>
+                                    </button>
+                                </a>
+                            </group>
+                            </group>
+                       </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+            <!--                ACTIONS           -->
+
+        <record id = "action_report_pdf" model = "ir.actions.report">
+            <field name = "name">Print Bill</field>
+            <field name = "model">hotel_management_module.users</field>
+            <field name = "report_type">qweb-pdf</field>
+            <field name = "report_name">hotel_management_module.report_pdf</field>
+            <field name = "report_file">hotel_management_module.report_pdf</field>
+            <field name = "binding_model_id" eval="False"/>
+            <field name = "binding_type">report</field>
+        </record>
+        <record id="user_list_action" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">hotel_management_module.users</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
+        </record>
+
+        <!--                MENUITEMS           -->
+
+        <menuitem id = "main_menu_item" name = "Hotel Management" action = "user_list_action"/>
+        <menuitem id = "to_calender" name="Calender" action="calendar.action_calendar_event" parent="main_menu_item"/>
+
+
+</data>
+</odoo>

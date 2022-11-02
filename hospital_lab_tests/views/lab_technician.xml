@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lab_technician_form" model="ir.ui.view">
+        <field name="name">lab.technician.form</field>
+        <field name="model">lab.technician</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                        <field name="image_131" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image_131&quot;}"/>
+                        <div class="oe_title">
+                            <h1 class="d-flex">
+                                <field name="technician_name" placeholder="Name" required="True"/>
+                            </h1>
+                        </div>
+                    <group>
+                        <group>
+                            <field name="work_phone"> </field>
+                            <field name="work_mobile"> </field>
+                            <field name="work_email"> </field>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="public" string="Work Information">
+                                <!-- These two div are used to position org_chart -->
+                            <div>
+                                <div>
+                                    <group>
+                                        <group string="Location">
+                                            <label for="street" string="Address"/>
+                                                <div class="o_address_format">
+                                                    <field name="work_street" placeholder="Street..." class="o_address_street"/>
+                                                    <field name="work_street2" placeholder="Street 2..." class="o_address_street"/>
+                                                    <field name="work_city" placeholder="City" class="o_address_city"/>
+                                                    <field name="work_state_id" class="o_address_state" placeholder="State"
+                                                           options='{"no_open": True}'/>
+                                                    <field name="work_zip" placeholder="ZIP" class="o_address_zip"/>
+                                                    <field name="work_country_id" placeholder="Country.." class="o_address_country"
+                                                           options='{"no_open": True, "no_create": True}'/>
+                                                </div>
+                                            <field name="work_location"/>
+                                        </group>
+                                        <group>
+                                        </group>
+                                        <group string="Availability">
+                                            <field name="availability"/>
+                                        </group>
+                                    </group>
+                                    </div>
+                                </div>
+                        </page>
+                        <page name="personal_information" string="Private Information">
+                            <group>
+                                <group string="Private Contact">
+                                    <label for="street" string="Address"/>
+                                        <div class="o_address_format">
+                                            <field name="street" placeholder="Street..." class="o_address_street"/>
+                                            <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                            <field name="city" placeholder="City" class="o_address_city"/>
+                                            <field name="state_id" class="o_address_state" placeholder="State"
+                                                   options='{"no_open": True}'/>
+                                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                            <field name="country_id" placeholder="Country.." class="o_address_country"
+                                                   options='{"no_open": True, "no_create": True}'/>
+                                        </div>
+                                    <field name="pvt_mobile"/>
+                                    <field name="pvt_phone"/>
+                                    <field name="pvt_email"/>
+                                    <field name="account_no"/>
+                                </group>
+                                <group string="Citizenship">
+                                        <field name="country_id" options='{"no_open": True, "no_create": True}'/>
+                                        <field name="identification_no" groups="hr.group_hr_user"/>
+                                        <field name="passport_no" />
+                                        <field name="gender"/>
+                                        <field name="birthday"/>
+                                        <field name="place_of_birth" />
+                                        <field name="country_of_birth_id"/>
+                                    </group>
+                                    <group string="Marital Status">
+                                        <field name="status" default=""/>
+                                        <field name="spouse_complete_name" attrs="{'invisible': [('status','!=','married')]}"/>
+                                        <field name="spouse_birthdate" attrs="{'invisible': [('status','!=','married')]}" />
+                                    </group>
+                                    <group string="Dependant">
+                                        <field name="children"/>
+                                    </group>
+                                    <group string="Emergency">
+                                        <field name="pvt_mobile"/>
+                                        <field name="pvt_phone" class="o_force_ltr"/>
+                                        <field name="pvt_email"/>
+                                    </group>
+                                    <group string="Work Permit" name="work_permit">
+                                        <field name="licence"/>
+                                        <field name="visa_no"/>
+                                        <field name="permit_no"/>
+                                        <field name="expire_date"/>
+                                    </group>
+                                    <group string="Education">
+                                        <field name="degrees" widget="many2many_tags"/>
+                                        <field name="specialization" widget="many2many_tags"/>
+                                        <field name="institute" widget="many2many_tags"/>
+                                    </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="lab_technician_tree" model="ir.ui.view">
+        <field name="name">lab.technician.tree</field>
+        <field name="model">lab.technician</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="technician_name"> </field>
+                <field name="work_phone"> </field>
+                <field name="work_mobile"> </field>
+                <field name="work_email"> </field>
+            </tree>
+
+        </field>
+    </record>
+
+
+<!--    Action of technician menu-->
+
+    <record model="ir.actions.act_window" id="test_technician_action">
+        <field name="name">Lab Technician</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lab.technician</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create  Technician
+                </p><p>
+                    You can enter technician details here.
+                </p>
+            </field>
+    </record>
+
+    <menuitem name="Lab Technician"
+              id="technician_root"
+              parent="labs_root"
+              sequence="8"/>
+    <menuitem name="Lab Technician"
+              id="technician"
+              parent="technician_root"
+              action="test_technician_action"
+              sequence="7"/>
+
+</odoo>

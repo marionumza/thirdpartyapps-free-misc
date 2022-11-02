@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="surgery_tree" model="ir.ui.view">
+        <field name="name">surgery tree</field>
+        <field name="model">hospital.surgery</field>
+        <field name="inherit_id" eval="False"/>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="surgery_seq"/>
+                <field name="patient_name"/>
+                <field name="hosp_date"/>
+                <field name="discharge_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="surgery_form" model="ir.ui.view">
+        <field name="name">surgery form</field>
+        <field name="model">hospital.surgery</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="confirm_surgery" type="object" string="Confirm Surgery" class="btn-primary" states="draft"/>
+                    <button name="start_surgery" type="object" string="Start Surgery" states="confirm"/>
+                    <button name="complete_surgery" type="object" string="Completed" states="inprogress"/>
+                    <button name="cancel_surgery" type="object" string="Cancel Surgery" states="draft,confirm"/>
+
+                </header>
+                <sheet>
+                    <group>
+                         <div class="oe_title">
+                                <h1>
+                                     <field name="surgery_seq"/>
+                                </h1>
+                            </div>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="patient_id" placeholder="Patient Code" required="True"/>
+                            <field name="patient_name" placeholder="Patient'S Name"/>
+                            <field name="gender"/>
+                            <field name="dob"/>
+                            <field name="patient_age"/>
+                            <field name="building_id"/>
+                            <field name="type_admission"/>
+                        </group>
+                        <group>
+                            <field name="surgeon_id"/>
+                            <field name="surgery_cat_id"/>
+                            <field name="surgery_id"/>
+                            <field name="op_theater_id"/>
+                            <field name="anesthesist_id"/>
+                            <field name="signed_by"/>
+                            <field name="relation"/>
+                            <field name="next_appointment" states="done,cancel"/>
+                        </group>
+                        <group>
+                            <field name="hosp_date"/>
+                            <field name="discharge_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="insurance" string="Patient Insurance">
+                            <group>
+                                <field name="primary_insurance"/>
+                                <field name="insurance_id"/>
+                                <field name="group"/>
+                                <field name="goup_policy_emp" widget="radio" string="Group policy from employer?" options="{'horizontal': true}"/>
+                                <field name="govt_policy_emp" widget="radio" string="Government Exchange Market Place Policy?" options="{'horizontal': true}"/>
+                                <br/>
+                                <field name="policy_holder_name"/>
+                                <field name="policy_holder_dob"/>
+                            </group>
+                        </page>
+                        <page name="operation" string="Operation Details">
+                            <group string="Patient Surgical Risk Assessment">
+                                <field name="condition"/>
+                                <field name="notes"/>
+                            </group>
+                        </page>
+                        <page name="procedure" string="Preoperative Holding">
+                            <group>
+                                <field name="patient_identification" widget="radio" options="{'horizontal': true}"/>
+                                <field name="surgical_consent" widget="radio" options="{'horizontal': true}"/>
+                                <field name="history_physical_examination" widget="radio" options="{'horizontal': true}"/>
+                                <field name="surgical_site_signature" widget="radio" options="{'horizontal': true}"/>
+                                <field name="blood_specimen" widget="radio" options="{'horizontal': true}"/>
+                                <field name="x_ray" widget="radio" options="{'horizontal': true}"/>
+                                <field name="anesthesia_interview" widget="radio" options="{'horizontal': true}"/>
+                                <field name="list_medications" widget="radio" options="{'horizontal': true}"/>
+                                <field name="allergy" widget="radio" options="{'horizontal': true}"/>
+                                <field name="other_allergy" attrs="{'invisible': [('allergy', '!=', 'other')]}"/>
+                            </group>
+                        </page>
+                        <page name="team" string="Team Members">
+                            <group>
+                                <field name="surgeon_id"/>
+                                <field name="anesthesist_id"/>
+                                <field name="nurse_anesthetist"/>
+                                <field name="circulating_nurse"/>
+                                <field name="surgical_technologist"/>
+                            </group>
+                        </page>
+                        <page name="title" string="Title">
+                            <field name="notes" placeholder="Title"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="surgery_view_search" model="ir.ui.view">
+        <field name="name">Surgery search</field>
+        <field name="model">hospital.surgery</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Doctor" name="surgeon_id" context="{'group_by':'surgeon_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="surgery_menu">
+        <field name="name">Surgery</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.surgery</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Surgery Details
+            </p>
+            <p>
+                You can create surgery details here.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_component_tree">
+        <field name="name">do.component.tree</field>
+        <field name="model">do.payslip.component</field>
+        <field name="arch" type="xml">
+            <tree string="Componenets">
+                <field name="name" />
+                <field name="d_category"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_component_form">
+        <field name="name">do.component.form</field>
+        <field name="model">do.payslip.component</field>
+        <field name="arch" type="xml">
+            <form string="Component">
+                <header>
+                    <button name="add_all_employee" type="object" class="oe_stat_button" icon="fa-pencil-square-o" string="Add All Employee" />
+                    <button name="add_employee_by_department" type="object" class="oe_stat_button" string="Add By Department" />
+                    <button name="clear_list" type="object" string="Clear List Employee" />
+                    <!-- <button name="get_amount_from_contract_salary" type="object" string="Set Amount by Current Contract" /> -->
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="d_category"/>
+                            <field name="d_type"/>
+                            <field name="d_tax"/>
+                        </group>
+                        <group attrs="{'invisible': [('d_type', '!=', 'day')]}">
+                            <field name="d_type_daily" />
+                            <field name="d_fix_a_week" attrs="{'invisible': [('d_type_daily', '!=', 'fix')]}" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Component Employees">
+                            <field name="d_component_list" >
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="d_amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_component_view">
+        <field name="name">Components</field>
+        <field name="res_model">do.payslip.component</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="do_simple_payroll.view_component_tree"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                        Click to create a new component.
+            </p>
+        </field>
+    </record>
+
+    <menuitem parent="do_simple_payroll.root_payslip"
+              id="menu_act_component_view"
+              action="do_simple_payroll.act_component_view" sequence="2"/>
+
+</odoo>

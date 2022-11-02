@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="do_view_choose_department_form">
+        <field name="name">choose.department.form</field>
+        <field name="model">wizdo.choose.department</field>
+        <field name="arch" type="xml">
+            <form string="Payslip">
+                <sheet>
+                    <group>
+                        <group>
+                            <p>Choose department to filter employee</p>
+                            <field name="d_department_id" required='1'/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="choose" type="object" string="Choose"/> or 
+                    <button name="cancel" string="Cancel" special="cancel" class="oe_link"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

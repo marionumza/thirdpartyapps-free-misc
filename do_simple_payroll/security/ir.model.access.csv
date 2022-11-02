@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payslip,access.payslip,model_do_payslip,do_simple_payroll.do_group_payslip,1,1,1,1
+access_payslip_user,access.payslip.user,model_do_payslip,,1,0,0,0
+access_payslip_items,access.payslip.items,model_do_payslip_item,do_simple_payroll.do_group_payslip,1,1,1,1
+access_payslip_items_user,access.payslip.items.user,model_do_payslip_item,,1,0,0,0
+access_payslip_component,access.payslip.component,model_do_payslip_component,do_simple_payroll.do_group_payslip,1,1,1,1
+access_payslip_component_user,access.payslip.component.user,model_do_payslip_component,,1,0,0,0
+access_payslip_component_list,access.payslip.component.list,model_do_payslip_component_list,do_simple_payroll.do_group_payslip,1,1,1,1
+access_payslip_component_list_user,access.payslip.component.list.user,model_do_payslip_component_list,,1,0,0,0
+access_choose_department,access.choose.department,model_wizdo_choose_department,,1,1,1,1

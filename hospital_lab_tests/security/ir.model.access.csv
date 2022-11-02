@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_test_appointment,test.appointment,model_test_appointment,base.group_user,1,1,1,1
+access_lab_technician,lab_technician,model_lab_technician,base.group_user,1,1,1,1
+access_lab_result,lab_result,model_lab_result,base.group_user,1,1,1,1
+access_test_result_second,test_result_second,model_test_result_second,base.group_user,1,1,1,1
+access_test_result,test_result,model_test_result,base.group_user,1,1,1,1
+
+
+

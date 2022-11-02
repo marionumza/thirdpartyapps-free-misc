@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="group_external_supplier" model="res.groups">
+            <field name="name">External supplier</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="base.user_admin" model="res.users">
+            <field name="groups_id" eval="[(4, ref('external_supplier.group_external_supplier'))]"/>
+        </record>
+    </data>
+</odoo>

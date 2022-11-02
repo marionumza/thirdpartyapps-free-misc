@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="test_action_type" model="ir.actions.act_window">
+        <field name="name">Lab Tests</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.laboratory</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+               (0, 0, {'view_mode': 'tree', 'view_id': ref('base_hospital_management.lab_test_tree')}),
+               (0, 0, {'view_mode': 'form', 'view_id': ref('base_hospital_management.lab_test_form')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Test
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Test"
+              id="test_lab"
+              parent="hospital_configuration_root"
+              action="test_action_type"
+              sequence="10"/>
+</odoo>

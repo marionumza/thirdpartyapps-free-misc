@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--######################################################################################################-->
+<!--#-->
+<!--# Copyright © B.H.C. sprl - All Rights Reserved, http://www.bhc.be-->
+<!--#-->
+<!--# Unauthorized copying of this file, via any medium is strictly prohibited-->
+<!--# Proprietary and confidential-->
+<!--# This code is subject to the BHC License Agreement-->
+<!--# Please see the License.txt file for more information-->
+<!--# All other rights reserved-->
+<!--#-->
+<!--# Unless required by applicable law or agreed to in writing, software-->
+<!--# distributed under the License is distributed on an "AS IS" BASIS,-->
+<!--# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied,-->
+<!--# including but not limited to the implied warranties-->
+<!--# of merchantability and/or fitness for a particular purpose-->
+<!--######################################################################################################-->
+
+<odoo>
+    <record id="ir_cron_external_supplier_sync_products" model="ir.cron">
+        <field name="name">External supplier: sync products</field>
+        <field name="model_id" ref="model_external_supplier"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_sync_products()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(datetime.now() + relativedelta(days=1, hour=2, minutes=0, seconds=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>
+</odoo>

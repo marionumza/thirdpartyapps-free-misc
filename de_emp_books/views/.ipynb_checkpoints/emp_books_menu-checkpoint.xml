@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+		<menuitem id="menu_emp_books_root" name="Employee Books" active="True" web_icon="de_emp_books,static/description/icon.png" sequence="105"/>
+
+		<menuitem id="menu_emp_books_employee" name="Employee" parent="menu_emp_books_root" sequence="1" />
+        
+        <menuitem id="menu_emp_books_reports" name="Reports" parent="menu_emp_books_root" sequence="90" />
+        <menuitem id="menu_emp_books_config" name="Configuration" parent="menu_emp_books_root" sequence="100" />
+        
+        <menuitem
+                id="menu_emp_books_employee_employee"
+                name="Employees"
+                action="hr.open_view_employee_list_my"
+                parent="menu_emp_books_employee"
+                sequence="1"/>
+        
+         <menuitem
+            id="menu_emp_books_employee_contract"
+            name="Contracts"
+            action="hr_contract.action_hr_contract"
+            parent="menu_emp_books_employee"
+            sequence="4"
+            groups="hr_contract.group_hr_contract_manager"/>
+        
+        <menuitem
+            id="menu_emp_books_config_department"
+            name="Department"
+            action="hr.hr_department_tree_action"
+            parent="menu_emp_books_config"
+            sequence="1"
+            groups="hr.group_hr_manager"/>
+        
+        <menuitem
+            id="menu_emp_books_config_jos_positions"
+            name="Job Positions"
+            action="hr.action_hr_job"
+            parent="menu_emp_books_config"
+            sequence="2"
+            groups="hr.group_hr_manager"/>
+        
+	</data>
+</odoo>
+

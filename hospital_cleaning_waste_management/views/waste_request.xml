@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record model="ir.actions.act_window" id="waste_bins_request">
+        <field name="name">Waste Request</field>
+        <field name="res_model">waste.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <record id="request_waste" model="ir.ui.view">
+        <field name="name">Waste Request</field>
+        <field name="model">waste.request</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="transfer_waste_form" model="ir.ui.view">
+        <field name="name">Waste Request</field>
+        <field name="model">waste.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="room"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

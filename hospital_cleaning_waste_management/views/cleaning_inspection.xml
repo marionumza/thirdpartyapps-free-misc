@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="cleaning_inspection_management_menu">
+        <field name="name">Cleaning Inspection</field>
+        <field name="res_model">cleaning.inspection</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+       <record id="inspection_tree" model="ir.ui.view">
+        <field name="name">cleaning.staff.tree</field>
+        <field name="model">cleaning.inspection</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="cleaning_team" string="Team"/>
+                <field name="inspector" string="Inspector"/>
+                <field name="state" string="Status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="inspection_views_search" model="ir.ui.view">
+        <field name="name">Inspection</field>
+        <field name="model">cleaning.inspection</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Status" name="Status"
+                            context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="inspection_form" model="ir.ui.view">
+        <field name="name">hospital.cleaning.inspection.form</field>
+        <field name="model">cleaning.inspection</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="cleaning_inspect_done" type="object" string="Done"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="date" string="Inspection Date Time"/>
+                        <field name="cleaning_type" string="Cleaning Type"/>
+                        <field name="inspector" string="Inspector"/>
+                        <field name="cleaning_team" string-="Team"/>
+                        <field name="department_id" string="Department"/>
+                        <field name="building_name" string="Block"/>
+                    </group>
+                        <notebook>
+                            <page string ="Shifts">
+                                <field name="cleaning_team_inspect_id">
+                                    <tree editable="bottom">
+                                        <field name="shift_name_id" string="Shift"/>
+                                        <field name="date_from" string="Date From"/>
+                                        <field name="date_to" string="Date To"/>
+                                        <field name="dirty" string="Dirty"/>
+                                        <field name="clean" string="Clean"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string ="Remarks">
+                                <field name="notes" placeholder="Notes"/>
+                            </page>
+                        </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

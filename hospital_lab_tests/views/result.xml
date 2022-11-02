@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lab_result_form" model="ir.ui.view">
+        <field name="name">lab.result</field>
+        <field name="model">lab.result</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="result_seq" readonly="1"/>
+                        </h1>
+                    </div>
+                    <div class="oe_title">
+                        <h2 class="d-flex">
+                            <field name="patient_seq_id" placeholder="Patient's No" required="True"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_name"/>
+                            <field name="dob"/>
+                            <field name="gender"/>
+                            <field name="patient_age"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                            <field name="test_date"/>
+                        </group>
+                    </group>
+                    <group string="Test"/>
+                    <group>
+                         <group>
+                            <field name="type_id"/>
+                            <field name="test_type"/>
+                         </group>
+                    </group>
+                    <notebook name="results"
+                              attrs="{'invisible': [('test_type', '=', 'objective')]}">
+                        <page name="Result" string=" Results">
+                            <field name="test_result_ids" widget="one2many_delete">
+                                <tree editable="bottom">
+                                    <field name="test_id" domain="test_domain_id"/>
+                                    <field name="normal"/>
+                                    <field name="observation"/>
+                                    <field name="result"/>
+                                    <field name="units"/>
+                                    <field name="test_domain_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <notebook name="Objective Result"
+                              attrs="{'invisible': [('test_type', '=', 'range')]}">
+                        <page string=" Results">
+                            <field name="test_result_second_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="select_result"/>
+                                    <field name="remarks"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="lab_result_tree" model="ir.ui.view">
+        <field name="name">lab.result.tree</field>
+        <field name="model">lab.result</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="patient_name"/>
+                <field name="dob"/>
+                <field name="gender"/>
+                <field name="patient_age"/>
+                <field name="test_id"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="test_result_action">
+        <field name="name">Result</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lab.result</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Test Results
+            </p>
+            <p>
+                You can enter test results
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Result"
+              id="result_root"
+              parent="labs_root"
+              sequence="7"/>
+    <menuitem name="Result"
+              id="result"
+              parent="result_root"
+              action="test_result_action"
+              sequence="7"/>
+</odoo>
+

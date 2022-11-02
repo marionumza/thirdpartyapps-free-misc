@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="surgery_commission_form" model="ir.ui.view">
+        <field name="name">surgery.commission.form</field>
+        <field name="model">surgery.commission</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id" />
+                            <field name="date"/>
+                            <field name="employee_commission"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="surgery" string="Surgery">
+                            <field name="surgery_id_commission">
+                                <tree editable="bottom">
+                                    <field name="surgery_id"/>
+                                    <field name="sur_amount" invisible="1"/>
+                                    <field name="count"/>
+                                    <field name="comm_price"/>
+                                    <field name="commission_surgery"/>
+                                    <field name="tot_amount_surgery"/>
+                                    <field name="tot_commission"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="commission_surgery_tree" model="ir.ui.view">
+        <field name="name">surgery.commission.tree</field>
+        <field name="model">surgery.commission</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="employee_id"/>
+                <field name="employee_commission"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+    <!--    Action of commission menu-->
+    <record model="ir.actions.act_window" id="surgery_commission_action">
+        <field name="name">Surgery</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">surgery.commission</field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create commission configuration
+            </p>
+            <p>
+                You can commission configuration.
+            </p>
+        </field>
+    </record>
+</odoo>

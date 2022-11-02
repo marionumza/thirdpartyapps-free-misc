@@ -1,0 +1,11 @@
+.table-striped tbody tr:nth-of-type(odd):hover{
+    background-color: #e4e4e4; !important;
+}
+
+.table-striped tbody tr:nth-of-type(even):hover{
+    background-color: #e4e4e4; !important;
+}
+
+.table-striped tbody tr.row_selected{
+    background-color: #f4f4f4;!important;
+}

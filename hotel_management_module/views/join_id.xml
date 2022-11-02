@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+ <record id="view_calender_form_inherit" model="ir.ui.view">
+     <field name="name">Join id</field>
+     <field name="model">calendar.event</field>
+     <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+     <field name="arch" type="xml">
+         <xpath expr="//field[@name='categ_ids']" position="after">
+              <field name="join_id" invisible="1"/>
+         </xpath>
+     </field>
+ </record>
+</data>
+</odoo>

@@ -1,0 +1,1 @@
+{'name': 'Control Invoice Date', 'summary': '\n        This module allows you to control the billing date to block the entry of past dates \n    ', 'author': 'Auneor Conseil', 'website': 'http://www.auneor-conseil.fr', 'category': 'Accounting', 'version': '0.1', 'license': 'Other proprietary', 'depends': ['account'], 'images': ['static/description/banner.png']}

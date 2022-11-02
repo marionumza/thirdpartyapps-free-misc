@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_contract_type_base_group_user,hr.contract.type Employee,employee_contract_types.model_hr_contract_type,base.group_user,1,0,0,0
+access_hr_contract_type_hr_contract_group_hr_contract_manager,hr.contract.type Contract Administration,employee_contract_types.model_hr_contract_type,hr_contract.group_hr_contract_manager,1,1,1,1
+access_hr_contract_type_term_base_group_user,hr.contract.type.term Employee,employee_contract_types.model_hr_contract_type_term,base.group_user,1,0,0,0
+access_hr_contract_type_term_hr_contract_group_hr_contract_manager,hr.contract.type.term Contract Administration,employee_contract_types.model_hr_contract_type_term,hr_contract.group_hr_contract_manager,1,1,1,1
+

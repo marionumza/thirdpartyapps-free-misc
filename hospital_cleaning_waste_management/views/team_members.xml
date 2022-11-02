@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="cleaning_team_members">
+        <field name="name">Cleaning Teams Members</field>
+        <field name="res_model">team.category</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="team_member_form" model="ir.ui.view">
+        <field name="name">hospital.cleaning.team.member.form</field>
+        <field name="model">team.category</field>
+        <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="partner_name_id"/>
+                    <field name="responsible"/>
+                </group>
+            </sheet>
+        </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_labs_menu" model="ir.actions.act_window">
+        <field name="name">Labs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.labs</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Lab
+            </p>
+
+        </field>
+    </record>
+
+    <menuitem name="Labs and Tests "
+              id="labs_root"
+              sequence="13"/>
+    <menuitem name="Configuration"
+              id="hospital_configuration_root"
+              parent="labs_root"
+              sequence="9"/>
+    <menuitem name="Lab"
+              id="lab"
+              parent="hospital_configuration_root"
+              action="hospital_labs_menu"
+              sequence="8"/>
+</odoo>

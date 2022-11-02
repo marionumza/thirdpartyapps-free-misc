@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="clear_order_lines">
+            <field name="name">clear.order.lines.sales.order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+                <field name="arch" type="xml">
+                    <header>
+                        <button name="show_popup" type="object" string="Clear Order Lines"/>
+                    </header>
+                </field>
+        </record>
+    </data>
+</odoo>

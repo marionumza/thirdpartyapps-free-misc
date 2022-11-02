@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="waste_bins_management">
+        <field name="name">Waste Bins</field>
+        <field name="res_model">waste.bins</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="bins_tree" model="ir.ui.view">
+        <field name="name">Waste Bins Tree</field>
+        <field name="model">waste.bins</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                <field name="bin_number"/>
+                <field name="block"/>
+                <field name="date"/>
+                <field name="move_to"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="bins_views_search" model="ir.ui.view">
+        <field name="name">Waste Bins</field>
+        <field name="model">waste.bins</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Bins" name="Bins"
+                            context="{'group_by':'bin_number'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

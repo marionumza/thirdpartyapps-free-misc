@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>    
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form//field[@name='vat']" position="before">
+                    <field name="bsi_total_due"/>
+                    <field name="bsi_credit_due"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_partner_kanban_view" model="ir.ui.view">
+            <field name="name">res.partner.kanban</field>
+            <field name="model">res.partner</field>   
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_kanban_details')]" position="after">
+                    <span class="badge badge-pill"><i class="fa fa-fw fa-circle text-danger o_button_icon" role="img" aria-label="Amount Due" title="Amount Due"/><t t-esc="record.bsi_total_due"/></span>
+                    <span class="badge badge-pill"><i class="fa fa-fw fa-circle text-success o_button_icon" role="img" aria-label="Credit Amount Due" title="Credit Amount Due"/><t t-esc="record.bsi_credit_due"/></span>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
