@@ -1,0 +1,136 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<odoo>
+
+	<record id="view_kra_employee_value_tree" model="ir.ui.view">
+	   	<field name="name">eemployee.value.tree</field>
+	   	<field name="model">employee.value</field>
+	   	<field name="priority">2</field>
+	   	<field name="arch" type="xml">
+	    <tree string="KRA">
+	     	<field name="month"/>
+	     	<field name="year_id"/>
+	     	<field name="employee_id"/>
+	     	<field name="state"/>   
+	    </tree>
+	   	</field>
+        </record>
+
+    <record id="view_kra_employee_value_form" model="ir.ui.view">
+	   	<field name="name">employee.value.form</field>
+	   	<field name="model">employee.value</field>
+	   	<field name="priority">2</field>
+	   	<field name="arch" type="xml">
+	    <form string="Idea Type">
+
+	    	<header>
+
+                <button name="cancel_kra" string="Cancel"
+                    	type="object" states="draft"/>
+
+                <button name="done_kra" string="Done"
+                    	type="object" states="draft"/>
+
+	    		<field name="state" widget="statusbar" statusbar_visible="draft,cancel,done"/>
+
+	    	 </header>
+	    	 
+	    	<sheet>	
+	    	<group>
+		    	<group>
+		    		<field name="employee_id" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="month" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="job_id" />
+	     			<field name="total_avg"/>
+	    		</group>
+
+	    		<group>
+	    			<field name="employee_code"/>
+	     			<field name="appraiser_id" />
+	     			<field name="year_id" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="leadership_score" invisible="1" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    		<group name="Approch To Work" string="Approch To Work">
+	     			<field name="system_proccess" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="follow_instructions" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="adaptable_flexible" attrs="{'readonly' : [('state','=','done')]}"/>
+
+	     			<field name="ability_to_plan" attrs="{'readonly' : [('state','=','done')]}"/>	     		
+	    		</group>
+
+	    		<group name="Technical Skills" string="Technical Skills">
+	     			<field name="job_knowledge" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="skill_handke_work" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="learn_new_skill" attrs="{'readonly' : [('state','=','done')]}"/>	     		
+	    		</group>
+
+	    		<group name="Quality Of Work" string="Quality Of Work">
+	     			<field name="accuracy" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="reliability" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="client_satisfaction" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    		<group name="handling targets" string="Handling Targets">
+	     			<field name="work_on_time" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="work_under_pressure" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="handling_new_portfolio" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    		<group name="Interpersonal Skills" string="Interpersonal Skills">
+	     			<field name="relationship_co_workers" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="problem_solving" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="decision_making" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="time_management" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    		<group name="Communication Skills" string="Communication Skills">
+	     			<field name="oral_written_expression" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="sharing_of_knowledge" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    		<group name="Development" string="Development">
+	     			<field name="seek_t_d" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="open_to_ideas" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    		<group name="Personality" string="Personality">
+	     			<field name="enthusiastic" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="trustworthy" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    		<group name="Code Of Cunduct" string="Code Of Cunduct">
+	     			<field name="work_place_ettiquttes" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="punctuality" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="discipline" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="attendance" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    		<group name="Leadership" string="Leadership">
+	     			<field name="team_work" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="team_building" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="new_strategy_and_direction" attrs="{'readonly' : [('state','=','done')]}"/>
+	     			<field name="participation_hr_activity" attrs="{'readonly' : [('state','=','done')]}"/>
+	    		</group>
+
+	    	</group>
+	    		
+	     </sheet>
+	 </form>
+	</field>
+	</record>
+
+	<record id="value_employee_action" model="ir.actions.act_window">
+	  	<field name="name">Value Rating</field>
+	  	<field name="type">ir.actions.act_window</field>
+	  	<field name="res_model">employee.value</field>
+	  	<field name="view_mode">tree,form,kanban</field>
+	  	<field name="help" type="html">
+	   	<p class="oe_view_nocontent_create"> </p>
+	   	<p></p>
+	  	</field>
+	</record>
+	
+	<menuitem  id="sub_menu_value" parent="main_menu_kra" name="Value Rating" sequence="15" groups="hr.group_hr_manager"/>
+	<menuitem action="value_employee_action" id="menu_employee_value" parent="sub_menu_value" name="Value Rating" sequence="29"/>
+	
+</odoo>

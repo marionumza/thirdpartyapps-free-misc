@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='bid_evaluation_action' model='ir.actions.act_window'>
+        <field name="name">Bids Evaluation</field>
+        <field name="res_model">bid.evaluation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+   <record id="bid_evaluation_view_tree" model="ir.ui.view">
+    <field name="name">bid.evaluation.view.tree</field>
+    <field name="model">bid.evaluation</field>
+    <field name="arch" type="xml">
+        <tree string="Bids Evaluation" create="0">
+           <field name="name"/>
+           <field name="requisition_id"/>
+           <field name="purchase_order_id"/>
+           <field name="partner_id"/>
+           <field name="state"/>
+        </tree>
+    </field>
+   </record> 
+
+    <record id="bid_evaluation_form_view" model="ir.ui.view">
+        <field name="name">bid.evaluation.form.view</field>
+        <field name="model">bid.evaluation</field>
+        <field name="arch" type="xml">
+            <form string="Bid Evaluation" duplicate="0">
+                <header name="bid_eval_form_header">
+                    <button name="approve_evaluation" class="oe_highlight" string="Approve" type="object" attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <button name="reset_to_draft" string="Reset to Draft" type="object" attrs="{'invisible':[('state','!=','cancel')]}"/>
+                    <button name="cancel_evaluation" string="Cancel" type="object" attrs="{'invisible':[('state','not in',['draft','done'])]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <group string="Vendor and Bid Info">
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="date" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="user_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="score_avg" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="purchase_order_id" readonly="1"/>
+                            <field name="requisition_id" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group string="Evaluation Info">
+                        <group>
+                            <field name="evaluation_guidelines"/> 
+                            <field name="score_limit" invisible="1"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+
+                    <group string="Evaluation Checklist">
+                        <field name="checklist_item_ids" nolabel="1"  widget="one2many" attrs="{'readonly':[('state','in',['done','cancel'])]}">
+                            <tree  editable="bottom" decoration-danger="(item_clear == 'no')">
+                                <field name="name" string="Item" width="300px" />
+                                <field name="item_clear"/>
+                            </tree>
+                    </field>
+                    </group>
+
+                    <group string="Questions/Evaluation Criteria">
+                    </group>
+                    <notebook>
+                        <page name="questions" string="Questions/Evaluation Factors">
+                            <field name="question_ids" nolabel="1" widget="one2many" attrs="{'readonly':[('state','in',['done','cancel'])]}">
+                                <tree  editable="bottom" decoration-danger="(score == 0)">
+                                    <field name="name" string="Question/Factor" width="300px"  />
+                                    <field name="score" string="Score" width="100px"/>
+                                    <field name="remarks" string="Remarks" width="500px"/>
+                                </tree>
+                            </field>
+                            <group>
+                                <group></group>
+                                <group>
+                                    <label for="score_avg" />
+                                        <h4><field class="oe_right" name="score_avg" nolabel="0"/></h4>
+                                </group>
+                            </group>
+                            <!-- <field name="score_avg" string="Average Score"/> -->
+                            <group string="Notes">
+                                    <field name="notes" nolabel="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+  
+    <!-- Enable to add a menu for evaluation records in the configuraiton tab of the purchase app-->
+    <!-- <menuitem
+    id="bid_evaluation_menu"
+    action="bid_evaluation_action"
+    name="Bid Evaluation"
+    parent="purchase.menu_purchase_config"
+    groups="purchase.group_purchase_user"
+    sequence="6"/> -->
+
+</odoo>

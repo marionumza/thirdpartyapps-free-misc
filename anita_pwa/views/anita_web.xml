@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="anita_pwa_registration" name="Anita PWA registration" inherit_id="web.webclient_bootstrap">
+        <xpath expr="//t[@t-call-assets='web.assets_common']" position="before">
+            <link rel="manifest" t-attf-href="/anita_pwa/manifest" />
+            
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+            <t t-set="pwa_config" t-value="request.env['res.config.settings'].sudo().get_anita_pwa_config()"/>
+            <meta name="apple-mobile-web-app-title" t-att-content="pwa_config.get('pwa_name', 'Funenc')" />
+            <link rel="apple-touch-icon" t-att-href="pwa_config.get('pwa_icon_152')" />
+            <meta name="theme-color" t-att-content="pwa_config.get('pwa_theme_color')" />
+        </xpath>
+    </template>
+</odoo>

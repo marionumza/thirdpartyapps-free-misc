@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  
+    <record id="view_purchase_requisition_form_purchase_panel" model="ir.ui.view">
+        <field name="name">purchase.requisition.form.purchase.panel</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='products']" position="after">
+                <page string="Bid Evaluation" name="bid_evaluation" attrs="{'invisible': [('enable_evaluation', '=', False)],'required': [('enable_evaluation', '=', True),('state','=','in_progress')],'readonly': [('state', 'not in', ['draft','ongoing','in_progress'])]}">
+                    <group name="eval-guidelines" string="Evaluation Guidelines">
+                        <group name="eval-template-group">
+                            <field name="eval_template_id" string="Evaluation Template" attrs="{'invisible': [('enable_evaluation', '=', False)],'required': [('enable_evaluation', '=', True),('state','=','in_progress')],'readonly': [('state', 'not in', ['draft','ongoing','in_progress'])]}"/>
+                            <field name="enable_evaluation" invisible="1" />
+                        </group>
+                    </group>
+                    <group name="eval-guidelines">
+                        <field name="evaluation_guidelines" placeholder="Any guidelines used while evaluating bids. Guidelines written here will be reproduced in each evaluation record."/>
+                    </group>
+                    <group string="Selected Bids" col="4">
+                        <group colspan="4">
+                            <field name="selected_bid_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="partner_id"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="amount_total"/>
+                                    <field name="state" invisible="1"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group >
+                        </group>
+                    </group>
+                    <group col="4">
+                        <group colspan="4">
+                            <field name="selection_justification" string="Justification/Panel Remarks" placeholder="Note down any remarks or justifications regarding the evaluation process, results and/or bid selection." />
+                        </group>
+                        <group ></group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+   <record id="view_evaluations_of_purchase_agreement_record" model="ir.actions.act_window">
+        <field name="name">View All Evaluations</field>
+        <field name="res_model">bid.evaluation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('requisition_id', '=', active_id)]</field>
+        <field name="binding_model_id" ref="model_purchase_requisition"/>
+    </record>
+    
+    <record id="mail_bid_panel_member_evaluation_notification" model="mail.activity.type">
+        <field name="name">Bids Evaluation</field>
+        <field name="icon">fa-sun-o</field>
+    </record>
+    
+    <record id="mail_purchase_panel_member_notification" model="mail.activity.type">
+        <field name="name">Bids Evaluation</field>
+        <field name="icon">fa-sun-o</field>
+    </record>
+
+</odoo>

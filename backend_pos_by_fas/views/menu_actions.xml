@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="backend_pos_main_menu" name="Backend POS" sequence="0" web_icon="backend_pos_by_fas,static/description/icon.png"/>
+        <menuitem id="backend_pos_session" name="Dashboard" parent="backend_pos_main_menu" sequence="1" action="action_pos_config_kanban_backend"/>
+
+    </data>
+</odoo>

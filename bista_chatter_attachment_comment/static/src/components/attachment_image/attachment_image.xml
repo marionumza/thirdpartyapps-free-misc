@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="DisplayComment" t-inherit="mail.AttachmentImage"
+       t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o-details-overlay')]" position="inside">
+            <div class="o_Attachment_ImageEditComment d-flex flex-row">
+                <div class="o_Attachment_ImageComment d-flex flex-column">
+                    <t t-esc="attachmentImage.attachment.description"/>
+                </div>
+                <div class="o_Attachment_action d-flex flex-column justify-content-center align-items-center"
+                     title="Add Comment" t-on-click="_GetDescription">
+                        <i class='fa fa-comment' t-att-data-id="attachmentImage.attachment.id"/>
+                </div>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

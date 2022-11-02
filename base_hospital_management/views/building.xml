@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="buildings_form" model="ir.ui.view">
+        <field name="name">hospital.buildings.form</field>
+        <field name="model">hospital.buildings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                     <div class="oe_button_box" name="button_box">
+                        <button name="open_building_bed"
+                                class="oe_stat_button" icon="fa-archive"
+                                type="object">
+                            <field name="bed_count" string="Bed"
+                            widget="statinfo"> </field>
+                        </button>
+                         <button name="open_building_ward"
+                                class="oe_stat_button" icon="fa-archive"
+                                type="object">
+                            <field name="ward_count" string="Ward"
+                            widget="statinfo"> </field>
+                        </button>
+                     </div>
+
+                    <group>
+                        <group>
+
+                            <field name="building_name"/>
+                            <field name="buildings_seq" readonly="1"/>
+                            <field name="institution_id"/>
+
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <group string="Additional Information" name="additional_info"/>
+                            <field name="notes"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="buildings_tree" model="ir.ui.view">
+        <field name="name">hospital.buildings.tree</field>
+        <field name="model">hospital.buildings</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="buildings_seq" readonly="1"/>
+                <field name="building_name"/>
+                <field name="institution_id"/>
+                <field name="phone"/>
+                <field name="mobile"/>
+                <field name="email"/>
+
+
+            </tree>
+
+        </field>
+    </record>
+<!--    Action of buildings menu-->
+    <record model="ir.actions.act_window" id="buildings_action">
+        <field name="name">Buildings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.buildings</field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+                <p class="o_view_nocontent_smiling_face">
+                    Create  buildings
+                </p><p>
+                    You can create buildings here.
+                </p>
+            </field>
+    </record>
+     <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Infrastructure Management"
+              id="hospital_hospital_root"
+              parent="hospital_root"
+              sequence="8"/>
+    <menuitem name="Block"
+              id="hospital_building"
+              parent="hospital_hospital_root"
+              action="buildings_action"
+              sequence="9"/>
+</odoo>

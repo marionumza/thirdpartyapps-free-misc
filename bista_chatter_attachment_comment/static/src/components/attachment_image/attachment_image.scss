@@ -1,0 +1,27 @@
+.o_AttachmentImage{
+    .o_Attachment_ImageEditComment{
+        width:100%;
+        max-height: 40px;
+        min-height: 20px;
+        position: absolute;
+        bottom: 0px;
+        .o_Attachment_ImageComment {
+            font-weight: bold;
+            width:90%;
+            word-wrap: anywhere;
+            position: absolute;
+            bottom: 0;
+            float: right;
+            right: 0;
+        }
+        .o_Attachment_action{
+            font-weight: bold;
+            width:9%;
+            cursor: pointer;
+        }
+    }
+}
+.o_Attachment_NonImageComment{
+    font-weight: bold;
+    width: 180px;
+}

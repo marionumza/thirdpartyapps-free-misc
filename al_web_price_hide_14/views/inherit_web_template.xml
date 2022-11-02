@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="web_template_inherit" inherit_id="website_sale.products_item">
+            <xpath expr="//div[@class='card-body p-0 text-center o_wsale_product_information']" position="replace">
+                <div class="card-body p-0 text-center o_wsale_product_information">
+                    <div class="p-2 o_wsale_product_information_text">
+                        <h6 class="o_wsale_products_item_title">
+                            <a itemprop="name" t-att-href="product_href" t-att-content="product.name" t-field="product.name" />
+                            <a role="button" t-if="not product.website_published" t-att-href="product_href" class="btn btn-sm btn-danger" title="This product is unpublished.">Unpublished</a>
+                        </h6>
+                        <t t-if=" not request.env.user.has_group('base.group_public')">
+                            <div class="product_price" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                                <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                                <span t-if="combination_info['price']" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                <span itemprop="price" style="display:none;" t-esc="combination_info['price']" />
+                                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <a href="/web/login" class="btn btn-primary btn-lg btn-block">Sign in For Price</a>
+                        </t>
+                    </div>
+                <div class="o_wsale_product_btn"/>
+                </div>
+            </xpath>
+        </template>
+
+    <template id="product_details_custom" inherit_id="website_sale.product">
+     <xpath expr="//div[@id='product_details']/form/div[@class='js_product js_main_product']" position="replace">
+        <div class="js_product js_main_product">
+        <t t-placeholder="select">
+            <input type="hidden" class="product_id" name="product_id" t-att-value="product_variant.id" />
+            <input type="hidden" class="product_template_id" name="product_template_id" t-att-value="product.id" />
+            <t t-if="combination" t-call="sale.variants">
+                <t t-set="ul_class" t-value="'flex-column'" />
+                <t t-set="parent_combination" t-value="None" />
+            </t>
+            <t t-else="">
+                <ul class="d-none js_add_cart_variants" t-att-data-attribute_exclusions="{'exclusions: []'}"/>
+            </t>
+        </t>
+        <t t-if=" not request.env.user.has_group('base.group_public')">
+            <t t-call="website_sale.product_price" />
+            <p t-if="True" class="css_not_available_msg alert alert-warning">This combination does not exist.</p>
+            <a role="button" id="add_to_cart" class="btn btn-primary btn-lg mt16 js_check_product a-submit d-block d-sm-inline-block" href="#"><i class="fa fa-shopping-cart"/> Add to Cart</a>
+        </t>
+        <t t-else="">
+            <a href="/web/login" class="btn btn-primary btn-lg btn-block">Sign in For Price</a>
+        </t>
+        <div id="product_option_block"/>
+    </div>
+    </xpath>
+  </template>
+
+
+    </data>
+</odoo>

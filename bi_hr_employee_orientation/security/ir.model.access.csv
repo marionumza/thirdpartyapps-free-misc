@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_orientation,access.employee.orientation,model_employee_orientation,,1,1,1,1
+access_orientation_checklists_requests,access.orientation.checklists.requests,model_orientation_checklists_requests,,1,1,1,1
+access_orientation_checklists,access.orientation.checklists,model_orientation_checklists,,1,1,1,1
+access_orientation_checklists_line,access.orientation.checklists.line,model_orientation_checklists_line,,1,1,1,1

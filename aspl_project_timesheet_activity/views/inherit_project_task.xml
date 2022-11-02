@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+    
+        
+        <record model="ir.ui.view" id="view_task_inherit_activity_data">
+                <field name="name">project.task.inherit.activity</field>
+                <field name="model">project.task</field>
+                <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+                <field eval="2" name="priority" />
+                <field name="arch" type="xml">
+                     <xpath expr="//field[@name='timesheet_ids']/tree/field[@name='name']" position="after">
+                            <field name="timesheet_activity_id" options="{'no_create': True, 'no_create_edit':True, 'no_open':True}"/>
+                    </xpath>
+                </field>
+        </record>
+
+        <record id="inherit_view_hr_timesheet_line_tree_activity" model="ir.ui.view">
+            <field name="name">account.analytic.line.tree.inherit.activity</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='task_id']" position="after">
+                            <field name="timesheet_activity_id" widget="badge"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+
+</odoo>
+           

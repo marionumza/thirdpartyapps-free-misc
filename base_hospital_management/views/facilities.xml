@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="facilities_form" model="ir.ui.view">
+        <field name="name">hospital.facilities.form</field>
+        <field name="model">hospital.facilities</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="facilities"> </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="facilities_tree" model="ir.ui.view">
+        <field name="name">hospital.facilities.tree</field>
+        <field name="model">hospital.facilities</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="facilities"> </field>
+
+            </tree>
+
+        </field>
+    </record>
+<!--    Action of facilities menu-->
+    <record model="ir.actions.act_window" id="facilities_action">
+        <field name="name">Facilities</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.facilities</field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+                <p class="o_view_nocontent_smiling_face">
+                    Create  facilities
+                </p><p>
+                    You can create facilities here.
+                </p>
+            </field>
+    </record>
+
+     <record id="ward_facilities_form" model="ir.ui.view">
+        <field name="name">ward.facilities.form</field>
+        <field name="model">ward.facilities</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="facilities"> </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ward_facilities_tree" model="ir.ui.view">
+        <field name="name">ward.facilities.tree</field>
+        <field name="model">ward.facilities</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="facilities"> </field>
+            </tree>
+        </field>
+    </record>
+
+<!--    Action of facilities menu-->
+    <record model="ir.actions.act_window" id="ward_facilities_action">
+        <field name="name">Ward Facilities</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ward.facilities</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create ward facilities
+                </p><p>
+                    You can ward create facilities here.
+                </p>
+        </field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Configuration"
+              id="hospital_configuration_root"
+              parent="hospital_root"
+              sequence="9"/>
+    <menuitem name="Facilities"
+              id="facilities_root"
+              parent="hospital_configuration_root"
+              sequence="10"/>
+    <menuitem name=" Room Facilities"
+              id="hospital_facilities"
+              parent="facilities_root"
+              action="facilities_action"
+              sequence="14"/>
+    <menuitem name="Ward Facilities"
+              id="ward_facilities"
+              parent="facilities_root"
+              action="ward_facilities_action"
+              sequence="15"/>
+</odoo>

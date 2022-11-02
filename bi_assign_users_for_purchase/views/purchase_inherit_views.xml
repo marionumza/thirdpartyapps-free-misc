@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_order_form_inherit_purchase_invoice" model="ir.ui.view">
+		<field name="name">purchase.order.form.purchaseinvoice.module</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+
+		<xpath expr="//field[@name='partner_id']" position="after">
+			<field name="auto_user_assign"/>
+			<field name="salesperson_id" attrs="{'invisible':[('auto_user_assign','=',False)]}"/>
+
+		</xpath>
+	</field>
+</record>
+</odoo>

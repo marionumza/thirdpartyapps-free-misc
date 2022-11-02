@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_form" model="ir.ui.view">
+        <field name="name">hospital.hospital.form</field>
+        <field name="model">hospital.hospital</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div>
+                        <field name="image_129" widget="image" class="oe_avatar"
+                               options="{'preview_image': 'image_128'}"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="hosp_name" required="True"/>
+                            <field name="hosp_type" required="True"/>
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <label for="hosp_street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="hosp_street" placeholder="Street..." class="o_address_street"/>
+                                <field name="hosp_street2" placeholder="Street 2..." class="o_address_street"/>
+                                <field name="hosp_city" placeholder="City" class="o_address_city"/>
+                                <field name="hosp_state_id" class="o_address_state" placeholder="State"
+                                       options='{"no_open": True}'/>
+                                <field name="hosp_zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="hosp_country_id" placeholder="Country" class="o_address_country"
+                                       options='{"no_open": True, "no_create": True}'/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="public" string="Additional Notes">
+                            <field name="note" placeholder="Notes"
+                                   class="o_address_city"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hospital_tree" model="ir.ui.view">
+        <field name="name">hospital.hospital.tree</field>
+        <field name="model">hospital.hospital</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="hosp_name"/>
+                <field name="hosp_type"/>
+                <field name="phone"/>
+                <field name="mobile"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+    <!--    Action of hospital menu-->
+    <record model="ir.actions.act_window" id="hospital_action">
+        <field name="name">Hospital</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.hospital</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Hospital
+            </p>
+            <p>
+                You can create hospital here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Infrastructure Management"
+              id="hospital_hospital_root"
+              parent="hospital_root"
+              sequence="9"/>
+    <menuitem name="Institution"
+              id="hospital_hospital"
+              parent="hospital_hospital_root"
+              action="hospital_action"
+              sequence="8"/>
+</odoo>

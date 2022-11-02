@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="blood_tree" model="ir.ui.view">
+        <field name="name">hospital.blood.tree</field>
+        <field name="model">hospital.blood</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                <field name="blood_grp"> </field>
+
+            </tree>
+
+        </field>
+    </record>
+<!--    Action of blood menu-->
+    <record model="ir.actions.act_window" id="blood_action">
+        <field name="name">Blood</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.blood</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+
+    <record id="genetic_tree" model="ir.ui.view">
+        <field name="name">genetic.risks.tree</field>
+        <field name="model">genetic.risks</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                <field name="risks"> </field>
+
+            </tree>
+
+        </field>
+    </record>
+<!--    Action of genetic risks menu-->
+    <record model="ir.actions.act_window" id="action_risks">
+        <field name="name">Genetic Risks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">genetic.risks</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Configuration"
+              id="hospital_configuration_root"
+              parent="hospital_root"
+              sequence="9"/>
+    <menuitem name='Patient'
+              id="hospital_patient_configuration_root"
+              parent="hospital_configuration_root"
+              sequence="10"/>
+    <menuitem name="Blood Group"
+              id="hospital_blood"
+              parent="hospital_patient_configuration_root"
+              action="blood_action"
+              sequence="14"/>
+
+    <menuitem name="Genetic Risks"
+              id="genetic_risks"
+              parent="hospital_patient_configuration_root"
+              action="action_risks"
+              sequence="15"/>
+</odoo>

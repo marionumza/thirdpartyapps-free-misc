@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_kra_template">
+			<t t-call="web.external_layout">
+				<t t-set="doc" t-value="doc.with_context({})" />
+				<div class="page">
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+
+
+					<h2 style="text-align: center">Employee KRA</h2>
+
+					<br/>
+
+					<table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;border-top: 5px solid #ddd;height:50%;">
+                        <td><strong >KRA Month : </strong> </td>
+                        <td><span t-field="doc.month"/></td>
+                        <td><strong >Year : </strong> </td>
+                        <td><span t-field="doc.year_id.name"/></td>
+                        
+                    </tr>
+                    
+                    
+
+                    <tr style="padding: 8px;text-align: left;
+                    	border-bottom: 5px solid #ddd;">
+
+                    	<td><strong >Employee :</strong> </td>
+                    	<td><span t-field="doc.employee_id.name"/></td>
+                        <td><strong >KRA :</strong></td>
+                        <td><span t-field="doc.kra_id.name"/></td>
+   
+                    </tr>
+                    
+                    
+                </table>
+
+                <br/>
+                <br/>
+                <h3>KRA Questions</h3>
+                <br/>
+
+                <table class="table table-condensed">
+							<thead style="border: 5px solid #ddd;">
+								<tr class="text-center">
+									<th>Questions</th>
+									<th>Description</th>
+									<th>Hint</th>
+									<th>Weightage</th>
+
+									<th>Employee Rating</th>
+									<th>Employee Remark</th>
+									<th>Manager Rating</th>
+									<th>Manager Remark</th>
+									<th>Final Score</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr t-foreach="doc.questions_ids" t-as="line" class="text-center">
+<!-- 									<t t-if="line.account_id.internal_type=='payable'"> -->
+										<td>
+											<span t-esc="line.name" />
+										</td>
+										<td>
+											<span t-esc="line.description" />
+										</td>
+										<td>
+											<span t-esc="line.hint" />
+										</td>
+										<td >
+											<span t-esc="line.weightage" />
+										</td>
+
+										<td>
+											<span t-esc="line.employee_rating" />
+										</td>
+										<td>
+											<span t-esc="line.employee_remark" />
+										</td>
+										<td>
+											<span t-esc="line.manager_rating" />
+										</td>
+										<td >
+											<span t-esc="line.manager_remark" />
+										</td>
+
+										<td >
+											<span t-esc="line.final_score" />
+										</td>
+										
+								</tr>
+							</tbody>
+						</table>
+
+					
+				</div>
+			</t>
+		</template>
+
+		<template id="report_kra">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="bi_employee_kra.report_kra_template"  />
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

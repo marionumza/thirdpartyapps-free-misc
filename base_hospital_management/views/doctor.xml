@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Inherit hr search view-->
+    <record id="view_doctor_filter" model="ir.ui.view">
+        <field name="name">doctor.search.filter</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='group_job']" position="after">
+                <filter name="job_title" string="Doctor" domain="[('is_doctor','=','doctor')]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="employee_doctor_search" model="ir.ui.view">
+            <field name="name">doctor.search</field>
+            <field name="model">hr.employee</field>
+            <field name="arch" type="xml">
+                <search string="Doctor">
+                   <filter string="Doctor" name="is_doctor" domain="[('is_doctor', '=', 'doctor')]"/>
+                </search>
+            </field>
+    </record>
+
+    <record id="doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='coach_id']" position="after">
+                <field name="currency_id" invisible="1"/>
+                <field name="consultancy_charge" attrs="{'invisible': [('is_doctor','!=','doctor')]}"/>
+                <field name="consultancy_type" attrs="{'invisible': [('is_doctor','!=','doctor')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='mobile_phone']" position="before">
+                <field name="is_doctor" widget="radio" options="{'horizontal': true}"/>
+            </xpath>
+            <xpath expr="//field[@name='certificate']" position="after">
+                <field name="degrees" widget="many2many_tags" attrs="{'invisible': [('is_doctor','!=','doctor')]}"/>
+                <field name="institute" widget="many2many_tags" attrs="{'invisible': [('is_doctor','!=','doctor')]}"/>
+                <field name="specialization" widget="many2many_tags"
+                       attrs="{'invisible': [('is_doctor','!=','doctor')]}"/>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']" position="after">
+                <page name="prescription" string="Prescription" attrs="{'invisible': [('is_doctor','!=','doctor')]}">
+                    <field name="prescription_ids">
+                        <tree editable="bottom" create="false">
+                            <field name="pharmacy_id"/>
+                            <field name="patient_id"/>
+                            <field name="currency_id"
+                                   invisible="1"/>
+                            <field name="amount_total"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+
+    </record>
+
+    <record id="employee_doctor_view" model="ir.actions.act_window">
+        <field name="name">Doctor</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,tree,form,activity</field>
+        <field name="context">{'search_default_is_doctor': 1}</field>
+        <field name="view_id" eval="False"/>
+        <field name="search_view_id" ref="base_hospital_management.employee_doctor_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new employee
+            </p>
+            <p>
+                With just a quick glance on the Odoo employee screen, you
+                can easily find all the information you need for each person;
+                contact data, job position, availability, etc.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Doctor"
+              id="hospital_doctor_root"
+              parent="hospital_root"
+              sequence="7"/>
+    <menuitem name="Doctor"
+              id="hospital_doctor_details"
+              parent="hospital_doctor_root"
+              action="employee_doctor_view"
+              sequence="8"/>
+</odoo>

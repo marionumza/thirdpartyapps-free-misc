@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="account.action_account_payments_transfer">
+        <field name="name">Payment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.payment</field>
+        <field name="context">{'search_default_state_draft': 1,'chat_icon': True}</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Payment
+            </p>
+            <p>
+                You can create Payment.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Payment"
+              id="hospital_payment_root"
+              parent="hospital_root"
+              sequence="8"/>
+    <menuitem name=" Payment"
+              id="hospital_payment"
+              parent="hospital_payment_root"
+              action="account.action_account_payments_transfer"
+              sequence="14"/>
+</odoo>

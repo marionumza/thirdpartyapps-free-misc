@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="medicine_tree" model="ir.ui.view">
+        <field name="name">hospital.medicine.tree</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree string="Medicine">
+                <field name="name"/>
+                <field name="brand"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="product_prices"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale.product_template_action" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form,activity</field>
+        <field name="view_id" ref="product.product_template_kanban_view"/>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                   (0, 0, {'view_mode': 'kanban', 'view_id': ref('product.product_template_kanban_view')}),
+                   (0, 0, {'view_mode': 'form', 'view_id': ref('product.product_template_only_form_view')}),
+                   (0, 0, {'view_mode': 'tree', 'view_id': ref('product.product_template_tree_view')})
+                   ]"/>
+        <field name="search_view_id" ref="product.product_template_search_view"/>
+        <field name="context">{"search_default_filter_to_sell":1, "sale_multi_pricelist_product_template": 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new product
+            </p>
+            <p>
+                You must define a product for everything you sell or purchase,
+                whether it's a storable product, a consumable or a service.
+            </p>
+        </field>
+    </record>
+    <record id="medicine_form" model="ir.ui.view">
+        <field name="name">hospital.medicine.form</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="d-flex">
+                            <field name="name" placeholder="Medicine" required="True"/>
+                        </h1>
+                        <group>
+                            <field name="medicine_ok"/>
+                            <field name="brand"/>
+                            <field name="type"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="product_prices" string="Price"/>
+                            <field name="categ_id" string="Category"/>
+                        </group>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="medicine_medicine" model="ir.actions.act_window">
+        <field name="name">Medicine</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="product.product_template_search_view"/>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                       (0, 0, {'view_mode': 'tree', 'view_id': ref('base_hospital_management.medicine_tree')}),
+                       (0, 0, {'view_mode': 'form', 'view_id': ref('base_hospital_management.medicine_form')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a contact Medicine
+            </p>
+            <p>
+                Create a contact Medicine
+            </p>
+        </field>
+    </record>
+
+</odoo>

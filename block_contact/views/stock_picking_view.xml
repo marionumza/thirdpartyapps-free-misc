@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_stock_picking_form" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="x_current_block_status"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_stock_picking_form_alert" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="after">
+                <div class="alert alert-warning" role="alert" attrs="{'invisible':[('x_current_block_status', '!=', 'True')]}">
+                  This expedition is blocked due to a blocked contact, please contact with an administrator for more information.
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_picking_form_header" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="attributes">
+                <attribute name="attrs">
+                    {'invisible':[('x_current_block_status', '=', 'True')]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="view_stock_picking_tree" model="ir.ui.view">
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="x_current_block_status"/>
+            </field>
+        </field>
+    </record>
+</odoo>

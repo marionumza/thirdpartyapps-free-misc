@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_res_config_add_id" model="ir.ui.view">
+        <field name="name">res.config.purchase.new</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@groups='purchase.group_purchase_manager']/div[@class='row mt16 o_settings_container']" position="after">
+                      <h2>User Assignment</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box" title="User/Salesperson will assigned to each state of purchase">
+                                <div class="o_setting_left_pane">
+                                    <field name="purchase_user_assign"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="purchase_user_assign"/>
+                                    <div class="text-muted">
+                                        User/Salesperson will assigned to each state of purchase.
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="row mt16 o_settings_container" attrs="{'invisible':[('purchase_user_assign','=',False)]}">
+                        <div class="col-12 col-lg-6 o_setting_box" title="Assign users for each stage of the purchase order to avoid human errors.">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="draft_id" string="Default purchase user on each stage"/>
+                                <div class="text-muted">
+                                    Assign default purchase user on each stage.
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <label for="draft_id" string="Draft" class="col-md-3 o_light_label"/>
+                                        <field name="draft_id"/>
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <label for="sent_id" string="Sent" class="col-md-3 o_light_label"/>
+                                        <field name="sent_id"/>
+                                    </div>
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <label for="purchase_order_id" string="Purchase Order" class="col-md-3 o_light_label"/>
+                                        <field name="purchase_order_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </xpath>
+            </field>
+        </record>        
+    </data>
+</odoo>

@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_kra,access.hr.kra,bi_employee_kra.model_hr_kra,,1,1,1,1
+access_kra_questions,access.kra.questions,bi_employee_kra.model_kra_questions,,1,1,1,1
+access_employee_kra,access.employee.kra,bi_employee_kra.model_employee_kra,,1,1,1,1
+access_year_list,access.year.list,bi_employee_kra.model_year_list,,1,1,1,1
+access_employee_value,access.employee.value,bi_employee_kra.model_employee_value,,1,1,1,1
+access_employee_kra_report,access.employee.kra.report,bi_employee_kra.model_employee_kra_report,,1,1,1,1
+
+access_employee_value_report,access.employee.value.report,bi_employee_kra.model_employee_value_report,,1,1,1,1
+access_kra_wizard,access.kra.wizard,bi_employee_kra.model_kra_wizard,,1,1,1,1
+

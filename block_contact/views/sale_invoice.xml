@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_sale_invoice_button" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[4]" position="attributes">
+                <attribute name="attrs">
+                    {'invisible': ['|', ('invoice_status', '!=', 'no'), ('state', '!=', 'sale')],
+                     'invisible':['|', ('x_block_status','=','True'), ('invoice_status', '!=', 'no')]}
+                    </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

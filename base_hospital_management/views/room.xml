@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="room_form" model="ir.ui.view">
+        <field name="name">patient.room.form</field>
+        <field name="model">patient.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                   <field name="state" widget="statusbar"/>
+                     <button name="action_room_assign" string="Assign" attrs="{'invisible':[('state','=','not')]}"
+                            class="oe_highlight" type="object">
+                    </button>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="room_no"> </field>
+                            <field name="building_id"> </field>
+                            <field name="ward_id"> </field>
+                            <field name="bed_id" > </field>
+                        </group>
+                        <group>
+                            <field name="facilities_ids" widget="many2many_tags"> </field>
+                            <field name="currency_id" invisible="1"> </field>
+                            <field name="rent" widget="monetary"> </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="room_tree" model="ir.ui.view">
+        <field name="name">patient.room.tree</field>
+        <field name="model">patient.room</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="room_no"> </field>
+                <field name="bed_id"> </field>
+                <field name="facilities_ids" widget="many2many_tags"> </field>
+                <field name="currency_id" invisible="1"> </field>
+                <field name="ward_id"> </field>
+                <field name="rent" widget="monetary"> </field>
+
+            </tree>
+
+        </field>
+    </record>
+<!--    Action of ward menu-->
+    <record model="ir.actions.act_window" id="room_action">
+        <field name="name">Room</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">patient.room</field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+                <p class="o_view_nocontent_smiling_face">
+                    Create  Room
+                </p><p>
+                    You can create room here.
+                </p>
+            </field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Infrastructure Management"
+              id="hospital_hospital_root"
+              parent="hospital_root"
+              sequence="9"/>
+    <menuitem name="Room"
+              id="hospital_room"
+              parent="hospital_hospital_root"
+              action="room_action"
+              sequence="13"/>
+</odoo>

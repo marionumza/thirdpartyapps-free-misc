@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	
+	<record id="view_employee_orientation_checklist_tree" model="ir.ui.view">
+	   <field name="name">orientation.checklists.tree</field>
+	   <field name="model">orientation.checklists</field>
+	   <field name="priority">2</field>
+	   <field name="arch" type="xml">
+	    <tree string="Orientation Checklists">
+	     <field name="name"/>
+	     <field  name="department_id"/>
+	     <field name="active"/>
+
+	  
+	    </tree>
+	   </field>
+        </record>
+        
+
+
+        <record id="view_employee_orientation_checklist_form" model="ir.ui.view">
+	   <field name="name">orientation.checklists.form</field>
+	   <field name="model">orientation.checklists</field>
+	   <field name="priority">2</field>
+	   <field name="arch" type="xml">
+	    <form string="Orientation Checklists Line">
+	    	 
+	    	
+	    	<sheet>
+	    		<group>
+	    			<field name="name"/>
+	     			<field  name="department_id"/>
+	     			<field name="active"/>
+	    		</group>
+	    		<notebook>
+	    			<page string="Checklists line">
+	    				<field name="checklists_line_ids"/>
+	    			</page>
+	    		</notebook>
+	     </sheet>
+	 </form>
+	</field>
+</record>
+	  <record id="employee_orientation_checklist_action" model="ir.actions.act_window">
+	  <field name="name">Orientation Checklists</field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">orientation.checklists</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+	<menuitem action="employee_orientation_checklist_action" id="menu_orientation_checklist_line" parent="sub_menu_orientation_config" name="Orientation Checklists" sequence="25"/>
+
+</odoo>

@@ -1,0 +1,109 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<odoo>
+
+	<record id="view_kra_employee_hr_tree" model="ir.ui.view">
+	   	<field name="name">employee.kra.tree</field>
+	   	<field name="model">employee.kra</field>
+	   	<field name="priority">2</field>
+	   	<field name="arch" type="xml">
+		<tree string="KRA" create="false">
+		 	<field name="month"/>
+		 	<field name="kra_quarter"/>
+		 	<field name="year_id"/>
+		 	<field name="employee_id"/>
+		 	<field name="kra_id"/>
+		 	<field name="questions_ids"/>
+		 	<field name="state"/>	 
+		</tree>
+	   	</field>
+	</record>
+
+	<record id="view_kra_employee_hr_form" model="ir.ui.view">
+	   	<field name="name">employee.kra.form</field>
+	   	<field name="model">employee.kra</field>
+	   	<field name="priority">2</field>
+	   	<field name="arch" type="xml">
+		<form string="Idea Type" create="false">
+			<header>
+				<button name="submit_to_supervisor" string="Submit To Supervisor"
+						type="object" states="draft"/>
+
+				<button name="cancel_kra" string="Cancel"
+						type="object" states="draft,submit"/>
+
+				<button name="done_kra" string="Done"
+						type="object" states="submit" groups="hr.group_hr_manager"/>
+
+				<field name="state" widget="statusbar" statusbar_visible="draft,submit,cancel,done"/>
+			 </header>
+			
+			<sheet>
+			<group>
+				<group>
+					<field name="month" attrs="{'readonly' : [('state','=','done')]}"/>
+					<field name="year_id" attrs="{'readonly' : [('state','=','done')]}"/>
+					<field name="kra_id" attrs="{'readonly' : [('state','=','done')]}"/>
+				</group>
+
+				<group>
+					<field name="kra_quarter" attrs="{'readonly' : [('state','=','done')]}"/>
+					<field name="employee_id" attrs="{'readonly' : [('state','=','done')]}"/>
+					<field name = "total_employee_rating" invisible="1"/>
+					<field name = "total_manager_rating" invisible="1"/>
+					<field name = "total_final_score" invisible="1"/>
+				</group>
+			</group>
+				
+			<notebook>
+			<page string="Questions" name="Questions">
+				<field  name="questions_ids" attrs="{'readonly' : [('state','=','done')]}">
+					<tree editable="bottom">
+						<field name="name"/>
+						<field name="description"/>
+						<field name="hint"/>
+						<field name="weightage"/>
+						<field name="state" invisible="1"/>
+						<field name="employee_rating" attrs="{'readonly' : [('state','!=','draft')]}"/>
+						<field name="employee_remark" attrs="{'readonly' : [('state','!=','draft')]}"/>
+						<field name="manager_rating" attrs="{'readonly' : [('state','!=','submit')]}"/>
+						<field name="manager_remark" attrs="{'readonly' : [('state','!=','submit')]}"/>
+						<field name="final_score" attrs="{'readonly' : [('state','!=','submit')]}"/>
+					</tree>
+				</field>
+			</page>	
+			
+			</notebook>	     
+		 </sheet>
+	 </form>
+	</field>
+	</record>
+
+	<record id="kra_employee_action" model="ir.actions.act_window">
+	  	<field name="name">Employee KRA</field>
+	  	<field name="type">ir.actions.act_window</field>
+	  	<field name="res_model">employee.kra</field>
+	  	<field name="view_mode">tree,form,kanban</field>
+	  	<field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+	<record id="kra_employee_review_action" model="ir.actions.act_window">
+	  	<field name="name">KRA To Review</field>
+	  	<field name="type">ir.actions.act_window</field>
+	  	<field name="res_model">employee.kra</field>
+	  	<field name="view_mode">tree,form,kanban</field>
+	  	<field name="domain">[('state','in',['submit'])]</field>
+	  	<field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+		
+	<menuitem  id="sub_menu_kra" parent="main_menu_kra" name="KRA" sequence="15" />
+	<menuitem action="kra_employee_action" id="menu_employee_kra_name" parent="sub_menu_kra" name="KRA" sequence="29"/>
+
+	<menuitem action="kra_employee_review_action" id="menu_employee_kra_review" parent="sub_menu_kra" name="KRA To Review" sequence="30" groups="hr.group_hr_manager"/>
+	
+</odoo>

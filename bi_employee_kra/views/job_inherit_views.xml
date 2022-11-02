@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="hr_job_form_view_inherit_id" model="ir.ui.view">
+		<field name="name">hr.job.form.inherite</field>
+		<field name="model">hr.job</field>
+		<field name="priority" eval="8" />
+		<field name="inherit_id" ref="hr.view_hr_job_form"/>
+		<field name="arch" type="xml">
+
+			<xpath expr="//field[@name='department_id']" position="after">
+				<field name="kra_id"/>
+				
+			</xpath>
+
+	</field>
+	</record>
+
+</odoo>

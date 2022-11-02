@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<record id="kra_wizard_view" model="ir.ui.view">
+		<field name="name">Create KRA</field>
+		<field name="model">kra.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Create KRA">
+				<p class="oe_grey">
+					
+				</p>
+				<group>
+					<group>
+					<field name="month"/>
+					<field name="kra_quarter"/>
+					</group>
+					<group>
+						<field name="year_id"/>
+					</group>
+				</group>
+				<group>
+					<field name="employee_ids" widget="many2many_tags" attrs="{'invisible' : [('all_employee','=',True)]}"/>
+					<field name="all_employee"/>
+				</group>
+				
+				<footer>
+					<button name="create_kra" string="Create KRA" type="object"
+						class="btn-primary"/>
+					<button string="Cancel" class="btn-default" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_kra_wizard" model="ir.actions.act_window">
+		<field name="name">Create KRA</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">kra.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record>
+
+</odoo>

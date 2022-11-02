@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="prescription_form" model="ir.ui.view">
+        <field name="name">hospital.prescription.form</field>
+        <field name="model">hospital.prescription</field>
+        <field name="arch" type="xml">
+            <form>
+                 <header>
+                      <button name="action_payment" string="Payment" type="object" class="oe_highlight"
+                            attrs="{'invisible':[('bool','!=',False)]}">
+                      </button>
+                     <field name="bool" invisible="1"/>
+                 </header>
+                <sheet>
+                    <div class="oe_title">
+                        <widget name="web_ribbon" title="Paid" attrs="{'invisible': [('payment_state','!=','paid')]}"
+                        />
+                        <h1 class="d-flex">
+                            <field name="prescription_seq" placeholder="Patient No." required="True"/>
+                            <field name="payment_state" invisible="1"/>
+                        </h1>
+                        <h2>
+                            <field name="patient_id" placeholder="Patient's Name" context="{'form_view_ref':'base_hospital_management.patient_form'}"/>
+                        </h2>
+                        <field name="pharmacy_id" placeholder="Pharmacy"/>
+
+                    </div>
+                    <group>
+                    <group>
+                        <field name="prescription_date"/>
+                        <field name="patient_name"/>
+                        <field name="dob"/>
+                        <field name="gender"/>
+                    </group>
+                    <group>
+                        <field name="phone"/>
+                        <field name="mobile"/>
+                        <field name="email"/>
+                    </group>
+                    </group>
+                    <notebook>
+                        <page name="Medicine" string="Medicine">
+                            <field name="prescription_ids">
+                                <tree editable="bottom">
+                                    <field name="medicine_id"/>
+                                    <field name="no_intakes"/>
+                                    <field name="time"/>
+                                    <field name="quantity"/>
+                                    <field name="unit_price"/>
+                                    <field name="currency_id"
+                                           invisible="1"/>
+                                    <field name="sub_total"/>
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <field name="currency_id"
+                                           invisible="1"/>
+                                    <label for="amount_total"/>
+                                </div>
+                                <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator"
+                                       widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="prescription_tree" model="ir.ui.view">
+        <field name="name">hospital.prescription.tree</field>
+        <field name="model">hospital.prescription</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="pharmacy_id"/>
+                <field name="currency_id"
+                       invisible="1"/>
+                <field name="amount_total"/>
+            </tree>
+
+        </field>
+    </record>
+    <!--    Action of vaccination menu-->
+    <record model="ir.actions.act_window" id="prescription_action">
+        <field name="name">Prescription</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.prescription</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+            <p class="o_view_nocontent_smiling_face">
+                Create prescription
+            </p>
+            <p>
+                You can create prescription here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Patient"
+              id="hospital_patient_root"
+              parent="hospital_root"
+              sequence="7"/>
+    <menuitem name="Prescription"
+              id="hospital_prescription"
+              parent="hospital_patient_root"
+              action="prescription_action"
+              sequence="8"/>
+
+</odoo>

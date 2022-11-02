@@ -1,0 +1,74 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<odoo>
+
+	<record id="view_kra_hr_tree" model="ir.ui.view">
+	   	<field name="name">hr.kra.tree</field>
+	   	<field name="model">hr.kra</field>
+	   	<field name="priority">2</field>
+	   	<field name="arch" type="xml">
+		<tree string="KRA">
+			<field name="name"/>		 
+		</tree>
+	   	</field>
+		</record>
+
+	<record id="view_kra_hr_form" model="ir.ui.view">
+	   	<field name="name">hr.kra.form</field>
+	   	<field name="model">hr.kra</field>
+	   	<field name="priority">2</field>
+	   	<field name="arch" type="xml">
+		<form string="KRA">
+			<sheet>
+				<group>
+					<field name="name"/>
+				</group>
+				
+				<notebook>
+				<page string="Questions" name="Questions">
+
+					<field  name="questions_ids" >
+						<tree editable="bottom">
+							<field name="name"/>
+							<field name="description"/>
+							<field name="hint"/>
+							<field name="weightage"/> 
+						</tree>
+					</field>
+				</page>						
+				</notebook>	     
+		 </sheet>
+	 </form>
+	</field>
+	</record>
+
+	<record id="kra_hr_action" model="ir.actions.act_window">
+	  <field name="name">KRA </field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">hr.kra</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+	<record id="job_hr_action" model="ir.actions.act_window">
+	  <field name="name">JOB </field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">hr.job</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+	<menuitem id="main_menu_kra" name="KRA" sequence="25" />
+	<menuitem  id="sub_menu_config" parent="main_menu_kra" name="Configuration" sequence="25" groups="hr.group_hr_manager"/>
+	<menuitem action="kra_hr_action" id="menu_employee_kra" parent="sub_menu_config" name="KRA" sequence="29"/>
+	<menuitem action="job_hr_action" id="menu_employee_job" parent="sub_menu_config" name="JOB" sequence="28"/>
+	<menuitem  id="sub_menu_kra_create" parent="main_menu_kra" name="Create KRA For Employee" sequence="18" groups="hr.group_hr_manager"/>
+	<menuitem id="menu_wizaed_kra" name="Create KRA" action="action_kra_wizard"
+				  parent="sub_menu_kra_create"/>
+
+</odoo>

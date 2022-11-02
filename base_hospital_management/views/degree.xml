@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="degree_tree" model="ir.ui.view">
+        <field name="name">hospital.degree.tree</field>
+        <field name="model">hospital.degree</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                <field name="degree"> </field>
+            </tree>
+        </field>
+    </record>
+<!--    Action of degree menu-->
+    <record model="ir.actions.act_window" id="degree_action">
+        <field name="name">Degree</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.degree</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="specialization_tree" model="ir.ui.view">
+        <field name="name">hospital.specialization.tree</field>
+        <field name="model">hospital.specialization</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                <field name="specialization"> </field>
+
+            </tree>
+
+        </field>
+    </record>
+<!--    Action of specialization menu-->
+    <record model="ir.actions.act_window" id="specialization_action">
+        <field name="name">Specialization</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.specialization</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="institution_tree" model="ir.ui.view">
+        <field name="name">hospital.institution.tree</field>
+        <field name="model">hospital.institution</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                <field name="institution"> </field>
+
+            </tree>
+
+        </field>
+    </record>
+<!--    Action of institution menu-->
+    <record model="ir.actions.act_window" id="institution_action">
+        <field name="name">Institution</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.institution</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Configuration"
+              id="hospital_configuration_root"
+              parent="hospital_root"
+              sequence="8"/>
+    <menuitem name="Doctor"
+              id="hospital_doctor"
+              parent="hospital_configuration_root"
+              sequence="10"/>
+    <menuitem name="Degree"
+              id="hospital_degree_doctor"
+              parent="hospital_doctor"
+              action="degree_action"
+              sequence="10"/>
+    <menuitem name="Specialization"
+              id="hospital_specialization_doctor"
+              parent="hospital_doctor"
+              action="specialization_action"
+              sequence="11"/>
+    <menuitem name="Institution"
+              id="hospital_institution_doctor"
+              parent="hospital_doctor"
+              action="institution_action"
+              sequence="12"/>
+
+</odoo>

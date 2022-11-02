@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="wizard_room_assigning" model="ir.actions.act_window">
+            <field name="name">Patient Room</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">room.view</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="room_wizard" model="ir.ui.view">
+            <field name="name">Patient Room</field>
+            <field name="model">room.view</field>
+            <field name="arch" type="xml">
+            <form string="wizard">
+                <group>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="responsible_person"/>
+                    </group>
+                    <group>
+                        <field name="visting_time"/>
+                        <field name="room_no" invisible="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="patient_room_assigning" class="btn-primary" string="Assign" type="object"/>
+                    <button name="view_cancel" class="btn-secondary" string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+

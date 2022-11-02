@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="base_import_helper_view_form" model="ir.ui.view">
+        <field name="name">base_import.helper.view.form</field>
+        <field name="model">base_import.helper</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group name="general">
+                        <field name="url" />
+                        <label for="help_url" string="Help" attrs="{'invisible': [('help_url', '=', False)]}" />
+                        <div class="o_row" attrs="{'invisible': [('help_url', '=', False)]}">
+                            <field name="help_url" invisible="1" />
+                            <button string="Click to get additional help" name="action_open_help_url" type="object" class="oe_link" />
+                        </div>
+                    </group>
+                    <footer>
+                        <button name="action_import" string="Import" type="object" class="btn-primary" />
+                        <button special="cancel" string="Close" class="oe_link" />
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

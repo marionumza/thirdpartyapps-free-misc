@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <!--Email template -->    
+        <record id="email_template_edi_salesperson_assigned" model="mail.template">
+            <field name="name">Salesperson Assigned!!</field>
+            <field name="subject">You have been assigned ${object.name or 'n/a' } as Salesperson</field>
+            <field name="model_id" ref="model_purchase_order" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p>Hello</p>
+                        <p> This email is to let you know,that you have been assigned as the new salesperson of the Purchase Order ${object.name} whose state is ${object.state}.  </p>
+                    </div>
+                        ]]>
+            </field>
+        </record>
+        
+        
+    </data>
+</openerp>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="project_timesheet_activity_tree_view" model="ir.ui.view">
+            <field name="name">project.timesheet.activity.tree.view</field>
+            <field name="model">project.timesheet.activity</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="project_timesheet_activity_conf" model="ir.actions.act_window">
+            <field name="name">Timesheet Activity</field>
+            <field name="res_model">project.timesheet.activity</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add Project timesheet activity ....
+                </p>
+            </field>
+        </record>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <menuitem id="hr_timesheet.hr_timesheet_menu_configuration" 
+                  name="Configuration" 
+                  parent="hr_timesheet.timesheet_menu_root"
+                  groups="base.group_system" 
+                  sequence="100"/>
+
+        <menuitem id="hr_timesheet_menu_configuration_activity" 
+                  name="Activity" 
+                  parent="hr_timesheet.hr_timesheet_menu_configuration"
+                  groups="base.group_system"
+                  action="project_timesheet_activity_conf"
+                  sequence="1"/>
+
+        <menuitem id="hr_timesheet_menu_configuration_settings" 
+                  name="Settings" 
+                  parent="hr_timesheet.hr_timesheet_menu_configuration"
+                  groups="base.group_system"
+                  action="hr_timesheet.hr_timesheet_config_settings_action" 
+                  sequence="2"/> 
+
+
+
+ 
+    </data>
+</odoo>

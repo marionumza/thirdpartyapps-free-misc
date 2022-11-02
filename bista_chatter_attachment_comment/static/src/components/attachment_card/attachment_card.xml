@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="mail.AttachmentCard" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_AttachmentCard_asideItemDownload')]" position="after">
+            <div class="o_AttachmentCard_asideItem o_AttachmentCard_asideItemComment d-flex justify-content-center align-items-center" t-on-click="_onClickComment" title="Comment">
+                <i class="fa fa-comments" t-att-data-id="attachmentCard.attachment.id"/>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_AttachmentCard_filename')]" position="after">
+            <div class="o_AttachmentCard_description overflow-hidden" t-if="attachmentCard.attachment.description">
+                <t t-esc="attachmentCard.attachment.description"/>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

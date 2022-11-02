@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="anita_res_config_settings_form" model="ir.ui.view">
+            <field name="name">PWA Settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="-1"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block"
+                         data-string="PWA Settings"
+                         string="PWA Settings"
+                         data-key="anita_pwa"
+                         groups="base.group_system">
+
+                        <h2>PWA SETTING</h2>
+
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <label for="pwa_name" class="o_form_label"/>
+                                        <div class="text-muted">
+                                            PWA Name
+                                        </div>
+                                        <div class="mt16">
+                                            <field name="pwa_name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pwa short name -->
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <label for="pwa_short_name" class="o_form_label"/>
+                                        <div class="text-muted">
+                                            PWA Short Name
+                                        </div>
+                                        <div class="mt16">
+                                            <field name="pwa_short_name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pwa pwa_background_color -->
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <label for="pwa_background_color" class="o_form_label"/>
+                                        <div class="text-muted">
+                                            PWA Background Color
+                                        </div>
+                                        <div class="mt16">
+                                            <field name="pwa_background_color" widget="color"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pwa_theme_color -->
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <label for="pwa_theme_color" class="o_form_label"/>
+                                        <div class="text-muted">
+                                            PWA Theme Color
+                                        </div>
+                                        <div class="mt16">
+                                            <field name="pwa_theme_color" widget="color"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pwa_icon_128 -->
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <label for="pwa_icon_128" class="o_form_label"/>
+                                        <div class="text-muted">
+                                            PWA Icon 128
+                                        </div>
+                                        <div class="mt16">
+                                            <field name="pwa_icon_128" widget="image" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pwa_icon_192 -->
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <label for="pwa_icon_192" class="o_form_label"/>
+                                        <div class="text-muted">
+                                            PWA Icon 192
+                                        </div>
+                                        <div class="mt16">
+                                            <field name="pwa_icon_192" widget="image" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pwa_icon_256  -->
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <label for="pwa_icon_256" class="o_form_label"/>
+                                        <div class="text-muted">
+                                            PWA Icon 256
+                                        </div>
+                                        <div class="mt16">
+                                            <field name="pwa_icon_256" widget="image"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pwa_icon_512  -->
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_left_pane"/>
+                                <div class="o_setting_right_pane">
+                                    <div class="content-group">
+                                        <label for="pwa_icon_512" class="o_form_label"/>
+                                        <div class="text-muted">
+                                            PWA Icon 512
+                                        </div>
+                                        <div class="mt16">
+                                            <field name="pwa_icon_512" widget="image"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_value_template">
+			<t t-call="web.external_layout">
+				<t t-set="doc" t-value="doc.with_context({})" />
+				<div class="page">
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+
+					<h2 style="text-align: center">Employee Value Rating</h2>
+
+					<br/>
+
+					<table style="border-collapse: collapse;width: 100%;" class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;border-top: 5px solid #ddd;height:50%;">
+                        <td><strong >Employee name : </strong> </td>
+                        <td><span t-field="doc.employee_id.name"/></td>
+                        <td><strong >Employee Code : </strong> </td>
+                        <td><span t-field="doc.employee_code"/></td>
+                        
+                    </tr>
+                    
+                    
+
+                    <tr style="padding: 8px;text-align: left;
+                    	">
+
+                    	<td><strong >Job Position:</strong> </td>
+                    	<td><span t-field="doc.job_id.name"/></td>
+                        <td><strong >Appraiser :</strong></td>
+                        <td><span t-field="doc.appraiser_id.name"/></td>
+   
+                    </tr>
+
+
+
+
+                    <tr style="padding: 8px;text-align: left;
+                    	">
+
+                    	<td><strong >Month:</strong> </td>
+                    	<td><span t-field="doc.month"/></td>
+                        <td><strong >Year :</strong></td>
+                        <td><span t-field="doc.year_id.name"/></td>
+   
+                    </tr>
+
+                    <tr style="padding: 8px;text-align: left;
+                    	border-bottom: 5px solid #ddd;">
+
+                    	<td><strong >Total Average:</strong> </td>
+                    	<td><span t-field="doc.total_avg"/></td>
+
+                    	<td> </td>
+                    	<td></td>
+                        
+   
+                    </tr>
+
+
+                    
+                    
+                </table>
+
+                
+                <br/><br/>
+
+                <h4>Approach To Work</h4>
+                <table  class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;">
+                        <td><strong >System And Proccesses : </strong> </td>
+                        <td><span t-field="doc.system_proccess"/></td>
+                        <td><strong >Follow Instructions : </strong> </td>
+                        <td><span t-field="doc.follow_instructions"/></td>
+                        
+                    </tr>
+                    
+                    
+
+                    <tr style="padding: 8px;text-align: left;
+                    	">
+
+                    	<td><strong >Adaptable And Flexible :</strong> </td>
+                    	<td><span t-field="doc.adaptable_flexible"/></td>
+                        <td><strong >Ability To Plan :</strong></td>
+                        <td><span t-field="doc.ability_to_plan"/></td>
+   
+                    </tr>
+                    
+                    
+                </table>
+
+
+                <br/><br/>
+
+                <h4>Technical Skills</h4>
+                <table  class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;">
+                        <td><strong >Job Knowledge : </strong></td>
+                        <td><span t-field="doc.job_knowledge"/></td>
+                        <td><strong >Skill To Handle Work : </strong> </td>
+                        <td><span t-field="doc.skill_handke_work"/></td>
+                        
+                    </tr>
+                    
+                    
+
+                    <tr style="padding: 8px;text-align: left;
+                    	">
+
+                    	<td><strong >Learn New Skill :</strong> </td>
+                    	<td><span t-field="doc.learn_new_skill"/></td>
+                        <td></td>
+                        <td></td>
+   
+                    </tr>
+                    
+                    
+                </table>
+
+                
+
+                <br/><br/>
+
+                <h4>Quality Of Work</h4>
+                <table  class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;">
+                        <td><strong >Accuracy : </strong> </td>
+                        <td><span t-field="doc.accuracy"/></td>
+                        <td><strong >Reliability : </strong> </td>
+                        <td><span t-field="doc.reliability"/></td>
+                        
+                    </tr>
+                    
+                    
+
+                    <tr style="padding: 8px;text-align: left;
+                    	">
+
+                    	<td><strong >Client Satisfaction :</strong> </td>
+                    	<td><span t-field="doc.client_satisfaction"/></td>
+                        <td></td>
+                        <td></td>
+   
+                    </tr>
+                    
+                    
+                </table>
+
+                
+
+                <p style="page-break-before:always;"> </p>
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+
+
+                <h4>Handling Targets</h4>
+                <table  class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;">
+                        <td><strong >Work Completion On Time : </strong> </td>
+                        <td><span t-field="doc.work_on_time"/></td>
+                        <td><strong >Ability To Work Under Pressure : </strong> </td>
+                        <td><span t-field="doc.work_under_pressure"/></td>
+                        
+                    </tr>
+                    
+                    
+
+                    <tr style="padding: 8px;text-align: left;
+                    	">
+
+                    	<td><strong >Handling New Portfolio :</strong> </td>
+                    	<td><span t-field="doc.handling_new_portfolio"/></td>
+                        <td></td>
+                        <td></td>
+   
+                    </tr>
+                    
+                    
+                </table>
+                <br/>
+
+                <h4>Interpersonal Skills</h4>
+                <table  class="table table-condensed">
+                    <tr style="padding: 8px;text-align: left;">
+                        <td><strong >Relationship With Co-workers : </strong> </td>
+                        <td><span t-field="doc.relationship_co_workers"/></td>
+                        <td><strong >Problem Solving : </strong> </td>
+                        <td><span t-field="doc.problem_solving"/></td>
+                        
+                    </tr>
+                    
+                    
+
+                    <tr style="padding: 8px;text-align: left;
+                    	">
+
+                    	<td><strong >Decision Making : </strong> </td>
+                        <td><span t-field="doc.decision_making"/></td>
+                        <td><strong >Time Management : </strong> </td>
+                        <td><span t-field="doc.time_management"/></td>
+   
+                    </tr>
+                    
+                    
+                </table>
+
+                
+
+					
+				</div>
+			</t>
+		</template>
+
+		<template id="report_value">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">
+					<t t-call="bi_employee_kra.report_value_template"  />
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inpatient_form" model="ir.ui.view">
+        <field name="name">hospital.inpatient.form</field>
+        <field name="model">hospital.inpatient</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_admit" string="Admit"
+                            class="oe_highlight" type="object" attrs="{'invisible':
+                            [('state', '!=', 'draft')]}">
+                    </button>
+                    <button name="action_reserve" string="Reserve"
+                            class="oe_highlight" type="object" attrs="{'invisible':
+                            [('state', '!=', 'draft')]}">
+                    </button>
+                    <button name="action_discharge" string="Discharge"
+                            class="oe_highlight" type="object" states="Admit,invoice">
+                    </button>
+                    <button name="action_invoice" string="Payment" type="object"
+                            class="oe_highlight"  states="Admit,dis">
+                    </button>
+
+                </header>
+                <sheet>
+                    <group>
+                        <div class="oe_title">
+                            <h1 class="d-flex">
+                                <field name="patient_id" placeholder="Patient Code" required="True"/>
+
+                            </h1>
+                            <h3>
+                                <field name="patient_name" placeholder="Patient'S Name"/>
+                            </h3>
+                        </div>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="reason"/>
+                            <field name="building_id"/>
+                            <field name="type_admission"/>
+                            <field name="attending_doctor"/>
+                            <field name="operating_doctor"/>
+                        </group>
+                        <group>
+                            <field name="ward_id"/>
+                            <field name="ward_facilities_ids" widget="many2many_tags"/>
+                            <field name="bed_id"/>
+                            <field name="admit_days"/>
+                            <field name="room_no"/>
+                            <field name="bed_rent"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="bed_rent_amount"/>
+                            <field name="pvt_rooms"/>
+                        </group>
+
+                    </group>
+                    <group string="Dates">
+                        <group>
+                            <field name="hosp_date"/>
+                            <field name="discharge_date" attrs="{'invisible': [('state','!=','Admit')]}"/>
+                        </group>
+
+                    </group>
+                    <group string="Private Room" attrs="{'invisible': [('pvt_rooms','!=',True)]}">
+                        <group>
+                            <field name="room_id" attrs="{'invisible': [('pvt_rooms','!=',True)]}"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="room_rent" attrs="{'invisible': [('pvt_rooms','!=',True)]}"/>
+                            <field name="rent_amount" attrs="{'invisible': [('pvt_rooms','!=',True)]}"/>
+                            <field name="facilities_ids" attrs="{'invisible': [('pvt_rooms','!=',True)]}"
+                                   widget="many2many_tags"/>
+                            <field name="admit_days" attrs="{'invisible': [('pvt_rooms','!=',True)]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="details" string="Details">
+                            <group>
+                                <field name="condition"/>
+                                <field name="nursing_plan"/>
+                                <field name="discharge_plan"/>
+                            </group>
+                        </page>
+                        <page name="public" string="Additional Information">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="inpatient_tree" model="ir.ui.view">
+        <field name="name">hospital.inpatient.tree</field>
+        <field name="model">hospital.inpatient</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="patient_name"/>
+                <field name="ward_id"/>
+                <field name="bed_id"/>
+                <field name="hosp_date"/>
+                <field name="discharge_date"/>
+            </tree>
+
+        </field>
+    </record>
+    <!--    Action of inpatient menu-->
+    <record model="ir.actions.act_window" id="inpatient_action">
+        <field name="name">Inpatient</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.inpatient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create inpatient
+            </p>
+            <p>
+                You can create inpatient here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Patient"
+              id="hospital_patient_root"
+              parent="hospital_root"
+              sequence="7"/>
+    <menuitem name="Inpatient"
+              id="hospital_inpatient"
+              parent="hospital_patient_root"
+              action="inpatient_action"
+              sequence="8"/>
+</odoo>

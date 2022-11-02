@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vaccination_form" model="ir.ui.view">
+        <field name="name">hospital.vaccination.form</field>
+        <field name="model">hospital.vaccination</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <div class="oe_title">
+                            <h2><span>Vaccine</span>
+                                <field name="vaccine_id"/>
+                            </h2>
+                        </div>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="patient_id"> </field>
+                            <field name="dose"> </field>
+                            <field name="vaccine_date"> </field>
+                        </group>
+                        <group>
+                            <field name="pharmacist_id"> </field>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <group string="Additional Notes"> </group>
+                        <field name="notes"> </field>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="vaccination_tree" model="ir.ui.view">
+        <field name="name">hospital.vaccination.tree</field>
+        <field name="model">hospital.vaccination</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="patient_id"> </field>
+                <field name="vaccine_id"> </field>
+                <field name="vaccine_date"> </field>
+                <field name="dose"> </field>
+            </tree>
+        </field>
+    </record>
+
+<!--    Action of vaccination menu-->
+    <record model="ir.actions.act_window" id="vaccination_action">
+        <field name="name">Vaccination</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.vaccination</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create  vaccination
+                </p><p>
+                    You can create vaccination here.
+                </p>
+            </field>
+    </record>
+
+      <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Laboratory"
+              id="hospital_laboratory_root"
+              parent="hospital_root"
+              sequence="7"/>
+    <menuitem name="Vaccine"
+              id="hospital_vaccine"
+              parent="hospital_laboratory_root"
+              action="vaccination_action"
+              sequence="9"/>
+
+     <record id="vaccine_form" model="ir.ui.view">
+        <field name="name">hospital.vaccine.form</field>
+        <field name="model">hospital.vaccine</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="vaccine"> </field>
+                            <field name="brand"> </field>
+                            <field name="currency_id" invisible="1"> </field>
+                            <field name="price"> </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="vaccine_tree" model="ir.ui.view">
+        <field name="name">hospital.vaccine.tree</field>
+        <field name="model">hospital.vaccine</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="vaccine"> </field>
+                <field name="brand"> </field>
+                <field name="currency_id" invisible="1"> </field>
+                <field name="price"> </field>
+            </tree>
+        </field>
+    </record>
+<!--    Action of vaccine menu-->
+    <record model="ir.actions.act_window" id="vaccine_action">
+        <field name="name">Vaccine</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.vaccine</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create  vaccine
+                </p><p>
+                    You can create vaccine here.
+                </p>
+            </field>
+    </record>
+
+     <record id="medicine_form" model="ir.ui.view">
+        <field name="name">hospital.medicine.form</field>
+        <field name="model">hospital.medicine</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="medicine"> </field>
+                            <field name="brand"> </field>
+                            <field name="currency_id" invisible="1"> </field>
+                            <field name="price"> </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="medicine_tree" model="ir.ui.view">
+        <field name="name">hospital.medicine.tree</field>
+        <field name="model">hospital.medicine</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="medicine"> </field>
+                <field name="brand"> </field>
+                <field name="currency_id" invisible="1"> </field>
+                <field name="price"> </field>
+            </tree>
+        </field>
+    </record>
+<!--    Action of medicine menu-->
+    <record model="ir.actions.act_window" id="medicine_action">
+        <field name="name">Medicine</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.medicine</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create  medicine
+                </p><p>
+                    You can create medicine here.
+                </p>
+            </field>
+    </record>
+
+
+    <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Configuration"
+              id="hospital_configuration_root"
+              parent="hospital_root"
+              sequence="9"/>
+    <menuitem name='Pharmacy'
+              id="hospital_pharmacy_configuration_root"
+              parent="hospital_configuration_root"
+              sequence="9"/>
+    <menuitem name="Medicine"
+              id="patient_medicine"
+              parent="hospital_pharmacy_configuration_root"
+              action="medicine_action"
+              sequence="14"/>
+    <menuitem name="Vaccine"
+              id="hospital_vaccine"
+              parent="hospital_pharmacy_configuration_root"
+              action="vaccine_action"
+              sequence="15"/>
+
+</odoo>

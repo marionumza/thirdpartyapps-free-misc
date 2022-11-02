@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="bed_form" model="ir.ui.view">
+        <field name="name">hospital.beds.form</field>
+        <field name="model">hospital.beds</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                   <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                     <div class="oe_button_box" name="button_box">
+
+                     </div>
+
+                    <group>
+                        <group>
+
+                            <field name="bed_no"> </field>
+                            <field name="bed_type"> </field>
+                            <field name="date_bed_assign"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="bed_rent"> </field>
+                        </group>
+                        <group>
+                            <field name="institution_id"> </field>
+                            <field name="building_id"> </field>
+                            <field name="ward_id"> </field>
+                            <field name="currency_id" invisible="1"> </field>
+                            <field name="repair_charge"> </field>
+                            <field name="repair_date"> </field>
+
+                        </group>
+                    </group>
+                    <footer>
+                        <group string="Additional Information" name="additional_info"></group>
+                            <field name="note"> </field>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="bed_tree" model="ir.ui.view">
+        <field name="name">hospital.beds.tree</field>
+        <field name="model">hospital.beds</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="bed_no"> </field>
+                <field name="bed_type"> </field>
+                 <field name="institution_id"> </field>
+                 <field name="building_id"> </field>
+                <field name="ward_id"> </field>
+                <field name="state"/>
+            </tree>
+
+        </field>
+    </record>
+<!--    Action of bed menu-->
+    <record model="ir.actions.act_window" id="beds_action">
+        <field name="name">Beds</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.beds</field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+                <p class="o_view_nocontent_smiling_face">
+                    Create  Beds
+                </p><p>
+                    You can create beds here.
+                </p>
+            </field>
+    </record>
+     <menuitem name="Hospital Management"
+              id="hospital_root"
+              sequence="9"/>
+    <menuitem name="Infrastructure Management"
+              id="hospital_hospital_root"
+              parent="hospital_root"
+              sequence="9"/>
+    <menuitem name="Bed"
+              id="hospital_bed"
+              parent="hospital_hospital_root"
+              action="beds_action"
+              sequence="10"/>
+</odoo>

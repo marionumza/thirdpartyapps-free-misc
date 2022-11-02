@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	
+	<record id="view_employee_orientation_checklist_req_tree" model="ir.ui.view">
+	   <field name="name">orientation.checklists.requests.tree</field>
+	   <field name="model">orientation.checklists.requests</field>
+	   <field name="priority">2</field>
+	   <field name="arch" type="xml">
+	    <tree string="Orientation Checklists Requests">
+	     <field name="name"/>
+	     <field  name="orientation_id"/>
+	     <field name="res_user_id"/>
+	     <field name="date"/>
+	     <field name="expected_date"/>
+	     <field name="company_id"/>
+	     <field name="state"/>
+
+	  
+	    </tree>
+	   </field>
+        </record>
+        
+
+
+        <record id="view_employee_orientation_checklist_req_form" model="ir.ui.view">
+	   <field name="name">orientation.checklists.requests.form</field>
+	   <field name="model">orientation.checklists.requests</field>
+	   <field name="priority">2</field>
+	   <field name="arch" type="xml">
+	    <form string="Orientation Checklists Requests" create="false">
+	    	 
+	    	<header>
+
+
+                <button name="action_done" string="Done"
+                    	type="object" states="new"/>
+
+	    		<field name="state" widget="statusbar" statusbar_visible="new,done"/>
+
+	    	</header>
+	    	<sheet>
+	    		<group>
+	    			<group >
+	    				<field name="name" />
+	    				 <field  name="orientation_id" />
+	    				  <field name="company_id"/>
+	    			</group>
+	    			<group >
+
+					     <field name="date" />
+					     <field name="expected_date" attrs="{'readonly':[('state','!=','new')]}"/>
+					     <field name="res_user_id"/>
+	    			</group>
+	    		</group>
+	    		<notebook>
+	    			<page string="Attachments">
+	    				<group >
+	    				<field name="first_attachment" attrs="{'readonly':[('state','!=','new')]}"/>
+	    				<field name="second_attachment" attrs="{'readonly':[('state','!=','new')]}"/>
+	    				<field name="third_attachment" attrs="{'readonly':[('state','!=','new')]}"/>
+	    			</group>
+	    			</page>
+	    			<page string="Notes">
+	    				<field name="notes"/>
+	    			</page>
+	    		</notebook>
+	     </sheet>
+	      <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+           </div>
+	 </form>
+	</field>
+</record>
+	  <record id="employee_orientation_checklist_req_action" model="ir.actions.act_window">
+	  <field name="name">Orientation Checklists Requests</field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">orientation.checklists.requests</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+	<menuitem action="employee_orientation_checklist_req_action" id="menu_orientation_checklist_request" parent="main_menu_orientation" name="Orientation Checklists Requests" sequence="1"/>
+
+</odoo>

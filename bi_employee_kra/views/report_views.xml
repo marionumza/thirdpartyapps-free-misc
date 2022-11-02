@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="bi_employee_kra.report_kra_print" model="ir.actions.report">
+            <field name="name">KRA</field>
+            <field name="model">employee.kra</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_employee_kra.report_kra</field>
+            <field name="report_file">bi_employee_kra.report_kra</field>
+            <field name="attachment">('_KRA.pdf')</field>
+            <field name="binding_model_id" ref="model_employee_kra"/>
+            <field name="binding_type">report</field>  
+        </record>
+        
+        <record id="bi_employee_kra.report_value_print" model="ir.actions.report">
+            <field name="name">Employee Value</field>
+            <field name="model">employee.value</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_employee_kra.report_value</field>
+            <field name="report_file">bi_employee_kra.report_value</field>
+            <field name="attachment">('_KRA.pdf')</field>
+            <field name="binding_model_id" ref="model_employee_value"/>
+            <field name="binding_type">report</field>  
+        </record>
+        
+    </data>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	
+	<record id="view_employee_orientation_line_tree" model="ir.ui.view">
+	   <field name="name">orientation.checklists.line.tree</field>
+	   <field name="model">orientation.checklists.line</field>
+	   <field name="priority">2</field>
+	   <field name="arch" type="xml">
+	    <tree string="Orientation Checklists Line">
+	     <field name="name"/>
+	     <field  name="res_user_id"/>
+	  
+	    </tree>
+	   </field>
+        </record>
+        
+
+
+        <record id="view_employee_orientation_line_form" model="ir.ui.view">
+	   <field name="name">orientation.checklists.line.form</field>
+	   <field name="model">orientation.checklists.line</field>
+	   <field name="priority">2</field>
+	   <field name="arch" type="xml">
+	    <form string="Orientation Checklists Line">
+	    	 
+	    	
+	    	<sheet>
+	    		<group>
+	    			<field name="name"/>
+	     <field  name="res_user_id"/>
+	    		</group>
+	     </sheet>
+	 </form>
+	</field>
+</record>
+	  <record id="employee_orientation_line_action" model="ir.actions.act_window">
+	  <field name="name">Orientation Checklists Line</field>
+	  <field name="type">ir.actions.act_window</field>
+	  <field name="res_model">orientation.checklists.line</field>
+	  <field name="view_mode">tree,form,kanban</field>
+	  <field name="help" type="html">
+	   <p class="oe_view_nocontent_create"> </p>
+	   <p></p>
+	  </field>
+	</record>
+
+
+	<menuitem id="main_menu_orientation" name="Orientation" sequence="25" />
+	<menuitem  id="sub_menu_orientation_emp" parent="main_menu_orientation" name="Employee Orientation" sequence="20" />
+	<menuitem  id="sub_menu_orientation_checklist_req" parent="main_menu_orientation" name="Orientation Checklists Requests" sequence="21" />
+	<menuitem  id="sub_menu_orientation_config" parent="main_menu_orientation" name="Configuration" sequence="22" groups="hr_manager_advance_orientation"/>
+	<menuitem action="employee_orientation_line_action" id="menu_orientation_line" parent="sub_menu_orientation_config" name="Orientation Checklists Line" sequence="29"/>
+
+</odoo>

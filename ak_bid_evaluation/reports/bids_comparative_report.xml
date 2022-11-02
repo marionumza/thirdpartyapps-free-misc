@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        
+    <record id="action_print_comparison_report" model="ir.actions.report">
+        <field name="name">Comparative Bids Report</field>
+        <field name="model">purchase.requisition</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ak_bid_evaluation.bids_comparative_report_template</field>
+        <field name="report_file">ak_bid_evaluation.bids_evaluation_summary_template</field>
+        <field name="binding_model_id" ref="purchase_requisition.model_purchase_requisition"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'Comparative Bid Report - %s' % (object.name)</field>
+    </record>
+
+    <record id="paperformat_comparative_report" model="report.paperformat">
+        <field name="name">Contract Details Paper Format</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">15</field>
+        <field name="margin_right">15</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">20</field> 
+        <field name="dpi">110</field>
+    </record>
+
+    <record id="action_print_comparison_report" model="ir.actions.report">
+        <field name="paperformat_id" ref="ak_bid_evaluation.paperformat_comparative_report"/>
+    </record>
+
+    <template id="bids_comparative_main_info">
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"></t>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"></t>
+        </t>
+        
+        <t t-call="ak_bid_evaluation.bids_comparative_report_header" />
+        <t t-raw="0" />
+        <t t-call="ak_bid_evaluation.bids_comparative_report_footer"/>
+    </template>
+
+    <template id="bids_comparative_report_header">
+        <div class="header" style=" height: 100px !important;">
+            <div style="display:flex; flex-direction:row;">    
+                <div class="col-left">
+                    <p>  <span t-esc="o.company_id.name"/></p>
+                </div>
+                <div class="col-left">
+                    <p><span class="mr-3 bold-text">Requisition Ref: </span><span t-esc="o.name"/></p>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="bids_comparative_report_footer">
+        <div class="footer">
+        </div>
+    </template>
+
+    <template id="bids_comparative_report_temp">
+        <t t-call="web.basic_layout">
+            <t t-call="ak_bid_evaluation.bids_comparative_main_info">
+                <div class="page" >
+                    <style>
+                        .has-border {
+                            border: 1px solid black;
+                        }
+                        
+                        td {
+                            padding: 5px;
+                        }
+                        .bold-text {
+                            font-family:Arial, sans-serif; 
+                            font-weight:bold;
+                        }
+                        .mainborder{border:1px solid black;
+                            border-collapse:collapse;
+                            font-size: 16px;
+                            text-align:left;
+                            padding:3px;
+                            color:black;
+                            }
+                        .text-center{
+                                    text-align:center;
+                                    }
+                        .upper-case {
+                            border-spacing:25px !important;
+                        }
+                        .border{
+                            border:1px solid black !important;
+                            border-collapse:collapse;
+                            padding:10px;
+                            color:black;
+                        }
+                        .less-space{
+                            padding: 3px !important;
+                        }
+                        .text-bold{
+                            font-weight:bolder;
+                        }
+                    </style>
+                
+                    <h3 class="text-center" >COMPARATIVE BID REPORT</h3>
+                <h5 class="text-center" ><span t-esc="o.name"/></h5>
+                    <br/>
+                    <br/>
+                    
+                    <table style="width: 100%">
+                        <tbody>
+                            <tr>
+                                <td><span class="mr-3 bold-text">Purchase Representative: </span><span t-esc="o.user_id.name"/></td>
+                                <td class="text-right"><span class="mr-3 bold-text">Agreement Deadline: </span><span t-esc="o.date_end"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+
+                    <table class="mainborder" style="margin-top:25px;" width="100%">
+                        <thead class="mainborder" style="text-align:center;">
+                            
+                            <tr>
+                                <td class="mainborder bold-text" style="text-align:center;" rowspan="3">S. No.</td>
+                                <td class="mainborder bold-text" style="text-align:center;" rowspan="3">Quotation Ref.</td>
+                                <td class="mainborder bold-text" style="text-align:center;" rowspan="3">Vendor</td>
+                                <!-- <t t-foreach="o.line_ids.sorted(lambda r: r.product_id.id)" t-as="line"> -->
+                                    <t t-set="agreement_lines" t-value="o.get_agreement_lines()"/>
+                                    <t t-foreach="agreement_lines" t-as="line">
+                                        <td class="mainborder less-space text-center bold-text" colspan="2"><span t-esc="line[0]"/></td>
+                                    </t>
+                                    <td class="mainborder less-space text-center bold-text" rowspan="3"><span/>Total Quoted</td>
+                            </tr>
+                            <tr>
+                                <t t-foreach="agreement_lines" t-as="line">
+                                    <td class="mainborder less-space text-center bold-text" colspan="2">Qty: <span t-esc="line[1]"/></td>
+                                </t>
+                            </tr>
+                            <tr>
+                                <t t-foreach="o.line_ids" t-as="line">
+                                    <td class="mainborder less-space text-center bold-text" colspan="1"><span/>Unit P.</td>
+                                    <td class="mainborder less-space text-center bold-text" colspan="1"><span/>Total P.</td>
+                                </t>
+                            </tr>
+
+                        </thead>
+                        <tbody class="mainborder">
+                            
+                            <t t-set="agreement_quotations" t-value="o.get_agreement_quotations()"/>
+                            <t t-set="counter" t-value="1"/> 
+                            <t t-foreach="agreement_quotations" t-as="quotation">
+                                <tr>
+                                    <td class="mainborder less-space text-center" colspan="1"><span t-esc="counter"/></td>
+                                    <td class="mainborder less-space text-center" colspan="1"><span t-esc="quotation[0]"/></td>
+                                    <td class="mainborder less-space text-center" colspan="1"><span t-esc="quotation[1]"/></td>
+                                    <t t-foreach="quotation[2]" t-as="price">
+                                        <td style="text-align:center;" class="has-border"><span style="text-transform: capitalize; text-align: center;" t-esc="price_value[0]"/></td>
+                                        <td style="text-align:center;" class="has-border"><span style="text-transform: capitalize; text-align: center;" t-esc="price_value[1]"/></td>
+                                    </t>
+                                    <td class="mainborder less-space text-center" colspan="1"><span t-esc="quotation[3]"/></td>
+                                </tr>
+                            <t t-set="counter" t-value="counter+1"/>
+                        </t>
+
+                        </tbody>
+                    </table>
+                    <br />
+
+                    <span class="mr-3 bold-text">Selected Bids: </span>
+
+                    <table id="winning-bid-table" style="width: 100%">
+                        <tbody>
+
+                            <t t-foreach="o.selected_bid_ids" t-as="bid">
+                                <tr>
+                                    <td>
+                                        <span>Bid</span> <span t-esc="bid.name"/> by <span t-esc="bid.partner_id.name"/>. 
+                                    </td>
+                                </tr>
+                            </t>
+
+                    </tbody>
+                    </table>
+                    <br></br>
+                    <span class="bold-text">Panel Remarks: </span>
+                    <p>
+                        <span name="selection-justification" class="mr-3" t-esc="o.selection_justification"/> 
+                    </p>
+
+                </div> 
+            </t>
+        </t>
+    </template> 
+    
+    
+    <template id="bids_comparative_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="ak_bid_evaluation.bids_comparative_report_temp"/>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>
