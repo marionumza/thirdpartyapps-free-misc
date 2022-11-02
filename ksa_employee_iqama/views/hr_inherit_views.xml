@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_ksa_employee_iqama_inherit_hr_form" model="ir.ui.view">
+        <field name="name">ksa.employee.iqama.inherit.hr.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='mobile_phone']" position="before">
+                 <field name="iqama_no" />
+             </xpath>
+             <xpath expr="//page[@name='public']" position="after">
+                     <page name="iqama" string="Iqama Details">
+                         <group>
+                             <group>
+                                 <field name="iqama_no"/>
+                                 <field name="iqama_position"/>
+                                 <field name="religion"/>
+<!--                                 <field name="iqama_state" widget="badge" decoration-success="iqama_state == 'valid'" decoration-danger="iqama_state == 'not_valid'" />-->
+                             </group>
+                             <group>
+                                 <field name="place_of_issue"/>
+                                 <field name="date_of_issue"/>
+                                 <field name="date_of_expiry"/>
+                             </group>
+                         </group>
+                     </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_ksa_employee_iqama_inherit_hr_tree" model="ir.ui.view">
+        <field name="name">ksa.employee.iqama.inherit.hr.view.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml"  >
+                <field name="name" position="after">
+                       <field name="iqama_no" />
+                       <field name="iqama_position" />
+                       <field name="date_of_expiry" />
+<!--                       <field name="iqama_state" widget="badge" decoration-success="iqama_state == 'valid'" decoration-danger="iqama_state == 'not_valid'" />-->
+                </field>
+            </field>
+    </record>
+
+
+     <record model="ir.ui.view" id="_ksa_employee_iqama_inherit_hr__kanban_view">
+        <field name="name">hr.employee.kanban.view</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//li[3]" position="after">
+                <li t-if="record.state.raw_value"><field name="iqama_no"/></li>
+                <li t-if="record.state.raw_value"><field name="iqama_position" /></li>
+                <li t-if="record.state.raw_value"><field name="date_of_expiry" /></li>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

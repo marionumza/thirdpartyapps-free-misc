@@ -1,0 +1,21 @@
+<odoo>
+
+    <record id="view_users_form_inherit" model="ir.ui.view">
+        <field name="name">view.users.form.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='preferences']" position="after">
+                <page name="point_of_sale" string="Point Of Sale" groups="point_of_sale.group_pos_manager">
+                    <group>
+                        <group>
+                            <field name="direct_login"/>
+                            <field name="pos_config_id" attrs="{'required': [('direct_login', '=', True)]}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

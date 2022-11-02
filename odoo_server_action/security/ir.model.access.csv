@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_odoo_server_action_base_admin,odoo.server.action Administration,odoo_server_action.model_odoo_server_action,odoo_server_action.group_odoo_server_action,1,1,1,1
+access_odoo_server_action_wizard_base_public,odoo.server.action.result.wizard public,odoo_server_action.model_odoo_server_action_result_wizard,,1,1,1,1
+access_odoo_server.action.history_base_group_admin,odoo.server.action.history Administration Server,odoo_server_action.model_odoo_server_action_history,odoo_server_action.group_odoo_server_action,1,1,1,1
+

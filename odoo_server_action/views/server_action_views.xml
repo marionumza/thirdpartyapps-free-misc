@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+        <record model="ir.ui.view" id="view_tree_odoo_server_action">
+            <field name="name">odoo.server.action.tree</field>
+            <field name="model">odoo.server.action</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="host" />
+                    <field name="username" />
+                </tree>
+            </field>
+        </record>
+        
+
+        <record model="ir.ui.view" id="view_form_odoo_server_action">
+            <field name="name">odoo.server.action.form</field>
+            <field name="model">odoo.server.action</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_start_server" string="Start" class="btn-primary" type="object" />
+                        <button name="action_stop_server" string="Stop" class="btn-primary" type="object" />
+                        <button name="action_restart_server" class="btn-primary" string="Restart" type="object"/>
+                        <button name="test_server_connection" string="Test Connection" type="object" />
+                    </header>
+                    <sheet>
+                        <label for="name" string="Name"/>
+                        <h1><field name="name"/></h1>
+                        <group>
+                            <group string="Credentials">
+                                <field name="host" />
+                                <field name="username" />
+                                <field name="password" password="True"/>
+                            </group>
+                            <group string="Commands">
+                                <field name="command_start" />
+                                <field name="command_stop" />
+                                <field name="command_restart" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="History">
+                                <field name="history_ids" readonly="1">
+                                    <tree default_order="create_date desc">
+                                        <field name="create_date" string="Date"/>
+                                        <field name="server_id" invisible="1"/>
+                                        <field name="create_uid" string="User"/>
+                                        <field name="action"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Advanced">
+                                <group>
+                                <group>
+                                    <label for="timeout"/>
+                                    <div class="o_row">
+                                        <field name="timeout"/>
+                                        <span>Sec</span>
+                                    </div>
+                                </group>
+                                    <group>
+                                        <field name="auto_delete_history_rotation"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                        <field name="description"  nolabel="1" placeholder="Description"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_server_action">
+            <field name="name">Server Action</field>
+            <field name="res_model">odoo.server.action</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem name="Server Actions" id="menu_root" groups="odoo_server_action.group_odoo_server_action" web_icon="odoo_server_action,static/description/server_icon.png"/>
+
+        <menuitem name="Server Action" id="menu_server_action" parent="menu_root" />
+
+        <menuitem name="Server" id="menu_submenu_server_action" parent="menu_server_action" action="action_server_action" />
+
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+demo.access_days_selection,access_days_selection,model_days_selection,base.group_user,1,1,1,1
+demo.access_res_state_selection,access_res_state_selection,model_res_state_selection,base.group_user,1,1,1,1
+demo.access_website_selection,access_website_selection,model_website_selection,base.group_user,1,1,1,1

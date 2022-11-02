@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="mkb_view_partner_pivot" model="ir.ui.view">
+        <field name="name">res.partner.mkb.pivot.view</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <pivot string="Contact" sample="1">
+                <field name="parent_id" type="row"/>
+                <field name="create_date" interval="month" type="col"/>
+                <field name="user_id" type="col"/>
+                <field name="country_id" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_mkb_view_partner_pivot" model="ir.actions.act_window.view">
+        <field name="sequence" eval="7"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="mkb_customer_pivot_view.mkb_view_partner_pivot"/>
+        <field name="act_window_id" ref="contacts.action_contacts"/>
+    </record>
+</odoo>

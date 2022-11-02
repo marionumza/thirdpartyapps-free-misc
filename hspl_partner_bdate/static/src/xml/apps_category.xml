@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template>
+    <t t-extend="AppsMenu">
+        <t t-jquery="[t-as=app]" t-operation="before">
+            <t t-set="ctg_set" t-value="widget.get_category()" />
+            <t t-foreach="ctg_set" t-as="c">
+                <div class="categ_ind row mb32">
+                    <div class="menu_catg_main">
+                        <h2 t-esc="c.name" />
+                    </div>
+                    <input type="hidden" name="category" t-att-data-value="c.ctgID" />
+                </div>
+            </t>
+            <div class="other_ctg mt32 mb32">
+                <div class="menu_catg_main">
+                    <h2>Extra Tools</h2>
+                </div>
+            </div>
+        </t>
+    </t>
+    <t t-extend="web_responsive.AppIcon">
+        <t t-jquery=".o-app-name" t-operation="after">
+            <input
+                t-if="app.category_id"
+                type="hidden"
+                name="category"
+                t-att-data-value="app.category_id[0]"
+            />
+        </t>
+    </t>
+</template>

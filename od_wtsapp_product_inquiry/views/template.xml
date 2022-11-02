@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <template inherit_id='website_sale.product' id="whatsapp_product_inquiry" customize_show="True" name="Product Whatsapp Inquiry">
+            <xpath expr="//a[@id='add_to_cart']" position="after">
+                <t t-if="request.env.company.whatsapp_button_name and request.env.company.website_whatsapp_number">
+                    <a role="button" id="whatsapp_inquiry" class="btn btn-success btn-lg font-weight-bold" target="_blank" t-att-href="'/whatsapp/redirect/inquiry/%s' %(product_variant.id)"><i class="fa fa-whatsapp mr-2"/><t t-out="request.env.company.whatsapp_button_name"/></a>
+                </t>
+            </xpath>
+        </template>
+    </data>
+</odoo>

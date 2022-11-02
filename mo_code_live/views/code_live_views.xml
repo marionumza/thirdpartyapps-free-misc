@@ -1,0 +1,32 @@
+<odoo>
+	<record id="code_live_form" model="ir.ui.view">
+		<field name="name">code.live.form</field>
+		<field name="model">code.live</field>
+		<field name="arch" type="xml">
+			<form string="Code Live">
+				<header>
+					<button name="action_execute" string='Execute' id="action_execute_btn" type="object" class="oe_highlight" />
+					<button name="action_clear" string='Clear' id="action_clear_btn" type="object" />
+				</header>
+				<sheet>
+					<group>
+						<field name="model_id" ></field>
+						<field name="code" widget="ace" options="{'mode': 'python'}" placeholder="Enter Python code here. Help about Python expression is available in the help tab of this document."/>
+						<field name="result" />
+						<field name="description" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="code_live_action" model="ir.actions.act_window">
+		<field name="name">Code Live</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">code.live</field>
+		<field name="view_mode">form</field>
+		</record>
+
+	<menuitem id="code_live_menu" name="Code Live" action='code_live_action'
+	parent="base.menu_automation" groups="base.group_system" />
+</odoo>

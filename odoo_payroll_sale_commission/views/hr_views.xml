@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_employee_form_sale_commission" model="ir.ui.view">
+        <field name="name">hr.employee.form.sale.commission</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//field[@name="registration_number"]' position='after'>
+                <field name="commission_type"/>
+                <field name="commission_amount" attrs="{'invisible': [('commission_type', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_payslip_form_sale_commission" model="ir.ui.view">
+        <field name="name">hr.payslip.form.sale.commission</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//field[@name="contract_id"]' position='after'>
+                <field name="currency_id" invisible="1"/>
+                <field name="employee_commission_amount"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

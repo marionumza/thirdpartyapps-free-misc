@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="personal_information" model="ir.ui.view">
+        <field name="name">Personal information</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page
+                    name="personal_information_page"
+                    string="Personal Information"
+                    attrs="{'invisible': [('is_company','=',True)]}"
+                >
+                    <group>
+                        <field name='birthdate_date' string="Birthdate" />
+                        <field
+                            name="age"
+                            attrs="{'invisible': [('birthdate_date', '=', False)]}"
+                        />
+                        <field
+                            name="left_days"
+                            attrs="{'invisible': [('birthdate_date', '=', False)]}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    field filter group_by -->
+    <record id="hspl_res_partner_view_search" model="ir.ui.view">
+        <field name="name">hspl.res.partner.search.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='inactive']" position="before">
+                <filter
+                    string="Birth Month"
+                    name="b_month"
+                    context="{'group_by' : 'birth_month'}"
+                />
+                <filter
+                    string="Birth Year"
+                    name="b_year"
+                    context="{'group_by' : 'birth_year'}"
+                />
+                <filter string="Day" name="b_day" context="{'group_by' : 'day'}" />
+                <filter
+                    string="Birth Date(s) Today"
+                    name="today"
+                    domain="[('left_days','=',365)]"
+                />
+                <filter name="Birth Date(s) Tomorrow" domain="[('left_days','=',1)]" />
+                <filter
+                    name="Birth Date(s) This Week"
+                    domain="[('left_days','>',0), ('left_days','&lt;',7)]"
+                />
+                <filter
+                    name="Birth Date(s) This Month"
+                    domain="[('month_filter','=',True)]"
+                />
+                <field
+                    name="birth_year"
+                    filter_domain="[('birth_year','ilike',self)]"
+                />
+                <field
+                    name="birth_month"
+                    filter_domain="[('birth_month','ilike',self)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <!--    tree view bdate field visibile-->
+    <record id="hspl_res_partner_view_tree_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.tree.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone']" position="before">
+                <field name="birthdate_date" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

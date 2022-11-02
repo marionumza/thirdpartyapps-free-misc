@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">res.company.default.salesperson</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Auto Assign Salesperson">
+                    <group>
+                        <group>
+                            <field name="user_id_selection"/>
+                            <field name="existing_order_bool"/>
+                        </group>
+                        <group>
+                            <field name="default_user_id"
+                                   attrs="{'invisible': [('user_id_selection', '!=', 'by_default')]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string="Configure Days" attrs="{'invisible': [('user_id_selection', '!=', 'by_day')]}">
+                                <field name="day_ids" widget="one2many">
+                                    <tree editable="bottom">
+                                        <field name="day_selection"/>
+                                        <field name="user_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Configure State" attrs="{'invisible': [('user_id_selection', '!=', 'by_state')]}">
+                                <field name="line_state_ids" widget="one2many">
+                                    <tree editable="bottom">
+                                        <field name="res_state_ids" widget="many2many_tags"
+                                               domain="[('country_id', '=', parent.country_id)]"/>
+                                        <field name="user_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Configure Website"
+                                  attrs="{'invisible': [('user_id_selection', '!=', 'by_website')]}">
+                                <field name="website_ids" widget="one2many">
+                                    <tree editable="bottom">
+                                        <field name="website_id" domain="[('company_id', '=', parent.id)]"/>
+                                        <field name="user_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

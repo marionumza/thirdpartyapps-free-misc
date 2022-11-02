@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="machine_dbs_top_menu"
+        name="Database Management Systems"
+        parent="machine_config_menu"
+        sequence="12"/>
+
+    <!-- DBS -->
+    <record id="machine_dbs_view_tree" model="ir.ui.view">
+        <field name="name">machine.dbs.tree</field>
+        <field name="model">machine.dbs</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="dbs_name_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="machine_dbs_view_form" model="ir.ui.view">
+        <field name="name">machine.dbs.form</field>
+        <field name="model">machine.dbs</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group name="left">
+                            <field name="name"/>
+                        </group>
+                        <group name="right">
+                            <field name="dbs_name_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="machine_dbs_action" model="ir.actions.act_window">
+        <field name="name">DBS</field>
+        <field name="res_model">machine.dbs</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="machine_dbs_menu"
+        parent="machine_dbs_top_menu"
+        action="machine_dbs_action"
+        sequence="1"/>
+
+    <!-- DBS name -->
+    <record id="machine_dbs_name_view_tree" model="ir.ui.view">
+        <field name="name">machine.dbs.name.tree</field>
+        <field name="model">machine.dbs.name</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="machine_dbs_name_view_form" model="ir.ui.view">
+        <field name="name">machine.dbs.name.form</field>
+        <field name="model">machine.dbs.name</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group name="left">
+                            <field name="name"/>
+                        </group>
+                        <group name="right">
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="machine_dbs_name_action" model="ir.actions.act_window">
+        <field name="name">DBS Names</field>
+        <field name="res_model">machine.dbs.name</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="machine_dbs_name_menu"
+        parent="machine_dbs_top_menu"
+        action="machine_dbs_name_action"
+        sequence="2"
+    />
+</odoo>
