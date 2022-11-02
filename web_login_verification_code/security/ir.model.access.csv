@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_d:\work\hey_odoo_15\app\web_login_verification_code_d:\work\hey_odoo_15\app\web_login_verification_code,d:\work\hey_odoo_15\app\web_login_verification_code.d:\work\hey_odoo_15\app\web_login_verification_code,model_d:\work\hey_odoo_15\app\web_login_verification_code_d:\work\hey_odoo_15\app\web_login_verification_code,base.group_user,1,1,1,1

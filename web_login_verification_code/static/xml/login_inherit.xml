@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="web_login_inherit" inherit_id="web.login" name="Web Login Inherit">
+        <xpath expr="//div[@class='form-group field-password']" position="after">
+            <div class="form-group field-code">
+                <label for="verifyCode">验证码</label>
+                <div class="input-group">
+                    <input type="text" class="form-control code_input" name="captcha_code" id="input-code"
+                           placeholder="验证码" autocomplete="off" required="required"/>
+                    <div id="verify-code-wrapper" class="input-group-addon">
+                        <img/>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="/web_login_verification_code/static/js/jquery.js"/>
+            <script type="text/javascript">
+                 var getCaptcha = function () {
+                        $.ajax({
+                            url: '/web/get_captcha',
+                            dataType: 'json',
+                            success: function (response) {
+                                console.info('请求成功');
+                                $("#verify-code-wrapper img").attr("src", response.responseText);
+                                $("#verify-code-wrapper img").css('height','36px')
+                            },
+                            error: function (e) {
+                                console.log(e);
+                            }
+                        });
+                    }
+                    getCaptcha()
+                    $("#verify-code-wrapper img").on('click', getCaptcha)
+            </script>
+
+        </xpath>
+    </template>
+</odoo>

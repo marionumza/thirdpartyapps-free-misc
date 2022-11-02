@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="d:\work\hey_odoo_15\app\web_login_verification_code.list">
+      <field name="name">D:\Work\hey_odoo_15\app\web_login_verification_code list</field>
+      <field name="model">d:\work\hey_odoo_15\app\web_login_verification_code.d:\work\hey_odoo_15\app\web_login_verification_code</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="d:\work\hey_odoo_15\app\web_login_verification_code.action_window">
+      <field name="name">D:\Work\hey_odoo_15\app\web_login_verification_code window</field>
+      <field name="res_model">d:\work\hey_odoo_15\app\web_login_verification_code.d:\work\hey_odoo_15\app\web_login_verification_code</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="d:\work\hey_odoo_15\app\web_login_verification_code.action_server">
+      <field name="name">D:\Work\hey_odoo_15\app\web_login_verification_code server</field>
+      <field name="model_id" ref="model_d:\work\hey_odoo_15\app\web_login_verification_code_d:\work\hey_odoo_15\app\web_login_verification_code"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="D:\Work\hey_odoo_15\app\web_login_verification_code" id="d:\work\hey_odoo_15\app\web_login_verification_code.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="d:\work\hey_odoo_15\app\web_login_verification_code.menu_1" parent="d:\work\hey_odoo_15\app\web_login_verification_code.menu_root"/>
+    <menuitem name="Menu 2" id="d:\work\hey_odoo_15\app\web_login_verification_code.menu_2" parent="d:\work\hey_odoo_15\app\web_login_verification_code.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="d:\work\hey_odoo_15\app\web_login_verification_code.menu_1_list" parent="d:\work\hey_odoo_15\app\web_login_verification_code.menu_1"
+              action="d:\work\hey_odoo_15\app\web_login_verification_code.action_window"/>
+    <menuitem name="Server to list" id="d:\work\hey_odoo_15\app\web_login_verification_code" parent="d:\work\hey_odoo_15\app\web_login_verification_code.menu_2"
+              action="d:\work\hey_odoo_15\app\web_login_verification_code.action_server"/>
+-->
+  </data>
+</odoo>
