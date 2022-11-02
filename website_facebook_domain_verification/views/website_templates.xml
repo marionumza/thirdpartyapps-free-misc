@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="web_layout" name="Website Facebook Domain Verification" inherit_id="web.layout">
+        <xpath expr="//head" position="inside">
+            
+            <meta t-if="website and website.facebook_domain_verification_code" name="facebook-domain-verification" t-attf-content="{{ website.facebook_domain_verification_code }}" />
+        </xpath>
+    </template>
+
+</odoo>
