@@ -1,0 +1,24 @@
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+    background-image: none!important;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    box-shadow: 0 0 0 1px #b3bac2;
+    border: 3px solid #FFF;
+    background: #1e90ff;
+}
+
+.custom-radio .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 1px #b3bac2;
+}
+
+.custom-radio label.custom-control-label.o_form_label {
+    margin: 0.5rem 2rem;
+    line-height: 2.2;
+}
+
+.custom-radio .custom-control-label::before, .custom-radio .custom-control-label::after {
+    left: -3rem;
+    width: 2rem;
+    height: 2rem;
+}
