@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of an Adiczion's Module.
+The COPYRIGHT and LICENSE files at the top level of this repository
+contains the full copyright notices and license terms. -->
+<odoo>
+    <record id="view_picking_internal_search_delivery_slip" model="ir.ui.view">
+        <field name="name">stock.picking.internal.search.delivery_slip</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="/search/filter[@name='cancel']"
+                    position="after">
+                <separator/>
+                <filter name="missing_delivery_slip"
+                    string="Missing Delivery Slip"
+                    domain="[('slip_id', '=', False)]"
+                    help="Filters pickings for which the delivery slip is not present."/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

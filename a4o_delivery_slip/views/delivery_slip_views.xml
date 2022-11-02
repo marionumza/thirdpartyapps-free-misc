@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of an Adiczion's Module.
+The COPYRIGHT and LICENSE files at the top level of this repository
+contains the full copyright notices and license terms. -->
+<odoo>
+    <record id="delivery_slip_view_tree" model="ir.ui.view">
+        <field name="name">delivery.slip.tree</field>
+        <field name="model">delivery.slip</field>
+        <field name="arch" type="xml">
+            <tree string="Delivery Slip" create="false">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="delivery_type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="delivery_slip_view_form" model="ir.ui.view">
+        <field name="name">delivery.slip.form</field>
+        <field name="model">delivery.slip</field>
+        <field name="arch" type="xml">
+            <form create="false" string="Delivery Slip">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group string="Slip details" id="details">
+                        <group id="col1">
+                            <field name="date" readonly="1"/>
+                        </group>
+                        <group id="col2">
+                            <field name="delivery_type" readonly="1"/>
+                        </group>
+                        <group id="list" colspan="4">
+                            <field name="pickings" nolabel="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="delivery_slip_view_search" model="ir.ui.view">
+        <field name="name">delivery.slip.search</field>
+        <field name="model">delivery.slip</field>
+        <field name="arch" type="xml">
+            <search string="Delivery Slip Search">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="delivery_type"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Delivery Type" name="delivery_type" domain="[]"  context="{'group_by':'delivery_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="delivery_slip_action" model="ir.actions.act_window">
+        <field name="name">Delivery Slip (from carrier)</field>
+        <field name="res_model">delivery.slip</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="delivery_slip_view_tree"/>
+        <field name="search_view_id" ref="delivery_slip_view_search"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            You cannot create delivery slips manually !
+          </p><p>
+            You must select packing to add in a delivery slip and it will be
+            created automatically.
+          </p>
+        </field>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_delivery_slip_tree_all">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="delivery_slip_view_tree"/>
+        <field name="act_window_id" ref="delivery_slip_action"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_delivery_slip_form_all">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="delivery_slip_view_form"/>
+        <field name="act_window_id" ref="delivery_slip_action"/>
+    </record>
+    <menuitem action="delivery_slip_action"
+        id="delivery_slip_menu"
+        parent="stock.menu_stock_inventory_control"
+        sequence="800"
+        groups="stock.group_stock_user"/>
+
+    <record model="ir.actions.server" id="action_get_slip_from_carrier">
+        <field name="name">Delivery slip from carrier</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    action = records.get_delivery_slip_from_carrier()
+        </field>
+    </record>
+</odoo>

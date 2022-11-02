@@ -1,0 +1,16 @@
+Installing a4o_delivery_slip
+============================
+
+
+Prerequisites
+-------------
+
+ * Python 3.4 or later (http://www.python.org/)
+ * odoo (http://odoo.com/)
+
+Installation
+------------
+
+Once you have downloaded and unpacked the module in the modules directory of
+Odoo. Sign in Odoo environment, put the list of modules up to date and install
+the new module that appeared

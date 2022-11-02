@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# This file is part of an Adiczion's Module.
+# The COPYRIGHT and LICENSE files at the top level of this repository
+# contains the full copyright notices and license terms.
+-->
+<openerp>
+  <data noupdate="0">
+
+    <!--
+    <record model="ir.module.category" id="module_category_§§object§§">
+        <field name="name">Module Name</field>
+        <field name="description">Helps you manage your Module.</field>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="group_§§object§§_nobody" model="res.groups">
+        <field name="name">Nobody</field>
+        <field name="category_id" ref="module_category_§§object§§"/>
+    </record>
+    
+    <record id="group_§§object§§_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_§§object§§"/>
+        <field name="implied_ids" eval="[(4, ref('group_§§object§§_nobody'))]"/>
+    </record>
+
+    <record id="group_§§object§§_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_category_§§object§§"/>
+        <field name="implied_ids" eval="[(4, ref('group_§§object§§_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+    -->
+
+  </data>
+</openerp>
