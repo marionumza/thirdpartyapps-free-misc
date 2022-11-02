@@ -1,0 +1,62 @@
+# 	* sprintit_customer_asset
+# 
+# Translators:
+# Miika Rouvinen <miika.rouvinen@sprintit.fi>, 2020
+
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-29 11:57:04+0000\n"
+"PO-Revision-Date: 2020-06-29 11:57:04+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fi\n"
+
+#. module: sprintit_customer_asset
+#: model:ir.model.fields,field_description:sprintit_customer_asset.field_project_task__customer_asset_id
+msgid "Customer Asset"
+msgstr "Laite"
+
+#. module: sprintit_customer_asset
+#: model:ir.model.fields,field_description:sprintit_customer_asset.field_customer_asset__active
+msgid "Active"
+msgstr ""
+
+#. module: sprintit_customer_asset
+#: model:ir.model.fields,field_description:sprintit_customer_asset.field_customer_asset__name
+msgid "Name"
+msgstr "Nimi"
+
+#. module: sprintit_customer_asset
+#: model:ir.model.fields,field_description:sprintit_customer_asset.field_customer_asset__partner_id
+msgid "Customer"
+msgstr "Asiakas"
+
+#. module: sprintit_customer_asset
+#: model:ir.model.fields,field_description:sprintit_customer_asset.field_customer_asset__company_id
+msgid "Company"
+msgstr ""
+
+#. module: sprintit_customer_asset
+#: model:ir.model.fields,field_description:sprintit_customer_asset.field_customer_asset__product_id
+msgid "Product"
+msgstr "Tuote"
+
+#. module: sprintit_customer_asset
+#: model:ir.model.fields,field_description:sprintit_customer_asset.field_customer_asset__fsm_task_ids
+#: model:ir.model.fields,field_description:sprintit_customer_asset.field_customer_asset__fsm_task_count
+#: model_terms:ir.ui.view,arch_db:sprintit_customer_asset.view_customer_asset_form
+msgid "Tasks"
+msgstr "Työmääräimet"
+
+#. module: sprintit_customer_asset
+#: model:ir.ui.menu,name:sprintit_customer_asset.fsm_menu_settings_assets
+#: model:ir.ui.menu,name:sprintit_customer_asset.customer_asset_menu
+msgid "Customer Assets"
+msgstr "Laiterekisteri"
+
+#. module: sprintit_customer_asset
+#: model:ir.actions.act_window,name:sprintit_customer_asset.action_customer_asset_all
+msgid "Customer Assets"
+msgstr "Laiterekisteri"

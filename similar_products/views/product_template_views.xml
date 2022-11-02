@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.view.form.inherit.similar_products</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+
+            <!-- Add Similar Products tab -->
+            <xpath expr='//page[@name="general_information"]' position="after">
+                <page string="Similar Products">
+                    <button type="object" name="similar" string="" icon="fa-play" />
+                    <field name="similar_products" mode="tree" >
+                        <tree string="Similar Products" editable="bottom" create="0" limit="50">
+                            <field name="similar_id" string="Similar Products" />
+                        </tree>
+                        <form string="New Products">
+                            <group>
+                                <group>
+                                    <field name="similar_id" />
+                                    <field name="similar_code" widget="CopyClipboardText" string="Similar Reference" />
+                                    <field name="similar_name" widget="CopyClipboardText" string="Similar Name" />
+                                </group>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+
+        </field>     
+    </record>
+</odoo>

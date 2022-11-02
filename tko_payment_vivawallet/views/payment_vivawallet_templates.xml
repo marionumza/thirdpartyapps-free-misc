@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="vivawallet_payment_success" name="Payment Accepted">
+        <t t-call="web.layout">
+            <div class="container">
+                <div class="o_logo">
+                    <img class="img img-fluid d-block mx-auto" src="/web/binary/company_logo" alt="Logo"/>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                            <h2>
+                                <small class="text-success">
+                                    Thanks for your payment..
+                                    <br/>
+
+                                </small>
+                            </h2>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="vivawallet_payment_unauthorized" name="Payment Unauthorized">
+        <t t-call="web.layout">
+            <t t-set="head">
+                <t t-call-assets="web.assets_common" t-js="false"/>
+                <t t-call-assets="web.assets_frontend" t-js="false"/>
+            </t>
+
+            <div class="container">
+                <div class="o_logo">
+                    <img class="img img-fluid d-block mx-auto" src="/web/binary/company_logo" alt="Logo"/>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                            <h2>
+                                    Payment Unauthorized..
+
+                            </h2>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

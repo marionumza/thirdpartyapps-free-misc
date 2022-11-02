@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="data_sequence_account_asset" model="ir.sequence">
+      <field name="name">Account Asset Default Sequence</field>
+      <field name="code">account.asset.sequence</field>
+      <field name="prefix">FA</field>
+      <field name="padding" eval="5"/>
+      <field name="number_increment" eval="1"/>
+      <field eval="False" name="company_id"/>
+    </record>
+  </data>
+</odoo>

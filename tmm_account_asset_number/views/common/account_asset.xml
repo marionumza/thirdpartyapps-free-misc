@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="0">
+    <record id="form_account_asset" model="ir.ui.view">
+      <field name="name">Account Asset Form View</field>
+      <field name="model">account.asset</field>
+      <field name="inherit_id" ref="account_asset.view_account_asset_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//label[@name='name_label']" position="attributes">
+          <attribute name="class">oe_edit_only</attribute>
+        </xpath>
+        <xpath expr="//label[@name='name_label']" position="before">
+          <field name="number" class="font-weight-bold oe_read_only" nolabel="1" readonly="1"
+                 attrs="{'invisible': [('number', '=', False)]}"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

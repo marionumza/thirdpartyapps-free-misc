@@ -1,0 +1,153 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_base_bundle
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.1alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-14 10:37+0000\n"
+"PO-Revision-Date: 2020-10-14 10:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__sh_bundle_id
+msgid "Bundle ID"
+msgstr "Carte d'identité"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_product__sh_bundle_product_ids
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_template__sh_bundle_product_ids
+msgid "Bundle Line"
+msgstr "Ligne de bundle"
+
+#. module: sh_base_bundle
+#: model:ir.actions.act_window,name:sh_base_bundle.sh_bundled_products
+#: model:ir.model,name:sh_base_bundle.model_sh_product_bundle
+#: model:ir.ui.menu,name:sh_base_bundle.bundle_product_menu
+msgid "Bundle Products"
+msgstr "Bundle Products"
+
+#. module: sh_base_bundle
+#: model_terms:ir.ui.view,arch_db:sh_base_bundle.sh_product_form_view
+msgid "Compute Bundle Sales Price"
+msgstr "Compute Fundle Prix de vente"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__sh_cost_price
+msgid "Cost Price"
+msgstr "Prix ​​de revient"
+
+#. module: sh_base_bundle
+#: model_terms:ir.actions.act_window,help:sh_base_bundle.sh_bundled_products
+msgid "Create a new product"
+msgstr "Créer un nouveau produit"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__create_date
+msgid "Created on"
+msgstr "Créé sur"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_product__display_name
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_template__display_name
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__display_name
+msgid "Display Name"
+msgstr "Afficher un nom"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_product__id
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_template__id
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__id
+msgid "ID"
+msgstr "identifiant"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_product__sh_is_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_template__sh_is_bundle
+#: model_terms:ir.ui.view,arch_db:sh_base_bundle.sh_product_form_view
+msgid "Is Bundled ?"
+msgstr "Est emballé?"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_product____last_update
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_template____last_update
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification sur"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: sh_base_bundle
+#: model_terms:ir.ui.view,arch_db:sh_base_bundle.sh_product_form_view
+msgid "Pack/Bundle Products"
+msgstr "Pack / Bundle Products"
+
+#. module: sh_base_bundle
+#: model:ir.model,name:sh_base_bundle.model_product_product
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__sh_product_id
+msgid "Product"
+msgstr "Produit"
+
+#. module: sh_base_bundle
+#: model_terms:ir.ui.view,arch_db:sh_base_bundle.sh_product_form_view
+msgid "Product Bundles"
+msgstr "Ballons de produits"
+
+#. module: sh_base_bundle
+#: model:ir.model,name:sh_base_bundle.model_product_template
+msgid "Product Template"
+msgstr "Modèle de produit"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__sh_qty
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__sh_price_subtotal
+msgid "Sub Total"
+msgstr "Total"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_product__sh_amount_total
+#: model:ir.model.fields,field_description:sh_base_bundle.field_product_template__sh_amount_total
+msgid "Total"
+msgstr "Le total"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__sh_price_unit
+msgid "Unit Price"
+msgstr "Prix ​​unitaire"
+
+#. module: sh_base_bundle
+#: model:ir.model.fields,field_description:sh_base_bundle.field_sh_product_bundle__sh_uom
+msgid "Unit of Measure"
+msgstr "Unité de mesure"
+
+#. module: sh_base_bundle
+#: model_terms:ir.actions.act_window,help:sh_base_bundle.sh_bundled_products
+msgid ""
+"You must define a product for everything you sell or purchase, whether it's "
+"a storable product, a consumable or a service."
+msgstr ""
+"Vous devez définir un produit pour tout ce que vous vendez ou achetez, que ce soit "
+"un produit stockable, un consommable ou un service."

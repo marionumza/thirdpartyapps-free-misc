@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright 2022 Solvve, Inc. <sales@solvve.com>
+    License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl)
+-->
+<odoo>
+    <menuitem name="Web Push"
+              id="web_push_menu"
+              parent="base.menu_custom"
+              sequence="40"/>
+</odoo>

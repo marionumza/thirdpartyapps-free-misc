@@ -1,0 +1,103 @@
+<odoo >
+    <record id="user_login_status_users_form_inherit" model="ir.ui.view">
+        <field name="name">res.users.view.form.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="status" widget="state_selection" class="ml-auto oe_read_only" style="margin-right:24px;"/>
+            </xpath>
+
+            <div name="button_box" position="inside" >
+                <button groups="base.group_system" name="show_log_record" type="object" class="oe_stat_button oe_read_only" icon="fa-list" >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="total_log_record"/></span>
+                        <span class="o_stat_text">Total Log</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <record id="user_login_status_users_kanban_inherit" model="ir.ui.view">
+        <field name="name">res.users.view.kanban.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_res_users_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//strong" position="before">
+                <field name="status" widget="state_selection"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="user_login_status_users_tree_inherit" model="ir.ui.view">
+        <field name="name">res.users.tree.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="status" widget="state_selection"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="user_login_status_users_search_inherit" model="ir.ui.view">
+        <field name="name">res.users.search.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter string="Online Users" name="online_user" domain="[('status','=', 'done')]"/>
+                <filter string="Offline Users" name="offline_user" domain="[('status','=', 'blocked')]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    res.users.logger: -->
+
+    <record id="res_users_logger_view_tree" model="ir.ui.view">
+        <field name="name">res.users.logger.view.tree</field>
+        <field name="model">res.users.logger</field>
+        <field name="arch" type="xml">
+            <tree string="User Logging Informatin">
+                <field name="username"/>
+                <field name="login_time"/>
+                <field name="logout_time"/>
+                <field name="system_use_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="res_users_logger_view_search" model="ir.ui.view">
+        <field name="name">res.users.logger.search</field>
+        <field name="model">res.users.logger</field>
+        <field name="arch" type="xml">
+            <search string="res_logger_serarch">
+                <filter string="Today" name="login_time"
+                    domain="[('login_time', '&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Group By">
+                    <filter name="username" string="Users" context="{'group_by':'username'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="res_users_logger_action" model="ir.actions.act_window">
+        <field name="name">User Logging Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.users.logger</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'search_default_login_time':1}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                No Records Found.
+                hint: Allow Permission to store the user login/logout tiem from the setting panel
+            </p><p>
+            <!-- More details about what a user can do with this object will be OK -->
+        </p>
+        </field>
+    </record>
+
+    <menuitem action="res_users_logger_action" id="main_menu_res_user_logger" parent="base.menu_users"/>
+</odoo>

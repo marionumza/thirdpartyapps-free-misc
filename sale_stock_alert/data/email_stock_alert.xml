@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--Email template -->
+        <record model="mail.template" id="email_template_stock_alert">
+           <field name="name">Alerta de stock en venta</field>
+           <field name="model_id" ref="sale_stock_alert.model_sale_order"/>
+           <field name="email_from">{{(object.user_id.email_formatted or user.email_formatted)}}</field>
+           <field name="subject">Stock faltante Venta Ref {{object.name or 'n/a' }}</field>
+           <field name="auto_delete" eval="True"/>
+           <field name="lang">{{object.partner_id.lang}}</field>
+           <field name="body_html" type="html">
+            <p>Alerta automática por falta de stock:</p>
+            <p>El siguiente correo se detonó como alerta debido a que en la venta realizada con el Folio: <t t-out="object.name"/> se detectó que no existe stock suficiente para los siguientes productos:</p>
+            <!-- creacion de la tabla para mostrar los datos -->
+            <table style="width:100%;border-spacing: 0; border: 1px solid #e7e7e7; border-top: 1px solid #56b3b5;">
+                <tbody>
+                    <tr>
+                        <th style="width:40%;text-align:left;">
+                            Producto
+                        </th>
+                        <th style="width:20%;text-align:right;">
+                            Cantidad vendida
+                        </th>
+                        <th style="width:20%;text-align:right;">
+                            Cantidad disponible
+                        </th>
+                        <th style="width:20%;text-align:right;">
+                            Cantidad faltante
+                        </th>
+                  </tr>
+                </tbody>
+            </table>
+            <!-- obtener los datos de los productos  -->
+            <t t-foreach="object.order_line" t-as="so_line">
+                <t t-if="so_line.product_id.virtual_available &lt; (so_line.product_uom_qty)">
+                    <table style="width:100%;border-spacing: 0; background-color: #f9f9f9; border: 1px solid #e7e7e7; border-top: 2px solid #56b3b5;">
+                        <tbody>
+                            <tr>
+                                <th style="width:40%;text-align:left;">
+                                    <t t-out="so_line.product_id.name"/>
+                                </th>
+                                <th style="width:20%;text-align:right;">
+                                    <t t-out="so_line.product_uom_qty"/>
+                                </th>
+                                <th style="width:20%;text-align:right;">
+                                    <t t-out="so_line.product_id.virtual_available"/>  
+                                </th>
+                                <th style="width:20%;text-align:right;">
+                                <t t-if="so_line.product_uom_qty + so_line.product_id.virtual_available &lt; 0">
+                                    <t t-out="so_line.product_uom_qty"/>    
+                                </t>
+                                <t t-else="">
+                                    <t t-out="0 - so_line.product_id.virtual_available"/>
+                                </t>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+           </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright 2022 Solvve, Inc. <sales@solvve.com>
+    License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl)
+-->
+<odoo>
+
+    <record id="subscriber_form" model="ir.ui.view">
+        <field name="name">subscriber.form</field>
+        <field name="model">web_push.subscriber</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="active" invisible="1"/>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" nolabel="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="create_date"/>
+                        </group>
+                        <group>
+                            <field name="hash"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="subscriber_tree" model="ir.ui.view">
+        <field name="name">subscriber.tree</field>
+        <field name="model">web_push.subscriber</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="hash"/>
+                <field name="active" readonly="1" widget="boolean"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="web_push_subscriber_search" model="ir.ui.view">
+        <field name="name">web_push.subscriber.search</field>
+        <field name="model">web_push.subscriber</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="archived_filter" string="Archived" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="user_group" string="User" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="subscriber_action" model="ir.actions.act_window">
+        <field name="name">Subscriber</field>
+        <field name="res_model">web_push.subscriber</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{
+            'create': False,
+            'edit': False,
+        }</field>
+    </record>
+
+    <menuitem name="Subscribers"
+              id="subscribers_menu"
+              parent="web_push_base.web_push_menu"
+              action="web_push_base.subscriber_action"
+              sequence="10"/>
+
+</odoo>

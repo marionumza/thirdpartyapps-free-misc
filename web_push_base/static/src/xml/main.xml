@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright 2022 Solvve, Inc. <sales@solvve.com>
+    License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl)
+-->
+<templates>
+    <t t-name="web_push_base.SubscribeMenu" owl="1">
+        <div class="wp-subscribe-systray o-dropdown dropdown o-dropdown--no-caret">
+            <button class="wp-subscribe-systray__button dropdown-toggle o-dropdown--narrow"
+                    title="Web Push"
+                    t-on-click="openDialog">
+                <i t-attf-class="fa fa-bell{{state.subscribed ? '' :'-o'}}"/>
+            </button>
+            <Dialog t-if="state.open"
+                    title="dialogTitle"
+                    size="dialogSize"
+                    contentClass="'wp-subscribe-dialog'"
+                    fullscreen="true"
+                    t-on-dialog-closed="closeDialog">
+                <div class="d-flex flex-column">
+                    <span class="custom-control custom-switch wp-subscribe-dialog__switch">
+                        <input type="checkbox"
+                               class="custom-control-input"
+                               t-att-disabled="isPending"
+                               t-att-id="subscripsionDOMId"
+                               t-model="state.subscribeSwitch"/>
+                        <label class="custom-control-label text-uppercase font-weight-bold" t-att-for="subscripsionDOMId">
+                            Web Push Active
+                        </label>
+                    </span>
+                    <t t-if="hasSubscribers">
+                        <hr class="w-100"/>
+                        <h3 class="text-center mt-2">Your subscriptions</h3>
+                        <table class="table table-bordered wp-subscribe-dialog__table">
+                            <tr class="wp-subscribe-dialog__table-row">
+                                <th>Name</th>
+                                <th>Subscription Date</th>
+                                <th/>
+                            </tr>
+                            <t t-foreach="state.subscriberItems" t-as="subscription" t-key="subscription.hash">
+                                <SubscribeMenuItem
+                                        t-on-updateState="onUpdateSubscriptionState"
+                                        active="subscription.hash === state.targetHash"
+                                        status="state.status"
+                                        subscription="subscription"/>
+                            </t>
+                        </table>
+                    </t>
+                </div>
+                <t t-set-slot="buttons">
+                    <div class="d-flex flex-row">
+                        <button class="btn btn-primary mr-2" t-att-disabled="isPending" t-on-click="onSave">Save</button>
+                        <button class="btn btn-secondary" t-on-click="onDiscard">Discard</button>
+                    </div>
+                </t>
+            </Dialog>
+        </div>
+    </t>
+
+    <t t-name="web_push_base.SubscribeMenuItem" owl="1">
+        <tr t-attf-class="wp-subscribe-dialog__table-row {{state.remove ? 'wp-subscribe-dialog__table-row_remove': ''}}">
+            <td width="40%">
+                <span t-esc="props.subscription.name"/>
+            </td>
+            <td width="52%">
+                <span t-esc="props.subscription.create_date"/>
+            </td>
+            <td width="8%">
+                <t t-if="!props.active">
+                    <button class="btn btn-fill-secondary"
+                            t-on-click="unMarkToRemove"
+                            t-att-disabled="props.status==='pending'"
+                            title="Undo"
+                            t-if="state.remove">
+                        <i class="fa fa-undo"/>
+                    </button>
+                    <button class="btn btn-fill-secondary"
+                            t-on-click="markToRemove"
+                            t-att-disabled="props.status==='pending'"
+                            title="Remove"
+                            t-else="">
+                        <i class="fa fa-times"/>
+                    </button>
+                </t>
+                <t t-else="">
+                    <button disabled="true" class="btn btn-secondary">
+                        <i class="fa"/>
+                    </button>
+                </t>
+            </td>
+        </tr>
+    </t>
+
+</templates>

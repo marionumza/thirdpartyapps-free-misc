@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright 2022 Solvve, Inc. <sales@solvve.com>
+    License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl)
+-->
+<odoo noupdate="1">
+
+    <record id="default_vapid" model="web_push.vapid">
+        <field name="private_key">empty</field>
+        <field name="public_key">empty</field>
+    </record>
+
+    <function model="web_push.vapid" name="generate_new_vapid">
+        <value eval="[ref('web_push_base.default_vapid')]"/>
+    </function>
+
+</odoo>

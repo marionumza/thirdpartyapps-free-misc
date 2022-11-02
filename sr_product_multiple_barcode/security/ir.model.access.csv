@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sr_multi_barcode,access.sr.multi.barcode,model_sr_multi_barcode,,1,1,1,1
+access_sr_import_multiple_barcode,access.sr.import.multiple.barcode,model_sr_import_multiple_barcode,,1,1,1,1

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+        <!-- 
+          Field to show the progress of MO.
+        -->
+		<record id="mrp_production_tree_view_inherited" model="ir.ui.view">
+			<field name="name">mrp.production.tree.view.inherited</field>
+			<field name="model">mrp.production</field>
+			<field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+			<field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+					<field name="done_workorders_txt"/>
+                </xpath>
+            </field>
+        </record>
+	</data>
+</openerp>
+

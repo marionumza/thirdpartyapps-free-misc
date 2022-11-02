@@ -1,0 +1,81 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* trescloud_stock_backorder_alert
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-26 17:20+0000\n"
+"PO-Revision-Date: 2021-07-26 17:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: trescloud_stock_backorder_alert
+#: model_terms:ir.ui.view,arch_db:trescloud_stock_backorder_alert.inherit_view_picking_form
+msgid "(the source"
+msgstr "(origen"
+
+#. module: trescloud_stock_backorder_alert
+#: model:ir.model.fields,field_description:trescloud_stock_backorder_alert.field_stock_picking__alert_backorder
+msgid "Alert backorder"
+msgstr "Alerta para despachos parciales"
+
+#. module: trescloud_stock_backorder_alert
+#: model_terms:ir.ui.view,arch_db:trescloud_stock_backorder_alert.inherit_view_picking_form
+msgid "Be careful, the document"
+msgstr "Cuidado, el documento"
+
+#. module: trescloud_stock_backorder_alert
+#: model:ir.model.fields,field_description:trescloud_stock_backorder_alert.field_stock_picking__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: trescloud_stock_backorder_alert
+#: model:ir.model.fields,field_description:trescloud_stock_backorder_alert.field_stock_picking__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: trescloud_stock_backorder_alert
+#: model:ir.model.fields,field_description:trescloud_stock_backorder_alert.field_stock_picking____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: trescloud_stock_backorder_alert
+#: model:ir.model.fields,field_description:trescloud_stock_backorder_alert.field_stock_picking__sale_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: trescloud_stock_backorder_alert
+#: model:ir.model.fields,help:trescloud_stock_backorder_alert.field_stock_picking__alert_backorder
+msgid "Technical field to show the alert."
+msgstr "Campo ténico para mostrar la alerta."
+
+#. module: trescloud_stock_backorder_alert
+#: model:ir.model.fields,help:trescloud_stock_backorder_alert.field_stock_picking__sale_name
+msgid "Technical field to show the name to the alert."
+msgstr "Campo técnico para mostrar el nombre en la alerta"
+
+#. module: trescloud_stock_backorder_alert
+#: model:ir.model,name:trescloud_stock_backorder_alert.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#. module: trescloud_stock_backorder_alert
+#: model_terms:ir.ui.view,arch_db:trescloud_stock_backorder_alert.inherit_view_picking_form
+msgid "has"
+msgstr "tiene"
+
+#. module: trescloud_stock_backorder_alert
+#: model_terms:ir.ui.view,arch_db:trescloud_stock_backorder_alert.inherit_view_picking_form
+msgid "order/s"
+msgstr "despacho(s)"
+
+#. module: trescloud_stock_backorder_alert
+#: model_terms:ir.ui.view,arch_db:trescloud_stock_backorder_alert.inherit_view_picking_form
+msgid "pending to be validated"
+msgstr "pendiente(s) por validar"

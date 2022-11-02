@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    	<record id="view_order_form_inhrerit" model="ir.ui.view">
+            <field name="name">sale.order.form.order.move</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_invoice']" position="before">
+					<button type="object" name="action_view_count_stock_moves" class="oe_stat_button" icon="fa-arrows-v" attrs="{'invisible': [('move_count', '=', 0)]}" groups="base.group_user">
+                        <field name="move_count" widget="statinfo" string="Stock Moves"/>
+                    </button>
+                </xpath>
+	        </field>
+	    </record>
+        <record id="stock_move_action" model="ir.actions.act_window">
+            <field name="name">Stock Moves</field>
+            <field name="res_model">stock.move</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('name','=', 'origin')]</field>
+            <field name="view_id" ref="stock.view_move_tree"/>
+        </record>
+	</data>
+</odoo>

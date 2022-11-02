@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.similar_products</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="25" />
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+
+            <!-- Add threshold config setting -->
+            <xpath expr="//div[@id='companies']" position="after">
+                <h2>Similar Products</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box" title="">
+                        <div class="o_setting_right_pane">
+                            <label for="similarity_threshold" />
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <h6>0=inexact, 1=exact </h6>
+                                    <field name="similarity_threshold" options='{"type": "number", "step": 0.1}' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        
+        </field>
+    </record>
+</odoo>

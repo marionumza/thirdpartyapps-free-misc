@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright 2022 Solvve, Inc. <sales@solvve.com>
+    License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl)
+-->
+<odoo noupdate="1">
+
+    <record id="subscriber_seq" model="ir.sequence">
+        <field name="name">Web Push Subscriber</field>
+        <field name="code">web_push_base.subscriber</field>
+        <field name="prefix">SUB</field>
+        <field name="padding">12</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

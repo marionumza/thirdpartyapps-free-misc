@@ -1,0 +1,12 @@
+.custom-checkbox .fa-check-circle:before, .custom-checkbox .fa-times-circle:before {
+    content: "\f111";
+}
+
+div.o_boolean_toggle.o_field_boolean.custom-control.custom-checkbox > input.custom-control-input:checked + label.custom-control-label::before {
+    background-color: dodgerblue!important;
+    border: none;
+}
+
+div.o_boolean_toggle.o_field_boolean.custom-control.custom-checkbox > label.custom-control-label::before {
+    background-color: #adb5bd !important;
+}

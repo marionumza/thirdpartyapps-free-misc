@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_layout" name="Main Portal Layout" inherit_id="portal.portal_layout">
+         <xpath expr="//div[@class='o_portal_wrap']/div/t[@t-if='my_details']/div/div/t" position="replace">
+         	<t t-raw="0" t-if="user_id.partner_id.portal_document_access"/>
+         	<t t-else="">
+         		<div class="o_portal_my_home">
+	                <div class="oe_structure" id="oe_structure_portal_my_home_1"/>
+	                <h3>Documents are not allowed to show for you..!</h3>
+	            </div>
+         	</t>
+         </xpath>     
+         <xpath expr="//div[@class='o_portal_wrap']/div/t[@t-else='']/t" position="replace">
+         	<t t-raw="0" t-if="user_id.partner_id.portal_document_access"/>
+         	<t t-else="">
+         		<div class="o_portal_my_home">
+	                <div class="oe_structure" id="oe_structure_portal_my_home_1"/>
+	                <h3>Documents are not allowed to show for you..!</h3>
+	            </div>
+         	</t>
+         </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="user_login_setting_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.user.login</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="5"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="User Log System" string="User Login System" data-key="user_login">
+                    <h2>User Login Status</h2>
+                    <group>
+                        <div class="row mt16 o_settings_container">
+                            <div class="o_setting_left_pane">
+                                <label for="store_user_time" string="Store user Login/Logout Information"/>
+                                <field name="store_user_time"/>
+                            </div>
+                        </div>
+                    </group>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="login_status_setting_action" model="ir.actions.act_window">
+        <field name="name">User Login Status Setting</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="user_login_setting_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'user_login_status'}</field>
+    </record>
+
+</odoo>

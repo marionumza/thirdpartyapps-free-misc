@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sh_document_tags_group" model="res.groups">
+        <field name="name">Enable Tags in Document</field>
+    </record>
+</odoo>

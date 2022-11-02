@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_web_push_subscriber,web_push_base.web_push_subscriber,model_web_push_subscriber,,0,0,0,0
+access_web_push_subscriber_admin,web_push_base.web_push_subscriber_admin,model_web_push_subscriber,base.group_user,1,1,1,1
+access_web_push_vapid,web_push_base.web_push_vapid,model_web_push_vapid,,0,0,0,0
+access_web_push_vapid_admin,web_push_base.web_push_vapid_admin,model_web_push_vapid,base.group_user,1,1,1,1

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_customer_asset_form" model="ir.ui.view">
+        <field name="name">customer.asset.form</field>
+        <field name="model">customer.asset</field>
+        <field name="arch" type="xml">
+            <form string="Customer Asset">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="attachment_tree_view" type="object" icon="fa-file-text-o">
+                            <field string="Documents" name="doc_count" widget="statinfo"/>
+                        </button>
+                        <field name="fsm_task_ids" invisible="1"/>
+                        <button type="object"
+                                name="action_view_fsm_task"
+                                class="oe_stat_button"
+                                groups="base.group_user"
+                                icon="fa-wrench">
+                            <field name="fsm_task_count" widget="statinfo" string="Tasks"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Asset Name"/>
+                        <h1>
+                            <field name="name" placeholder="Asset Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="partner_id" widget="res_partner_many2one"
+                                   context="{'res_partner_search_mode': 'customer', 'show_address': 1}"
+                                   options='{"always_reload": True}'/>
+                            <field name="product_id"/>
+                            <field name="product_template_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_customer_asset_tree" model="ir.ui.view">
+        <field name="name">customer.asset.tree</field>
+        <field name="model">customer.asset</field>
+        <field name="arch" type="xml">
+            <tree string="Customer Asset">
+                <field name="name"/>
+                <field name="company_id" invisible="1"/>
+                <field name="partner_id"/>
+                <field name="active" invisible="1"/>
+                <field name="product_id"/>
+                <field name="product_template_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_project_filter" model="ir.ui.view">
+        <field name="name">customer.asset.search</field>
+        <field name="model">customer.asset</field>
+        <field name="arch" type="xml">
+            <search string="Search Customer Asset">
+                <field name="name" string="Name"/>
+                <field name="partner_id" string="Customer"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Customer" name="Partner" context="{'group_by': 'partner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_customer_asset_all" model="ir.actions.act_window">
+        <field name="name">Customer Assets</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">customer.asset</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="context">{"search_default_filter_to_sell":1}</field> -->
+        <field name="view_id" ref="view_customer_asset_tree"/>
+        <!-- <field name="search_view_id" ref="view_customer_asset_filter"/> -->
+    </record>
+
+    <menuitem id="menu_customer_asset" name="Customer Assets" sequence="100"/>
+
+    <menuitem id="customer_asset_menu"
+              name="Customer Assets"
+              parent="menu_customer_asset"
+              action="action_customer_asset_all"
+              sequence="1"/>
+
+    <menuitem id="customer_asset_menu_settings"
+              name="Configuration"
+              parent="menu_customer_asset"
+              sequence="2"/>
+
+    <menuitem id="fsm_menu_settings_assets"
+              name="Assets"
+              sequence="10"
+              action="action_customer_asset_all"
+              parent="industry_fsm.fsm_menu_settings"
+              groups="industry_fsm.group_fsm_manager"/>
+</odoo>

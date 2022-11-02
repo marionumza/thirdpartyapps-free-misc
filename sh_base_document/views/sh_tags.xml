@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Tags Tree -->
+    <record id="sh_tag_document_tree_views" model="ir.ui.view">
+        <field name="name">sh.tags.tree</field>
+        <field name="model">sh.tags</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" />
+                <field name="color" widget="color_picker" />
+            </tree>
+        </field>
+    </record>
+
+    <!--Tags Action -->
+    <record id="sh_tag_document_views_action" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sh.tags</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <!--Tags Menu -->
+    <menuitem id="sh_tag_document_menu" name="Tags" sequence="6" action="sh_tag_document_views_action" groups="sh_base_document.sh_document_tags_group" />
+</odoo>

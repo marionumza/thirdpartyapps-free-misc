@@ -1,0 +1,43 @@
+<odoo>
+	<data>
+
+		<record id="sr_import_multiple_barcode_form_wizard"
+			model="ir.ui.view">
+			<field name="name">sr.import.multiple.barcode.form.wizard</field>
+			<field name="model">sr.import.multiple.barcode</field>
+			<field name="arch" type="xml">
+				<form string="Import Multiple Barcode">
+					<group>
+						<group>
+							<field name="import_product_by" widget="radio" />
+						</group>
+						<group>
+							<field name="import_barcode_for" widget="radio" />
+						</group>
+					</group>
+					<group>
+						<field name="file" filename="name" />
+					</group>
+					<footer>
+						<button name="import_multiple_barcode" string="Import"
+							type="object" class="oe_highlight" />
+						<button string="Cancel" class="oe_link" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="sr_action_import_multiple_barcode"
+			model="ir.actions.act_window">
+			<field name="name">Import Multiple Barcode</field>
+			<field name="res_model">sr.import.multiple.barcode</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+
+		<menuitem action="sr_action_import_multiple_barcode"
+			id="sr_menu_import_multiple_barcode"
+			parent="sale.product_menu_catalog" />
+	</data>
+</odoo>

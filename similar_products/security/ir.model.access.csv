@@ -1,0 +1,2 @@
+"id","name","model_id/id","group_id/id","perm_create","perm_unlink","perm_read","perm_write"
+access_similar_products,access_similar_products,model_similar_products,,1,1,1,1

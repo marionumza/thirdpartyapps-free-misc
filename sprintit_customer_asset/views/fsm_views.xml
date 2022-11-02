@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_task_view_form_customer_asset" model="ir.ui.view">
+        <field name="name">project.task.form.fsm.customer_asset</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="customer_asset_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_task_action_asset_fsm" model="ir.actions.act_window">
+        <field name="name">Asset Tasks</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">tree,kanban,form,gantt,calendar,map,pivot,graph,activity</field>
+        <field name="search_view_id" ref="industry_fsm.project_task_view_search_fsm"/>
+        <field name="domain">[('is_fsm', '=', True)]</field>
+        <field name="context">{
+            'fsm_mode': True,
+            'default_user_id': False,
+            'search_default_groupby_stage': 1,
+            'fsm_task_kanban_whole_date': 1,
+            }
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new task
+            </p>
+            <p>
+                There are currently no tasks, click on create to create one
+            </p>
+        </field>
+    </record>
+
+    <record id="project_task_action_asset_fsm_view_tree" model="ir.actions.act_window.view">
+        <field name="sequence" eval="5"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="industry_fsm.project_task_view_list_fsm"/>
+        <field name="act_window_id" ref="project_task_action_asset_fsm"/>
+    </record>
+
+    <record id="project_task_action_asset_fsm_view_kanban" model="ir.actions.act_window.view">
+        <field name="sequence" eval="10"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="industry_fsm.project_task_view_kanban_fsm"/>
+        <field name="act_window_id" ref="project_task_action_asset_fsm"/>
+    </record>
+
+    <record id="project_task_action_asset_fsm_view_form" model="ir.actions.act_window.view">
+        <field name="sequence" eval="15"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="project.view_task_form2"/>
+        <field name="act_window_id" ref="project_task_action_asset_fsm"/>
+    </record>
+
+</odoo>

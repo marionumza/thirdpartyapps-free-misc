@@ -1,0 +1,17 @@
+.wp-subscribe-systray {
+  &__button {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    transition: .4s opacity;
+    opacity: 1;
+
+    &:disabled {
+      opacity: 0.4;
+    }
+
+    .fa {
+      padding-bottom: 2px;
+    }
+  }
+}

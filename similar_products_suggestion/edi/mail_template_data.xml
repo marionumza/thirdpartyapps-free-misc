@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <!--Email template -->
+
+        <record id="email_template_edi_suggested_product_customer" model="mail.template">
+            <field name="name">Similar Products Suggestion</field>
+            <field name="email_from">{{object.order_id.company_id.email or object.company_id.email_formatted or ''}}</field>
+            <field name="email_to">{{object.order_id.partner_id.email or object.partner_id.email_formatted or ''}}</field>
+            <field name="subject">Similar Products Suggestion for Quotation {{object.order_id.name}}</field>
+            <field name="model_id" ref="similar_products_suggestion.model_sale_order_line"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                    <p>Dear
+                        <t t-if="object.order_id.partner_id.name">
+                            <t t-out="object.order_id.partner_id.name or ''"/>
+                        </t>,</p>
+                        <br/>
+                    <p>
+                        You have, Quotation <strong t-out="object.order_id.name or ''"></strong>
+                        for bellow products, But unfortunately this product is not available.<br/> 
+                        <p> These are few alternative product suggestion. </p>
+                        <t t-foreach="object.order_id.order_line" t-as="line">
+                            <t t-if="line.product_id.qty_available == 0">
+                                <p>Product : <strong t-out="line.product_id.name"></strong>, </p>
+                                <p>Suggestion : 
+                                    <strong t-out="line.suggested_product_text"></strong>
+                                    <t t-if="not line.suggested_product_text">
+                                        <p>There is no suggested product for this product.</p>
+                                    </t>
+                                </p>
+                                <br/>
+                            </t>
+                        </t> 
+                    </p>
+                   <br/>
+                    Best Regards,
+                    <p><t t-out="object.order_id.company_id.name or ''"/></p>
+                </div>
+            </field>
+        </record>
+
+
+
+        <record id="email_template_edi_suggested_product_user" model="mail.template">
+            <field name="name">Product Suggestion</field>
+            <field name="email_from">${(user.email|safe)}</field>
+            <field name="subject">Product Suggestion: ${object.state in ('draft', 'sent') and 'Quotation' or 'Order'} (Ref ${object.order_id.name or 'n/a' })</field>
+            <field name="email_to">${object.order_id.user_id.email}</field>
+            <field name="model_id" ref="similar_products_suggestion.model_sale_order_line" />
+            <field name="auto_delete" eval="True" />
+            <field name="body_html"><![CDATA[
+                    <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                        <p> Suggestion For Similar Products </p>
+
+                        <p> There is ${object.state in ('draft', 'sent') and 'Quotation' or 'Order'} for product ${object.product_id.name}, but unfortunately this product is not available.</p>
+                         %if object.suggested_product_text:
+                        <p>
+                        These are few alternative product suggestion.${object.suggested_product_text} </p>
+                        %endif
+                        %if not object.suggested_product_text:
+                            <p>There is no suggested product for this product.</p>
+                        %endif
+                    </div>
+                        ]]>
+            </field>
+        </record>
+
+        <record id="email_template_edi_suggested_product_user" model="mail.template">
+            <field name="name">Similar Products Suggestion</field>
+            <field name="email_from">{{object.order_id.company_id.email or object.company_id.email_formatted or ''}}</field>
+            <field name="email_to">{{object.order_id.user_id.email or object.order_id.user_id.email_formatted or ''}}</field>
+            <field name="subject">Similar Products Suggestion for Quotation {{object.order_id.name}}</field>
+            <field name="model_id" ref="similar_products_suggestion.model_sale_order_line"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
+                    <p>Dear
+                        <t t-if="object.order_id.user_id.name">
+                            <t t-out="object.order_id.user_id.name or ''"/>
+                        </t>,</p>
+                        <br/>
+                    <p>
+                        You have, Quotation <strong t-out="object.order_id.name or ''"></strong>
+                        for bellow products, But unfortunately this product is not available.<br/> 
+                        <p> These are few alternative product suggestion. </p>
+                        <t t-foreach="object.order_id.order_line" t-as="line">
+                            <t t-if="line.product_id.qty_available == 0">
+                                <p>Product : <strong t-out="line.product_id.name"></strong>, </p>
+                                <p>Suggestion : 
+                                    <strong t-out="line.suggested_product_text"></strong>
+                                    <t t-if="not line.suggested_product_text">
+                                        <p>There is no suggested product for this product.</p>
+                                    </t>
+                                </p>
+                                <br/>
+                            </t>
+                        </t> 
+                    </p>
+                   <br/>
+                    Best Regards,
+                    <p><t t-out="object.order_id.company_id.name or ''"/></p>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

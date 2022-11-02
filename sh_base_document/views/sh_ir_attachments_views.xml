@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sh Ir Attachment -->
+    <record id="sh_attachment_form_custom_new_view" model="ir.ui.view">
+        <field name="name">ir.attachment.form.custom.new.view</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_form" />
+        <field name="arch" type="xml">
+            <field name="mimetype" position="after">
+                <field name="expiry_date" />
+                <field name="sh_is_notify" />
+                <field name="sh_tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" groups="sh_base_document.sh_document_tags_group"/>
+                <field name="partner" invisible="1" />
+                <field name="email" invisible="1" />
+                <field name="sh_is_send_mail" invisible="1" />
+            </field>
+
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Documents" attrs="{'invisible':[('mimetype', '!=', 'application/pdf')]}">
+                        <field name="datas_pdf" widget="pdf_viewer" readonly="1" />
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <!--  Sh Ir Attachment Tree view -->
+    <record id="sh_attachment_tags_inherit_tree" model="ir.ui.view">
+        <field name="name">ir.attachment.tree</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_tree"></field>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="sh_tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" optional="show" groups="sh_base_document.sh_document_tags_group"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Sh Ir Attachment Kanban view -->
+    <record id="sh_attachment_tags_inherit_kanban" model="ir.ui.view">
+        <field name="name">ir.attachment.kanban</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="mail.view_document_file_kanban"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_record_title')]" position="after">
+                <field name="sh_tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" groups="sh_base_document.sh_document_tags_group"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Sh Ir Attachment Search view -->
+    <record id="view_sh_attachment_search_with_tag" model="ir.ui.view">
+        <field name="name">ir.attachment.search</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_search" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="sh_tag_ids" string="Tag" />
+            </field>
+            <xpath expr="//group/filter[@name='owner']" position="after">
+                <filter name="sh_tag_ids" string="Tags" domain="[]" context="{'group_by':'sh_tag_ids'}" groups="sh_base_document.sh_document_tags_group"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
