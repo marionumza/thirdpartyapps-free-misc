@@ -1,0 +1,103 @@
+.s-media{
+    position: fixed;
+    top: 200px ;
+    left: 0;
+    z-index: 1000;
+    transition:all linear 0.2s ;
+}
+.s-media a:first-child{
+    border-radius: 0 5px 0 0;
+}
+.s-media a:last-child{
+    border-radius: 0 0 5px 0;
+}
+.s-item {
+    display:block;
+    width: 60px;
+    height: 60px;
+    color: white;
+    font-size: 25px;
+    line-height: 60px;
+    text-align: center;
+    background: #38383B;
+    transition:all linear 0.2s ;
+}
+.s-item:hover {
+    width:70px;
+    
+}
+
+#sm-open {
+    position: fixed;
+    top: 200px ;
+    z-index: 1000;
+    left: -60px;
+    border-radius:0 30px 30px 0;
+    transition:all linear 0.2s ;
+}
+.facebook {background-color: #305891;}
+.twitter {background-color: #3AAFD6;}
+.gplus {background-color: #F8694D; }
+.print {color: white !important;}
+.instagram {background-color: #af30af;}
+.linkedin {background-color: #0a66c2;}
+.youtube {background-color: #ff0000;}
+.sm-collapse{left: -60px; }
+
+   
+.float-button {
+    text-decoration: none;
+    position: fixed;
+    padding: 10px;
+    padding-right: 15px;
+    bottom: 30px;
+    right: 30px;
+    color: #fff;
+    background-color:#25D366;
+    border-radius: 25px 30px 5px 25px;
+    z-index: 100;
+    font-family: Arial;
+    font-size: 17px;
+    animation: whatsapp-animation 0.5s ease-in-out;
+    box-shadow: 1px 2px 5px 2px rgba(30,30,30,0.3);
+    transition:all 0.3s ease-out;
+}
+
+.float-button:hover {
+    background-color: #128C7E;
+        color: #fff;
+}
+
+.fa-whatsapp {
+    font-size: 20px !important;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+@keyframes whatsapp-animation {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%
+    }
+}
+
+@media screen and (max-width: 545px) {
+    span {
+        display: none;
+    }
+
+    .float-button {
+        bottom: 15px;
+        right: 15px;
+        /* width: 20px; */
+        border-radius: 20px 20px 5px 20px;
+    }
+
+    .fa-whatsapp {
+        font-size: 22px !important;
+        padding: 4px;
+    }
+}

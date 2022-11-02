@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="category_1" model="product.category">
+            <field name="name">Accessories</field>
+        </record>
+        <record id="product_cpu" model="product.product">
+            <field name="name">CPU</field>
+            <field name="categ_id" ref="category_1" />
+            <field name="standard_price">500.0</field>
+            <field name="list_price">700.0</field>
+            <field name="detailed_type">product</field>
+            <field name="weight">0.01</field>
+            <field name="uom_id" ref="uom.product_uom_unit" />
+            <field name="uom_po_id" ref="uom.product_uom_unit" />
+            <field
+                name="image_1920"
+                type="base64"
+                file="prt_product_tweaks/static/img/cpu.png"
+            />
+        </record>
+        <record id="product_code_cpu_1" model="prt.product.code">
+            <field name="name">CPU-2-4</field>
+            <field name="product_id" ref="product_cpu" />
+            <field name="is_default">True</field>
+        </record>
+        <record id="product_code_cpu_2" model="prt.product.code">
+            <field name="name">CPU-4-8</field>
+            <field name="product_id" ref="product_cpu" />
+        </record>
+        <record id="product_code_cpu_3" model="prt.product.code">
+            <field name="name">CPU-6-12</field>
+            <field name="product_id" ref="product_cpu" />
+        </record>
+    </data>
+</odoo>

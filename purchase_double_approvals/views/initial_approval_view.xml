@@ -1,0 +1,21 @@
+<odoo>
+   <record id="approval_purchase_requester_view_form_inherit" model="ir.ui.view">
+        <field name="name">approval.purchase.requester.view.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+        
+            <xpath expr="//button[@name='button_cancel']" position="before">
+                <button name="button_send_to_approver" groups="purchase_double_approvals.group_second_approval_user" type="object" states="initial_approve" string="Send To Approve" id="send_to_approve"/>
+                <button name="button_cancel_request" groups="purchase_double_approvals.group_second_approval_user" type="object" states="initial_approve" string="Cancel" id="send_to_cancel"/>
+
+            </xpath>
+
+            <xpath expr="//button[@name='button_cancel']" position="attributes">
+                <attribute name="states">draft,sent,purchase,to approve</attribute>
+                <attribute name="groups">purchase.group_purchase_manager</attribute>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

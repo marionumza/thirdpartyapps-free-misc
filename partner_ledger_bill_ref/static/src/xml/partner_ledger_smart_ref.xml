@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="SubSectionPLInheritForRef" t-inherit="dynamic_accounts_report.SubSectionPL" t-inherit-mode="extension" owl="1">
+    	<xpath expr="//thead/tr/th[4]" position="after">
+            <th>Bill Reference</th>
+    	</xpath>
+        <xpath expr="//tbody/t/tr/td[4]" position="after">
+            <td t-att-style="styleleft">
+                <t t-esc="account_line.lref"/>
+            </td>
+    	</xpath>
+    </t>
+</templates>
+
+

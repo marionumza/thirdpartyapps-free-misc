@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="base_import_helper_view_form" model="ir.ui.view">
+        <field name="name">base_import.helper.view.form</field>
+        <field name="model">base_import.helper</field>
+        <field name="inherit_id" ref="base_import_helper.base_import_helper_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_import']" position="attributes">
+                <attribute name="string">Import/Update</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_product_facebook_category_import" model="ir.actions.act_window">
+        <field name="name">Import Facebook product categories</field>
+        <field name="res_model">base_import.helper</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{
+            'default_mode': 'fb_categ',
+            'default_url': 'https://www.facebook.com/products/categories/en_US.txt',
+            'default_help_url': 'https://en-gb.facebook.com/business/help/526764014610932',
+        }</field>
+    </record>
+
+    <menuitem
+        id="menu_product_facebook_category_import"
+        name="Import Facebook Categories"
+        parent="website_sale.menu_product_settings"
+        action="action_product_facebook_category_import"
+        sequence="26"
+    />
+
+</odoo>

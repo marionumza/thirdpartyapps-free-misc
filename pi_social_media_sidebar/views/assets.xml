@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--  Assets  -->
+    <record id="pi_social_media_sidebar.assets_css" model="ir.asset">
+        <field name="name">Pi Media Social CSS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">/pi_social_media_sidebar/static/src/css/styles.css</field>
+    </record>
+     <record id="pi_social_media_sidebar.assets_js" model="ir.asset">
+        <field name="name">Pi Media Social JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">/pi_social_media_sidebar/static/src/js/collapse.js</field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <odoo>
+        <template id="assets_inherit_for_audio" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+                <script
+                src="/omar_audio/static/js/omar_audio.js"
+                type="text/javascript" />
+
+        </xpath>
+    </template>
+</odoo>
