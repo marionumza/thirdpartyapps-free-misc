@@ -1,0 +1,17 @@
+{
+    'name': 'Work Anniversary Notification',
+    'version': "1.0.0",
+    'summary': 'This module will wish the employees on their work anniversary.',
+    'category': 'Human Resource',
+    'sequence': 55,
+    'author': 'Odoo Bangladesh',
+    'company': 'Odoo Bangladesh',
+    'website': "http://odoobangladesh.com",
+    'depends': ['bq_hr_employee_service'],
+    'data': ['data/email.xml'],
+    'test': [],
+    'license': 'AGPL-3',
+    'images': ['static/description/banner.png'],
+    'installable': True,
+    'auto_install': False,
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="ir.cron" id="work_anniversary_reminder">
+            <field name="name">Work Anniversary Notification</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(DateTime.now() + relativedelta(days=1)).strftime('%Y-%m-%d 00:00:00')" />
+            <field name="doall" eval="False"/>
+            <field name="code">model.work_anniversary_reminder()</field>
+            <field name="state">code</field>
+        </record>
+
+        <!-- Template and notification section -->
+        <record id="work_anniversary_notification" model="mail.template">
+            <field name="name">Work Anniversary Notification For Employee</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="subject">Work Anniversary Wishes</field>
+<!--            <field name="email_to">{{ (object.work_email or '') }}</field>-->
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0" width="590" style="background-color: white; border-collapse: collapse; margin-left: 20px;">
+                <tr>
+                <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+                <div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+                <p>Dear <t t-out="object.name or ''">Marc Demo</t></p>
+                <b/>
+                <p>Congratulations on your work anniversary!</p>
+                <b/>
+                <p>We appreciate your energy, your kindness, and all the work you do, but most of all, we just appreciate you!</p>
+                </div>
+                <div style="padding:0px;width:600px;margin:auto; margin-top: 10px; background: #fff repeat top /100%;color:#777777">
+                    <p style="font-size: 11px; margin-top: 10px;">
+                    <br></br>
+                    Your Family at
+                        <strong t-out="object.company_id.name or ''">YourCompany</strong>.
+                    </p>
+                </div>
+                </div>
+                </tr>
+                </table>
+            </field>
+<!--            <field name="user_signature" eval="False"/>-->
+        </record>
+    </data>
+</odoo>
