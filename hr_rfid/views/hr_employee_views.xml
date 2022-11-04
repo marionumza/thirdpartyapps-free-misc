@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+        <record id="hr_view_employee_form_inherit_hr_rfid" model="ir.ui.view">
+            <field name="name">hr.employee.rfid.info</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                     <button name="button_employee_events"
+                            type="object" attrs="{'invisible':[('employee_event_count', '=', '0')]}"
+                            groups="hr_rfid.hr_rfid_group_officer"
+                            class="oe_stat_button" icon="fa-list-alt">
+                        <field name="employee_event_count" widget="statinfo" string="Events"/>
+                    </button>
+                     <button name="button_doors_list" title="Accessible doors"
+                             type="object" class="oe_stat_button" icon="fa-list-alt"
+                             groups="hr_rfid.hr_rfid_view_rfid_data"  attrs="{'invisible':[('employee_doors_count', '=', '0')]}">
+                        <field name="employee_doors_count" widget="statinfo" string="Doors"/>
+                    </button>
+                </xpath>
+                <notebook position="inside">
+                    <page string="RFID Info"
+                          groups="hr_rfid.hr_rfid_group_officer"
+                          attrs="{'invisible': [('id','=', False)]}"
+                    >
+                        <group>
+                            <field name="hr_rfid_pin_code" groups="hr_rfid.hr_rfid_view_rfid_pin_code_data"/>
+                        </group>
+                        <notebook>
+                            <page string="Cards">
+                                <field name="hr_rfid_card_ids"
+                                       context="{'default_employee_id': active_id}"
+                                       edit="0">
+                                    <tree string="Cards belonging this employee" editable="bottom">
+                                        <field name="number"/>
+                                        <field name="card_reference"/>
+                                        <field name="activate_on"/>
+                                        <field name="deactivate_on"/>
+                                        <field name="card_type"/>
+                                        <field name="cloud_card"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+                            <page string="Access Groups">
+                                <field name="hr_rfid_access_group_ids" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name="access_group_id"
+                                               domain="[('department_ids','in',[parent.department_id])]"/>
+                                        <field name="expiration"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.server" id="action_clear_employees">
+            <field name="name">Clear Employees</field>
+            <field name="model_id" ref="hr_rfid.model_hr_rfid_zone"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">record.clear_employees()</field>
+            <field name="binding_model_id" ref="hr_rfid.model_hr_rfid_zone"/>
+            <field name="binding_view_types">form</field>
+        </record>
+
+    </data>
+</odoo>

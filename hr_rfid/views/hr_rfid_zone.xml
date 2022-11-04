@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_clear_contacts" model="ir.actions.server">
+            <field name="name">Clear Contacts</field>
+            <field name="model_id" ref="hr_rfid.model_hr_rfid_zone"/>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">record.clear_contacts()</field>
+            <field name="binding_model_id" ref="hr_rfid.model_hr_rfid_zone"/>
+            <field name="binding_view_types">form</field>
+        </record>
+
+        <record id="hr_rfid_zone_action" model="ir.actions.act_window">
+            <field name="name">Zones</field>
+            <field name="res_model">hr.rfid.zone</field>
+            <!--      <field name="view_type">form</field>-->
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="hr_rfid_zone_doors_wiz" model="ir.ui.view">
+            <field name="name">hr.rfid.zone.wiz.form</field>
+            <field name="model">hr.rfid.zone.doors.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Add/Remove Doors">
+                    <group>
+                        <field name="zone_id" readonly="1"/>
+                        <field name="door_ids" widget="many2many_tags"/>
+                    </group>
+                    <footer>
+                        <button name="add_doors" type="object"
+                                string="Add Doors" class="oe_highlight"/>
+                        <button name="remove_doors" type="object"
+                                string="Remove Doors" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_rfid_zone_doors_wiz_action" model="ir.actions.act_window">
+            <field name="name">Add/Remove Doors</field>
+            <field name="res_model">hr.rfid.zone.doors.wiz</field>
+            <!--      <field name="view_type">form</field>-->
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="hr_rfid_zone_doors_wiz"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="hr_rfid_zone_view_form" model="ir.ui.view">
+            <field name="name">hr.rfid.zone.form</field>
+            <field name="model">hr.rfid.zone</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="contact_ids" invisible="1"/>
+                        <field name="employee_ids" invisible="1"/>
+                        <div class="oe_button_box" name="button_box" attrs="{'invisible': [('id', '=', False)]}">
+                            <button name="%(hr_rfid_zone_doors_wiz_action)d" id="hr_rfid_zone_doors_btn" type="action"
+                                    class="oe_stat_button" icon="fa-table"
+                                    string="Add/Remove Doors"/>
+                            <button name="contact_in_current_zone"
+                                    type="object"
+                                    class="oe_stat_button" icon="fa-list"
+                                    attrs="{'invisible':[('contact_count', '=', 0)]}">
+                                <field name="contact_count" widget="statinfo" string="Contacts"/>
+                            </button>
+                            <button name="employee_in_current_zone"
+                                    type="object"
+                                    class="oe_stat_button" icon="fa-list"
+                                    attrs="{'invisible':[('employee_count', '=', 0)]}">
+                                <field name="employee_count" widget="statinfo" string="Employees"/>
+                            </button>
+                        </div>
+                        <div class="oe_title" modifiers="{}">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Zone type">
+                                <field name="anti_pass_back"/>
+                                <field name="log_out_on_exit"/>
+                            </group>
+                            <group string="Included doors">
+                                <field name="door_ids" readonly="1" widget="many2many_tags"/>
+                            </group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <!--    TODO remove buttons and move actions-->
+        <record id="hr_rfid_zone_doors_action" model="ir.actions.act_window">
+            <field name="name">Add/Remove Doors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.rfid.zone.doors.wiz</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="hr_rfid.hr_rfid_zone_doors_wiz"/>
+            <field name="binding_model_id" ref="hr_rfid.model_hr_rfid_zone"/>
+            <field name="binding_view_types">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="hr_rfid_zone_view_tree" model="ir.ui.view">
+            <field name="name">hr.rfid.zone.tree</field>
+            <field name="model">hr.rfid.zone</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="anti_pass_back"/>
+                    <field name="log_out_on_exit"/>
+                    <field name="door_ids"/>
+                    <field name="employee_ids"/>
+                    <field name="contact_ids"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

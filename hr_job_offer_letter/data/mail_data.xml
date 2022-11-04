@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template and notification section -->
+    <data noupdate="0">
+        <record id="email_template_applicant_job_offer" model="mail.template">
+        <field name="name">Applicant: Job Offer</field>
+        <field name="model_id" ref="hr_job_offer_letter.model_hr_applicant"/>
+        <field name="subject">Job Offer for the Position: {{ object.job_id.name }}</field>
+        <field name="email_to">{{ (not object.partner_id and object.email_from or '') }}</field>
+            <field name="partner_to">{{ object.partner_id.id or '' }}</field>
+        <field name="body_html" type="html">
+            <table border="0" cellpadding="0" cellspacing="0" width="590" style="background-color: white; border-collapse: collapse; margin-left: 20px;">
+                <tr>
+                    <td valign="top" style="padding: 0px 10px;">
+                        <div style="font-size: 13px; margin: 0px; padding: 0px;">
+                            Hello <t t-out="object.partner_name or ''">Marc Demo</t>,
+                            <br/><br/>
+                            We were all very excited to meet and get to know you over the past few days. We have been impressed with your background and would like to formally offer you the position as "<a t-att-href="hasattr(object.job_id, 'website_url') and object.job_id.website_url or ''" style="color:#9A6C8E;"><strong t-out="object.job_id.name or ''">Experienced Developer</strong></a>". We trust that your experience and skills will be a valuable asset to our company.
+                            <br/><br/>
+                            You may indicate your agreement with these terms and accept this offer by signing and dating this agreement within 48 hours. Upon your acceptance of this employment offer, we will provide you with the necessary paperwork and instructions.
+                            <br/><br/>
+                            In the meantime, please feel free to contact <strong t-out="object.user_id.name or ''">YourCompany</strong> via email or phone, if you have any questions.
+                            <br/><br/>
+
+                            <div t-if="'website_url' in object.job_id and object.job_id.website_url" style="padding: 16px 8px 16px 8px;">
+                                <a t-att-href="object.job_id.website_url"
+                                   style="background-color: #875a7b; text-decoration: none; color: #fff; padding: 8px 16px 8px 16px; border-radius: 5px;">Job Description</a>
+                            </div>
+
+                            <hr width="97%" style="background-color: rgb(204,204,204); border: medium none; clear: both; display: block; font-size: 0px; min-height: 1px; line-height: 0; margin: 16px 0px 16px 0px;"/>
+                            <t t-if="object.user_id">
+                                <h3 style="color:#9A6C8E;"><strong>Your Contact:</strong></h3>
+                                <table>
+                                    <tr>
+                                        <td width="75">
+                                            <img t-attf-src="/web/image/res.users/{{ object.user_id.id }}/avatar_128" alt="Avatar" style="vertical-align:baseline; width: 64px; height: 64px; object-fit: cover;" />
+                                        </td>
+                                        <td>
+                                            <strong t-out="object.user_id.name or ''">Mitchell Admin</strong><br/>
+                                            <span>Email: <t t-out="object.user_id.email or ''">admin@yourcompany.example.com</t></span><br/>
+                                            <span>Phone: <t t-out="object.user_id.phone or ''">+1 650-123-4567</t></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <hr width="97%" style="background-color: rgb(204,204,204); border: medium none; clear: both; display: block; font-size: 0px; min-height: 1px; line-height: 0; margin: 16px 0px 16px 0px;"/>
+                            </t>
+
+                            We are all looking forward to having you on our team.
+
+                            <hr width="97%" style="background-color: rgb(204,204,204); border: medium none; clear: both; display: block; font-size: 0px; min-height: 1px; line-height: 0; margin: 17px 0px 16px 0px;"/>
+                            <t t-set="location" t-value="''" />
+                            <t t-if="object.job_id.address_id.name">
+                                <strong t-out="object.job_id.address_id.name or ''">Teksa SpA</strong><br/>
+                            </t>
+                            <t t-if="object.job_id.address_id.street">
+                                <t t-out="object.job_id.address_id.street or ''">Puerto Madero 9710</t><br/>
+                                <t t-set="location" t-value="object.job_id.address_id.street"/>
+                            </t>
+                            <t t-if="object.job_id.address_id.street2">
+                                <t t-out="object.job_id.address_id.street2 or ''">Of A15, Santiago (RM)</t><br/>
+                                <t t-set="location" t-value="'%s, %s' % (location, object.job_id.address_id.street2)"/>
+                            </t>
+                            <t t-if="object.job_id.address_id.city">
+                                <t t-out="object.job_id.address_id.city or ''">Pudahuel</t>,
+                                <t t-set="location" t-value="'%s, %s' % (location, object.job_id.address_id.city)"/>
+                            </t>
+                            <t t-if="object.job_id.address_id.state_id.name">
+                                <t t-out="object.job_id.address_id.state_id.name or ''">C1</t>,
+                                <t t-set="location" t-value="'%s, %s' % (location, object.job_id.address_id.state_id.name)"/>
+                            </t>
+                            <t t-if="object.job_id.address_id.zip">
+                                <t t-out="object.job_id.address_id.zip or ''">98450</t>
+                                <t t-set="location" t-value="'%s, %s' % (location, object.job_id.address_id.zip)"/>
+                            </t>
+                            <br/>
+                            <t t-if="object.job_id.address_id.country_id.name">
+                                <t t-out="object.job_id.address_id.country_id.name or ''">Argentina</t><br/>
+                                <t t-set="location" t-value="'%s, %s' % (location, object.job_id.address_id.country_id.name)"/>
+                            </t>
+                            <br/>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </field>
+<!--        <field name="report_template" ref="action_report_job_offer_letter"/>-->
+<!--            <field name="report_name">${(object.name or '').replace('/','_')}</field>-->
+        <field name="auto_delete" eval="True"/>
+<!--        <field name="lang">${object.partner_id.lang or ''}</field>-->
+    </record>
+
+    </data>
+</odoo>

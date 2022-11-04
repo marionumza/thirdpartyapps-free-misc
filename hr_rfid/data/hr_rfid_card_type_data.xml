@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+  <data noupdate="1">
+
+    <record id="hr_rfid_card_type_def" model="hr.rfid.card.type">
+      <field name="name">Regular RFID Card</field>
+    </record>
+
+    <record id="hr_rfid_card_type_1" model="hr.rfid.card.type">
+      <field name="name">MF 13.56Mhz</field>
+    </record>
+
+    <record id="hr_rfid_card_type_2" model="hr.rfid.card.type">
+      <field name="name">EM4100 125KHz</field>
+    </record>
+
+    <record id="hr_rfid_card_type_3" model="hr.rfid.card.type">
+      <field name="name">Biometric ID</field>
+    </record>
+
+    <record id="hr_rfid_card_type_4" model="hr.rfid.card.type">
+      <field name="name">Remote Button 1</field>
+    </record>
+
+    <record id="hr_rfid_card_type_5" model="hr.rfid.card.type">
+      <field name="name">Remote Button 2</field>
+    </record>
+
+    <record id="hr_rfid_card_type_6" model="hr.rfid.card.type">
+      <field name="name">Remote Button 3</field>
+    </record>
+
+    <record id="hr_rfid_card_type_7" model="hr.rfid.card.type">
+      <field name="name">Remote Button 4</field>
+    </record>
+
+    <record id="hr_rfid_card_type_8" model="hr.rfid.card.type">
+      <field name="name">Licence Plate</field>
+    </record>
+
+    <record id="hr_rfid_card_type_barcode" model="hr.rfid.card.type">
+      <field name="name">Barcode</field>
+    </record>
+
+  </data>
+</odoo>
