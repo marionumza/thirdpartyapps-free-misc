@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="category_tree">
+            <field name="name">category tree</field>
+            <field name="model">category.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="subcategory_ids"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="category_form">
+            <field name="name">category form</field>
+            <field name="model">category.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="subcategory_ids"/>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="category_action_window">
+            <field name="name">Category</field>
+            <field name="res_model">category.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Category" action="category_action_window" id="perfect_notes.category"
+                  sequence="2" parent="perfect_notes.menu_root"/>
+    </data>
+</odoo>

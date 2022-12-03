@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="paperformat_page" model="report.paperformat">
+		<field name="name">format - Contact Page</field>
+		<field name="default" eval="True"/>
+		<field name="format">A4</field>
+		<field name="orientation">Landscape</field>
+		<field name="margin_top">7</field>
+		<field name="margin_bottom">28</field>
+		<field name="margin_left">7</field>
+		<field name="margin_right">7</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">7</field>
+		<field name="dpi">90</field>
+	</record>
+
+	<record id="action_report_page" model="ir.actions.report">
+        <field name="name">Full Page</field>
+        <field name="model">res.partner</field>
+        <field name="report_name">print_contact.page</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="paperformat_id" ref="paperformat_page"/>
+		<field name="binding_model_id" ref="model_res_partner"/>
+    </record>
+
+	<template id="page">
+
+		<t t-call="web.html_container">
+			<t t-set="dateImpression" t-value="{
+			'jour':context_timestamp(datetime.datetime.now()).strftime('%d %B %Y'),
+			'heure':context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S'),
+			'auteur':user.name
+			}"/>
+			
+			
+			<t t-foreach="docs" t-as="contact">			
+				<div class="article">					
+					<table>
+						<tr>
+							<td>
+								<span t-field="contact.image_1920" t-options="{'widget':'image'}" style="opacity:1"/>
+							</td>
+							
+							<td>
+								<ul style="list-style:none;white-space: nowrap">
+									<li t-if="contact.title and contact.company_type=='person'" style="font-size:20px;font-style:italic">
+										<t t-esc="contact.title.name"/>
+									</li>
+									
+									<li style="font-size:30px;">
+										<t t-esc="contact.name"/> <t t-if="contact.company_type=='company'"> ( Company ) </t>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+
+					<hr style="background:black;height:4px"/>
+	
+
+					<table style="font-size:30px">
+						<tr>
+							<td style="border-right:1px solid">
+								Address
+							</td>
+							
+							<td>
+								<ul style="list-style:none;white-space: nowrap">
+									<li t-if="contact.street">
+										<t t-esc="contact.street"/>
+									</li>
+									
+									<li t-if="contact.street2">
+										<t t-esc="contact.street2"/>
+									</li>
+									
+									<li t-if="contact.city or contact.zip">
+										<t t-esc="contact.city"/>, <t t-esc="contact.zip"/>
+									</li>
+									
+									<li t-if="contact.country_id">
+										<t t-esc="contact.country_id.name"/>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+					
+					<table style="font-size:30px">
+						<tr>
+							<td>Contact</td>
+							
+							<td>
+								<ul style="list-style:square;white-space: nowrap">
+									<li t-if="contact.phone">
+										Phone : <t t-esc="contact.phone" />
+									</li>
+
+									<li t-if="contact.mobile">
+										Mobile : <t t-esc="contact.mobile"/>
+									</li>
+
+									<li t-if="contact.email">
+										Email : <t t-esc="contact.email"/>
+									</li>							
+								</ul>
+							</td>
+						</tr>
+					</table>					
+				</div>
+
+				<div class="footer text-center">
+					<div t-if="report_type == 'pdf'">
+						Page : <t t-esc="1+contact_index"/> sur <t t-esc="len(docs)"/>
+					</div>
+				</div>
+				
+			</t>
+		</t>		
+
+	</template>
+	
+</odoo>

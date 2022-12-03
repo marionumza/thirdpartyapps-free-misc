@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="ns_multi_update_stage_task_action_wizard" model="ir.ui.view">
+            <field name="name">Multi-update of stage of task</field>
+            <field name="model">multi_update.task_stage</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="check_domain" invisible="1"/>
+                                <field name="name" required="1" options="{'no_create':1, 'no_edit':1}"/>
+                                <field name="stage_id" required="1" options="{'no_create':1, 'no_edit':1}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="">
+                                <field name="task_ids" options="{'no_create':1, 'no_edit':1}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        <button special="cancel" data-hotkey="z" string="Cancel" class="btn-primary oe_highlight" />
+                        <button name="ns_multi_update_stage_task_wizard_action" string="Proceed to update"
+                                class="btn-danger oe_highlight" type="object" data-hotkey="q"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

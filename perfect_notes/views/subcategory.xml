@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="subcategory_form">
+            <field name="name">Subcategory form</field>
+            <field name="model">subcategory.subcategory</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="category_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="subcategory_tree">
+            <field name="name">Subcategory tree</field>
+            <field name="model">subcategory.subcategory</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="category_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="subcategory_action_window">
+            <field name="name">Subcategory</field>
+            <field name="res_model">subcategory.subcategory</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Subcategory" action="subcategory_action_window" id="perfect_notes_subcategory"
+                  sequence="3" parent="perfect_notes.menu_root"/>
+    </data>
+</odoo>

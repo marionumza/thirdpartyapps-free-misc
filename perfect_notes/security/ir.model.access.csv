@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_perfect_notes_administrator,perfect_notes,model_perfect_notes,group_notes_administrator,1,1,1,1
+access_category_administrator,category,model_category_category,group_notes_administrator,1,1,1,1
+access_subcategory_administrator,subcategory,model_subcategory_subcategory,group_notes_administrator,1,1,1,1
+access_perfect_tags_administrator,perfect_tags,model_perfect_tags,group_notes_administrator,1,1,1,1
+
+access_perfect_notes_officer,perfect_notes,model_perfect_notes,group_notes_officer,1,1,1,1
+access_category_officer,category,model_category_category,group_notes_officer,1,0,0,0
+access_subcategory_officer,subcategory,model_subcategory_subcategory,group_notes_officer,1,0,0,0
+access_perfect_tags_officer,perfect_tags,model_perfect_tags,group_notes_officer,1,1,1,1
+
+access_perfect_notes_user,perfect_notes,model_perfect_notes,group_notes_user,1,0,0,0
+access_category_user,category,model_category_category,group_notes_user,1,0,0,0
+access_subcategory_user,subcategory,model_subcategory_subcategory,group_notes_user,1,0,0,0
+access_perfect_tags_user,perfect_tags,model_perfect_tags,group_notes_user,1,0,0,0

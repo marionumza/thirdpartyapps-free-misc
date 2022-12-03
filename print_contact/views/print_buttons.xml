@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<odoo>
+	<record id="buttons" model="ir.ui.view">
+		<field name="name">Boutons pour les différentes listes</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="arch" type="xml">
+
+			<xpath expr="//sheet" position="before">
+				<header>
+					<button name="print_page" string="Full Page" type="object"/>
+					<button name="print_listing" string="List of contacts" type="object"/>
+					<button name="print_checkin" string="Check-in Contacts" type="object"/>
+				</header>
+			</xpath>
+
+		</field>
+	</record>	
+</odoo>

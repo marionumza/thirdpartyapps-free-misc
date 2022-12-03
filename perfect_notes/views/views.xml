@@ -1,0 +1,148 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="perfect_notes_list">
+            <field name="name">perfect_notes list</field>
+            <field name="model">perfect.notes</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="tag_ids" widget="many2many_tags"/>
+                    <field name="category_id"/>
+                    <field name="subcategory_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="perfect_notes_kanban">
+            <field name="name">perfect_notes kanban</field>
+            <field name="model">perfect.notes</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="tag_ids"/>
+                    <field name="category_id"/>
+                    <field name="subcategory_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
+
+                                <div class="o_kanban_primary_left" style="height: 180px;">
+                                    <h2 class="text-center">
+                                        <field name="name"/>
+                                    </h2>
+                                    <br/>
+                                    <field name="summary"/>
+                                </div>
+                                <div class="o_kanban_primary_right">
+                                    <field name="tag_ids" widget="many2many_tags"/>
+                                    <div>
+                                        <field name="level_of_difficult" widget="priority" readonly="1"/>
+                                    </div>
+                                    <div class="float-right">
+                                        <button name="delete_like" type="object"
+                                                style="border: none;background: none; font-size: 16px;"
+                                                class="fa fa-heart text-danger"
+                                                attrs="{'invisible': [('liked_user', '=', False)]}"/>
+                                        <button name="add_like" type="object"
+                                                style="border: none;background: none; font-size: 16px;"
+                                                class="fa fa-heart text-gray"
+                                                attrs="{'invisible': [('liked_user', '=', True)]}"/>
+                                    </div>
+                                    <field name="liked_user" invisible="1"/>
+                                    <div class="float-left">
+                                        <b>Author</b>
+                                        <field name="create_uid" widget="many2one_avatar_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="perfect_notes_form">
+            <field name="name">perfect_notes form</field>
+            <field name="model">perfect.notes</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="category_id"/>
+                                <field name="subcategory_id" domain="[('category_id','=',category_id)]"/>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            </group>
+                            <group>
+                                <field name="level_of_difficult" widget="priority"/>
+                                <field name="create_uid"/>
+                                <field name="create_date"/>
+
+                                <field name="liked_user" invisible="1"/>
+                                <field name="summary" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <div>
+                                <field name="description"/>
+                            </div>
+                        </group>
+                        <div class="text-right">
+                            <div>
+                                <button name="delete_like" type="object" style="font-size: 20px;"
+                                        class="fa fa-heart text-danger"
+                                        attrs="{'invisible': [('liked_user', '=', False)]}"/>
+                                <button name="add_like" type="object" style="font-size: 20px;"
+                                        class="fa fa-heart text-gray"
+                                        attrs="{'invisible': [('liked_user', '=', True)]}"/>
+                            </div>
+                            <div>
+                                <field name="like_user_ids" widget="many2many_avatar_user" readonly="1"/>
+                            </div>
+                        </div>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="perfect_notes_search">
+            <field name="name">perfect_notes search</field>
+            <field name="model">perfect.notes</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="category_id"/>
+                    <field name="subcategory_id"/>
+                    <field name="tag_ids"/>
+                    <group string="Group By">
+                        <filter string="Creators" name="group_by_creators" context="{'group_by': 'create_uid'}"/>
+                        <filter string="Categories" name="group_by_categories" context="{'group_by': 'category_id'}"/>
+                        <filter string="Subcategories" name="group_by_subcategories"
+                                context="{'group_by': 'subcategory_id'}"/>
+                    </group>
+                    <searchpanel>
+                        <field name="category_id" select="multi" enable_counters="1"/>
+                        <field name="subcategory_id" select="multi" enable_counters="1"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="perfect_notes_action_window">
+            <field name="name">Perfect notes</field>
+            <field name="res_model">perfect.notes</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem name="Perfect notes" action="perfect_notes_action_window" id="menu_root"
+                  web_icon="perfect_notes,static/img/odoo_icon.png"/>
+        <menuitem name="Main" action="perfect_notes_action_window" id="perfect_notes_menu_main"
+                  sequence="1" parent="perfect_notes.menu_root"/>
+    </data>
+</odoo>
