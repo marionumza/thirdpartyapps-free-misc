@@ -11,6 +11,6 @@ class CrmLead(models.Model):
     planned_revenue_second = fields.Monetary('Revenue Other Currency', currency_field='currency_id', tracking=True)
 
     @api.onchange('currency_id','planned_revenue_second')
-    def _onchange_planned_revenue(self):
+    def _onchange_expected_revenue(self):
         if self.currency_id:
-            self.planned_revenue = self.currency_id._convert(self.planned_revenue_second, self.company_currency, self.company_id, self.create_date)
+            self.expected_revenue = self.currency_id._convert(self.planned_revenue_second, self.company_currency, self.company_id, self.create_date)
